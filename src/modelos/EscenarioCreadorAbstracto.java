@@ -11,9 +11,9 @@ package modelos;
  */
 public abstract class EscenarioCreadorAbstracto {
 
-    public final int TRABAJO = 1;
-    public final int HOSPITAL = 2;
-    public final int COMISARIA = 3;
+    final int TRABAJO = 1;
+    final int HOSPITAL = 2;
+    final int COMISARIA = 3;
 
     public abstract Escenario crearTipo(int tipo);
 }

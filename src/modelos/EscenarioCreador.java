@@ -17,6 +17,20 @@ public class EscenarioCreador extends EscenarioCreadorAbstracto {
 
     @Override
     public Escenario crearTipo(int tipo) {
-        return null; //cambiar         
+        Escenario objeto;
+        switch (tipo) {
+            case TRABAJO:
+                objeto = new TrabajoEscenario();
+                break;
+            case HOSPITAL:
+                objeto = new HospitalEscenario();
+                break;
+            case COMISARIA:
+                objeto = new ComisariaEscenario();
+                break;
+            default:
+                objeto = null;
+        }
+        return objeto;
     }
 }

@@ -12,13 +12,16 @@ package modelos;
 public class Juego implements IJuego {
 
     private Personaje personaje;
-    private PersonajeCreadorAbstracto creador;
+    private Escenario escenario;
+    private PersonajeCreadorAbstracto creadorPersonaje;
+    private EscenarioCreadorAbstracto creadorEscenario;
     private int puntaje;
     private int vidas;
     private int nivel;
 
     public Juego(int puntaje, int vidas, int nivel) {
-        creador = new PersonajeCreador();
+        creadorPersonaje = new PersonajeCreador();
+        creadorEscenario = new EscenarioCreador();
         this.puntaje = puntaje;
         this.vidas = vidas;
         this.nivel = nivel;
@@ -31,12 +34,12 @@ public class Juego implements IJuego {
 
     @Override
     public void elegirPersonaje(int pj) {
-         personaje = creador.crear(pj);
+         personaje = creadorPersonaje.crear(pj);
     }
 
     @Override
     public void elegirEscenario(int esc) {
-
+        escenario = creadorEscenario.crearTipo(esc);
     }
 
     @Override
@@ -52,8 +55,12 @@ public class Juego implements IJuego {
     public static void main(String[] args) {
         System.out.println("Juego");
         Juego play = new Juego(0,3,1);
-        play.elegirPersonaje(3);
+        
+        play.elegirPersonaje(1);
         play.personaje.dibujar();
+        System.out.println("____________________________________");
+        play.elegirEscenario(2);
+        play.escenario.diseñar();
     }
 
 }
