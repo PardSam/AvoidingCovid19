@@ -9,7 +9,7 @@ package modelos;
  *
  * @author aries
  */
-public class PersonajeCreador extends PersonajeCreadorAbstracto{
+public class PersonajeCreador extends PersonajeCreadorAbstracto {
 
     public PersonajeCreador() {
 
@@ -17,6 +17,21 @@ public class PersonajeCreador extends PersonajeCreadorAbstracto{
 
     @Override
     public Personaje crear(int tipo) {
-        return null;        
+        Personaje objeto;
+        switch (tipo) {
+            case CIVIL:
+                objeto = new CivilPersonaje();
+                break;
+            case DOCTOR:
+                objeto = new DoctorPersonaje();
+                break;
+            case POLICIA:
+                objeto = new PoliciaPersonaje();
+                break;
+            default:
+                objeto = null;
+        }
+        return objeto;
     }
+
 }

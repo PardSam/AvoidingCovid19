@@ -10,8 +10,10 @@ package modelos;
  * @author aries
  */
 public abstract class PersonajeCreadorAbstracto {
-    private final int CIVIL=1;
-    private final int DOCTOR=1;
-    private final int POLICIA=1;
+
+    final int CIVIL = 1;
+    final int DOCTOR = 2;
+    final int POLICIA = 3;
+
     public abstract Personaje crear(int tipo);
 }

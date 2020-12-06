@@ -11,8 +11,8 @@ package modelos;
  */
 public interface  IJuego {
     public abstract void ejecutarJuego() ;
-    public abstract void elegirPersonaje() ;
-    public abstract void elegirEscenario() ;
+    public abstract void elegirPersonaje(int pj) ;
+    public abstract void elegirEscenario(int esc) ;
     public abstract void mostrarPersonaje() ;
     public abstract void mostrarEscenario() ;
 }
