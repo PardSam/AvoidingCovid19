@@ -14,7 +14,7 @@ import java.awt.Color;
 public class Paleta {
 
     public static Color getPlano() {
-        return new Color(0X085394);
+        return new Color(0XFFFFFF);
     }
 
     public static Color getFondo() {
