@@ -8,6 +8,10 @@ package controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import vistas.AcercaVista;
+import vistas.AjustesVista;
+import vistas.AyudaVista;
+import vistas.EscenariosVista;
 import vistas.PrincipalVista;
 
 /**
@@ -17,6 +21,14 @@ import vistas.PrincipalVista;
 public class PrincipalControlador implements ActionListener {
 
     private PrincipalVista vista;
+    private AcercaVista acerca;
+    private AcercaControlador controladorAcerca;
+    private AjustesVista ajustes;
+    private AjustesControlador controladorAjuste;
+    private AyudaVista ayuda;
+    private AyudaControlador controladorayuda;
+    private EscenariosVista escenario;
+    private EscenariosControlador controladorEscenario;
 
     public PrincipalControlador(PrincipalVista vista) {
         this.vista = vista;
@@ -29,7 +41,7 @@ public class PrincipalControlador implements ActionListener {
         vista.infoBoton.addActionListener(this);
         vista.ajustesBoton.addActionListener(this);
         vista.salirBoton.addActionListener(this);
-        
+
         this.vista.setLocationRelativeTo(null);
         this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
         vista.setVisible(true);
@@ -46,21 +58,29 @@ public class PrincipalControlador implements ActionListener {
                 break;
             case "escenarios":
                 System.out.println("Escenarios");
+                escenario = new EscenariosVista();
+                controladorEscenario = new EscenariosControlador(escenario);
                 break;
             case "personajes":
                 System.out.println("Personajes");
                 break;
             case "ayuda":
                 System.out.println("Ayuda");
+                ayuda = new AyudaVista();
+                controladorayuda = new AyudaControlador(ayuda);
                 break;
             case "info":
                 System.out.println("Info");
+                acerca = new AcercaVista();
+                controladorAcerca = new AcercaControlador(acerca);
                 break;
             case "ajustes":
                 System.out.println("Ajustes");
+                ajustes = new AjustesVista();
+                controladorAjuste = new AjustesControlador(ajustes);
                 break;
             case "salir":
-                System.out.println("Salir");
+                System.exit(0);
                 break;
         }
     }

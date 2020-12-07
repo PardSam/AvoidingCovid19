@@ -9,31 +9,31 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import vistas.AjustesVista;
 
 /**
  *
  * @author aries
  */
-public class AjustesControlador implements ActionListener{
+public class AjustesControlador implements ActionListener {
+
     private AjustesVista vista;
-    private ImageIcon imagenMale;
-    private ImageIcon imagenFemale;
-    public AjustesControlador(AjustesVista vista){
+    private ImageIcon masculinoImagen;
+    private ImageIcon femeninoImagen;
+
+    public AjustesControlador(AjustesVista vista) {
         this.vista = vista;
-        
+
         this.vista.aceptarBoton.addActionListener(this);
         this.vista.restablacerBoton.addActionListener(this);
         this.vista.cerrarBoton.addActionListener(this);
         this.vista.masculino.addActionListener(this);
         this.vista.femenino.addActionListener(this);
-        
-         this.vista.setLocationRelativeTo(null);
-        this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        this.vista.setLocationRelativeTo(null);
         this.vista.setVisible(true);
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
@@ -45,25 +45,26 @@ public class AjustesControlador implements ActionListener{
                 break;
             case "cerrar":
                 System.out.println("Cerrar");
+                this.vista.setVisible(false);
                 break;
             case "Masculino":
-                imagenMale = new ImageIcon("./src/assets/masculino-activo.png");
-                this.vista.masculino .setIcon(new ImageIcon(imagenMale.getImage().
-                    getScaledInstance(25,25, Image.SCALE_SMOOTH)));
-                
-                imagenFemale = new ImageIcon("./src/assets/femenino.png");
-                this.vista.femenino .setIcon(new ImageIcon(imagenFemale.getImage().
-                    getScaledInstance(25,25, Image.SCALE_SMOOTH)));
+                masculinoImagen = new ImageIcon("./src/assets/masculino-activo.png");
+                this.vista.masculino.setIcon(new ImageIcon(masculinoImagen.getImage().
+                        getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
+
+                femeninoImagen = new ImageIcon("./src/assets/femenino.png");
+                this.vista.femenino.setIcon(new ImageIcon(femeninoImagen.getImage().
+                        getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
                 break;
             case "Femenino":
-                imagenFemale = new ImageIcon("./src/assets/femenino-activo.png");
-                this.vista.femenino .setIcon(new ImageIcon(imagenFemale.getImage().
-                    getScaledInstance(25,25, Image.SCALE_SMOOTH)));
-                
-                imagenMale = new ImageIcon("./src/assets/masculino.png");
-                this.vista.masculino .setIcon(new ImageIcon(imagenMale.getImage().
-                    getScaledInstance(25,25, Image.SCALE_SMOOTH)));
+                femeninoImagen = new ImageIcon("./src/assets/femenino-activo.png");
+                this.vista.femenino.setIcon(new ImageIcon(femeninoImagen.getImage().
+                        getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
+
+                masculinoImagen = new ImageIcon("./src/assets/masculino.png");
+                this.vista.masculino.setIcon(new ImageIcon(masculinoImagen.getImage().
+                        getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
                 break;
         }
-    }      
+    }
 }

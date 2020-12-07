@@ -22,12 +22,11 @@ public class AcercaControlador implements ActionListener{
         
         this.vista.cerrarBoton.addActionListener(this);
         
-        this.vista.setLocationRelativeTo(null);
-        this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.vista.setLocationRelativeTo(null);        
         this.vista.setVisible(true);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Cerrar");        
+        this.vista.setVisible(false);
     }    
 }

@@ -58,7 +58,9 @@ public class Juego implements IJuego {
         
         play.elegirPersonaje(1);
         play.personaje.dibujar();
+        
         System.out.println("____________________________________");
+        
         play.elegirEscenario(2);
         play.escenario.diseñar();
     }

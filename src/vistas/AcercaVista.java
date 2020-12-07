@@ -8,6 +8,9 @@ package vistas;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -16,48 +19,119 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.border.EmptyBorder;
+import ui.MiBoton;
+import ui.MiBotonIcono;
+import ui.Paleta;
 
 /**
  *
  * @author aries
  */
-public class AcercaVista extends JFrame{
+public class AcercaVista extends JFrame {
+
     public JLabel tituloEtiqueta;
     public JTextArea informacionArea;
     public JButton cerrarBoton;
-    
-    public AcercaVista(){
+
+    public JPanel generalPanel;
+    public JPanel encabezadoPanel;
+    public JPanel principalPanel;
+    public JPanel barraAccionesPanel;
+
+    public AcercaVista() {
         this.setSize(540, 320);
         iniciarComponentes();
     }
 
     private void iniciarComponentes() {
         tituloEtiqueta = new JLabel("ACERCA");
-        Font font = new Font("Roboto", Font.BOLD, 56);
+        Font font = new Font("Roboto", Font.BOLD, 24);
         tituloEtiqueta.setFont(font);
         tituloEtiqueta.setForeground(new Color(0XFFFFFF));
-        
+
         informacionArea = new JTextArea();
-        
-        cerrarBoton = new JButton("Cerrar",new ImageIcon("./src/assets/salir.png"));
-        cerrarBoton.setForeground(new Color(0X333333));
-        cerrarBoton.setBackground(new Color(0XFFFF00));
+        informacionArea.setText(
+                "\n     Avoiding COVID-19. Version 1.0\n\n"
+                + "     Colaboradores:\n\n"
+                + "     - Monja Vásquez Fernando\n"
+                + "     - Sánchez Pardo Samuel\n "
+                + "     - More Villegas Fiorella\n"
+                + "     - Diaz Coronado Jenniffer\n"
+                + "     - Ugaz Arenas Carlos\n"
+                + "     - Gonzales Cubas Jeins  "
+        );
+        informacionArea.setEditable(false);
+        informacionArea.setForeground(Paleta.getPlanoPrimario());
+        informacionArea.setBackground(Paleta.getFondoSuperficie());
+
+        cerrarBoton = new MiBoton();
+        cerrarBoton.setText("CERRAR");
+        cerrarBoton.setForeground(Paleta.getPlanoPrimario());
+        cerrarBoton.setBackground(Paleta.getFondoSuperficie());
+
         cerrarBoton.setActionCommand("cerrar");
-        
+
         Container contenedor = this.getContentPane();
-        contenedor.setLayout(new BoxLayout(contenedor, BoxLayout.Y_AXIS));
-        contenedor.setBackground(new Color(0X073763));
-        
-         JPanel opcionesPanel = new JPanel();
-        opcionesPanel.setLayout(new BoxLayout(opcionesPanel, BoxLayout.X_AXIS));
-        opcionesPanel.setOpaque(false);
-        
-        contenedor.add(tituloEtiqueta);
-        contenedor.add(informacionArea);
-        
-        opcionesPanel.add(Box.createHorizontalGlue());
-        opcionesPanel.add(cerrarBoton);
-        
-        contenedor.add(opcionesPanel);
+        contenedor.setLayout(new GridLayout(1, 1));
+        contenedor.setBackground(Paleta.getFondo());
+
+        generalPanel = new JPanel();
+        generalPanel.setLayout(new GridBagLayout());
+        generalPanel.setOpaque(false);
+
+        crearEncabezadoPanel();
+        crearPrincipalPanel();
+        crearBarraAccionesPanel();
+
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.gridy = 0;
+        gbc.weightx = 52;
+        gbc.weighty = 0;
+        generalPanel.add(encabezadoPanel, gbc);
+
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.gridy = 1;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        generalPanel.add(principalPanel, gbc);
+
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.gridy = 2;
+        gbc.weightx = 1;
+        gbc.weighty = 0;
+        generalPanel.add(barraAccionesPanel, gbc);
+
+        contenedor.add(generalPanel);
+    }
+
+    private void crearEncabezadoPanel() {
+        encabezadoPanel = new JPanel();
+        encabezadoPanel.setBorder(new EmptyBorder(10, 0, 0, 0));
+        encabezadoPanel.setOpaque(false);
+
+        encabezadoPanel.add(tituloEtiqueta);
+    }
+
+    private void crearPrincipalPanel() {
+        principalPanel = new JPanel();
+        principalPanel.setLayout(new BoxLayout(principalPanel, BoxLayout.X_AXIS));
+        principalPanel.setOpaque(false);
+
+        principalPanel.add(Box.createHorizontalStrut(30));
+        principalPanel.add(informacionArea);
+        principalPanel.add(Box.createHorizontalStrut(30));
+    }
+
+    private void crearBarraAccionesPanel() {
+        barraAccionesPanel = new JPanel();
+        barraAccionesPanel.setLayout(new BoxLayout(barraAccionesPanel, BoxLayout.X_AXIS));
+        barraAccionesPanel.setBorder(new EmptyBorder(15, 8, 8, 8));
+        barraAccionesPanel.setOpaque(false);
+
+        barraAccionesPanel.add(Box.createHorizontalGlue());
+        barraAccionesPanel.add(cerrarBoton);
     }
 }

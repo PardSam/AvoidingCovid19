@@ -200,11 +200,4 @@ public class PrincipalVista extends JFrame {
         barraAccionesPanel.add(opcionesPanel);
 
     }
-
-    public static void main(String[] args) {
-        PrincipalVista vista = new PrincipalVista();
-        PrincipalControlador controlador = new PrincipalControlador(vista);
-        vista.setVisible(true);
-        // TODO code application logic here
-    }
 }

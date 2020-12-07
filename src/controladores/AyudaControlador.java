@@ -14,21 +14,21 @@ import vistas.AyudaVista;
  *
  * @author aries
  */
-public class AyudaControlador implements ActionListener{
+public class AyudaControlador implements ActionListener {
+
     private AyudaVista vista;
-    
-    public AyudaControlador(AyudaVista vista){
+
+    public AyudaControlador(AyudaVista vista) {
         this.vista = vista;
-        
+
         this.vista.atrasBoton.addActionListener(this);
         this.vista.siguienteBoton.addActionListener(this);
         this.vista.cerrarBoton.addActionListener(this);
-        
-         this.vista.setLocationRelativeTo(null);
-        this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        this.vista.setLocationRelativeTo(null);
         this.vista.setVisible(true);
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
@@ -40,7 +40,8 @@ public class AyudaControlador implements ActionListener{
                 break;
             case "cerrar":
                 System.out.println("Cerrar");
+                this.vista.setVisible(false);
                 break;
         }
-    }    
+    }
 }
