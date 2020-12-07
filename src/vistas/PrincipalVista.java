@@ -10,6 +10,9 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -17,6 +20,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import ui.MiBoton;
+import ui.Paleta;
+import ui.MiBotonIcono;
 
 /**
  *
@@ -34,6 +41,13 @@ public class PrincipalVista extends JFrame {
     public JButton ajustesBoton;
     public JButton salirBoton;
 
+    public JPanel encabezadoPanel;
+    public JPanel principalPanel;
+    public JPanel accionesPanel;
+    public JPanel opcionesPanel;
+    public JPanel barraAccionesPanel;
+    public JPanel generalPanel;
+
     public PrincipalVista() {
         setMinimumSize(new Dimension(1024, 576));
 
@@ -42,40 +56,52 @@ public class PrincipalVista extends JFrame {
 
     public void inicializarComponentes() {
         // Crear los botones
-        nombreEtiqueta = new JLabel("Avoiding Covi 19");
-        Font font = new Font("Roboto", Font.BOLD, 72);
+        nombreEtiqueta = new JLabel("Avoiding COVID 19");
+        Font font = new Font("Arial", Font.BOLD, 72);
         nombreEtiqueta.setFont(font);
-        nombreEtiqueta.setForeground(new Color(0XFFFFFF));        
-         
-        playBoton = new JButton("Play");
+        nombreEtiqueta.setForeground(new Color(0XFFFFFF));
 
-        comenzarBoton = new JButton("COMENZAR", new ImageIcon("./src/assets/jugar.png"));
-        comenzarBoton.setForeground(new Color(0XFFFFFF));
-        comenzarBoton.setBackground(new Color(0X009E0F));
+        playBoton = new MiBotonIcono();
+        playBoton.setIcon(new ImageIcon("./src/assets/jugar.png"));
+        playBoton.setBackground(Paleta.getFondoSuperficie());
 
-        escenariosBoton = new JButton("ESCENARIOS", new ImageIcon("./src/assets/escenario.png"));
-        escenariosBoton.setForeground(new Color(0X333333));
-        escenariosBoton.setBackground(new Color(0XFFFF00));
+        comenzarBoton = new MiBoton();
+        comenzarBoton.setText("COMENZAR");
+        comenzarBoton.setIcon(new ImageIcon("./src/assets/comenzar.png"));
+        comenzarBoton.setForeground(Paleta.getPlanoPrimario());
+        comenzarBoton.setBackground(Paleta.getFondoPrimario());
 
-        personajesBoton = new JButton("PERSONAJES", new ImageIcon("./src/assets/personaje.png"));
-        personajesBoton.setForeground(new Color(0X333333));
-        personajesBoton.setBackground(new Color(0XFFFF00));
+        escenariosBoton = new MiBoton();
+        escenariosBoton.setText("ESCENARIOS");
+        escenariosBoton.setIcon(new ImageIcon("./src/assets/escenario.png"));
+        escenariosBoton.setForeground(Paleta.getPlanoSecundario());
+        escenariosBoton.setBackground(Paleta.getFondoSecundario());
 
-        ayudaBoton = new JButton(new ImageIcon("./src/assets/ayuda.png"));
-        ayudaBoton.setForeground(new Color(0X333333));
-        ayudaBoton.setBackground(new Color(0XFFFF00));
+        personajesBoton = new MiBoton();
+        personajesBoton.setText("PERSONAJES");
+        personajesBoton.setIcon(new ImageIcon("./src/assets/personaje.png"));
+        personajesBoton.setForeground(Paleta.getPlanoSecundario());
+        personajesBoton.setBackground(Paleta.getFondoSecundario());
 
-        infoBoton = new JButton(new ImageIcon("./src/assets/info.png"));
-        infoBoton.setForeground(new Color(0X333333));
-        infoBoton.setBackground(new Color(0XFFFF00));
+        ayudaBoton = new MiBotonIcono();
+        ayudaBoton.setIcon(new ImageIcon("./src/assets/ayuda.png"));
+        ayudaBoton.setForeground(Paleta.getPlanoSecundario());
+        ayudaBoton.setBackground(Paleta.getFondoSecundario());
 
-        ajustesBoton = new JButton(new ImageIcon("./src/assets/ajustes.png"));
-        ajustesBoton.setForeground(new Color(0X333333));
-        ajustesBoton.setBackground(new Color(0XFFFF00));
+        infoBoton = new MiBotonIcono();
+        infoBoton.setIcon(new ImageIcon("./src/assets/info.png"));
+        infoBoton.setForeground(Paleta.getPlanoSecundario());
+        infoBoton.setBackground(Paleta.getFondoSecundario());
 
-        salirBoton = new JButton(new ImageIcon("./src/assets/salir.png"));
-        salirBoton.setForeground(new Color(0X333333));
-        salirBoton.setBackground(new Color(0XFFFF00));
+        ajustesBoton = new MiBotonIcono();
+        ajustesBoton.setIcon(new ImageIcon("./src/assets/ajustes.png"));
+        ajustesBoton.setForeground(Paleta.getPlanoSecundario());
+        ajustesBoton.setBackground(Paleta.getFondoSecundario());
+
+        salirBoton = new MiBotonIcono();
+        salirBoton.setIcon(new ImageIcon("./src/assets/salir.png"));
+        salirBoton.setForeground(Paleta.getPlanoSecundario());
+        salirBoton.setBackground(Paleta.getFondoSecundario());
 
         // Establecer acciones de comando a los botones
         playBoton.setActionCommand("play");
@@ -88,38 +114,90 @@ public class PrincipalVista extends JFrame {
         salirBoton.setActionCommand("salir");
 
         Container contenedor = getContentPane();
-        contenedor.setLayout(new BoxLayout(contenedor, BoxLayout.Y_AXIS));
-        contenedor.setBackground(new Color(0X073763));
+        contenedor.setLayout(new GridLayout(1, 1));
+        contenedor.setBackground(Paleta.getFondo());
 
-        JPanel accionesPanel = new JPanel();
+        generalPanel = new JPanel();
+        generalPanel.setLayout(new GridBagLayout());
+        generalPanel.setOpaque(false);
+
+        crearEncabezadoPanel();
+        crearPrincipalPanel();
+        crearBarraAccionesPanel();
+
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.gridy = 0;
+        gbc.weightx = 1;
+        gbc.weighty = 0;
+        generalPanel.add(encabezadoPanel, gbc);
+
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.gridy = 1;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        generalPanel.add(principalPanel, gbc);
+
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.gridy = 2;
+        gbc.weightx = 1;
+        gbc.weighty = 0;
+        generalPanel.add(barraAccionesPanel, gbc);
+
+        contenedor.add(generalPanel);
+
+    }
+
+    public void crearEncabezadoPanel() {
+        encabezadoPanel = new JPanel();
+        encabezadoPanel.setBorder(new EmptyBorder(32, 0, 0, 0));
+        encabezadoPanel.setOpaque(false);
+
+        encabezadoPanel.add(nombreEtiqueta);
+    }
+
+    public void crearPrincipalPanel() {
+        principalPanel = new JPanel();
+        principalPanel.setLayout(new BoxLayout(principalPanel, BoxLayout.X_AXIS));
+        principalPanel.setOpaque(false);
+
+        principalPanel.add(Box.createHorizontalGlue());
+        principalPanel.add(playBoton);
+        principalPanel.add(Box.createHorizontalGlue());
+    }
+
+    private void crearBarraAccionesPanel() {
+        barraAccionesPanel = new JPanel();
+        barraAccionesPanel.setLayout(new BoxLayout(barraAccionesPanel, BoxLayout.X_AXIS));
+        barraAccionesPanel.setBorder(new EmptyBorder(0, 8, 8, 8));
+        barraAccionesPanel.setOpaque(false);
+
+        accionesPanel = new JPanel();
         accionesPanel.setLayout(new BoxLayout(accionesPanel, BoxLayout.X_AXIS));
         accionesPanel.setOpaque(false);
 
         accionesPanel.add(comenzarBoton);
+        accionesPanel.add(Box.createRigidArea(new Dimension(8, 0)));
         accionesPanel.add(escenariosBoton);
+        accionesPanel.add(Box.createRigidArea(new Dimension(8, 0)));
         accionesPanel.add(personajesBoton);
 
-        JPanel opcionesPanel = new JPanel();
+        opcionesPanel = new JPanel();
         opcionesPanel.setLayout(new BoxLayout(opcionesPanel, BoxLayout.X_AXIS));
         opcionesPanel.setOpaque(false);
 
         opcionesPanel.add(ayudaBoton);
+        opcionesPanel.add(Box.createRigidArea(new Dimension(8, 0)));
         opcionesPanel.add(infoBoton);
+        opcionesPanel.add(Box.createRigidArea(new Dimension(8, 0)));
         opcionesPanel.add(ajustesBoton);
+        opcionesPanel.add(Box.createRigidArea(new Dimension(8, 0)));
         opcionesPanel.add(salirBoton);
 
-        JPanel barraPanel = new JPanel();
-        barraPanel.setLayout(new BoxLayout(barraPanel, BoxLayout.X_AXIS));
-        barraPanel.setOpaque(false);
-
-        barraPanel.add(accionesPanel);
-        barraPanel.add(Box.createHorizontalGlue());
-        barraPanel.add(opcionesPanel);
-
-        // Agregar los botones al contenedor
-        contenedor.add(nombreEtiqueta);
-        contenedor.add(playBoton);
-        contenedor.add(barraPanel);
+        barraAccionesPanel.add(accionesPanel);
+        barraAccionesPanel.add(Box.createHorizontalGlue());
+        barraAccionesPanel.add(opcionesPanel);
 
     }
 
