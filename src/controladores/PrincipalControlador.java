@@ -42,9 +42,24 @@ public class PrincipalControlador implements ActionListener {
         vista.ajustesBoton.addActionListener(this);
         vista.salirBoton.addActionListener(this);
 
+        escenario = new EscenariosVista();
+        controladorEscenario = new EscenariosControlador(escenario);
+        ayuda = new AyudaVista();
+        controladorayuda = new AyudaControlador(ayuda);
+        acerca = new AcercaVista();
+        controladorAcerca = new AcercaControlador(acerca);
+        ajustes = new AjustesVista();
+        controladorAjuste = new AjustesControlador(ajustes);
+        
+        vista.setVisible(true);
+        escenario.setVisible(false);
+        ayuda.setVisible(false);
+        acerca.setVisible(false);
+        ajustes.setVisible(false);
+        
         this.vista.setLocationRelativeTo(null);
         this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        vista.setVisible(true);
+        
     }
 
     @Override
@@ -58,26 +73,22 @@ public class PrincipalControlador implements ActionListener {
                 break;
             case "escenarios":
                 System.out.println("Escenarios");
-                escenario = new EscenariosVista();
-                controladorEscenario = new EscenariosControlador(escenario);
+                escenario.setVisible(true);
                 break;
             case "personajes":
                 System.out.println("Personajes");
                 break;
             case "ayuda":
                 System.out.println("Ayuda");
-                ayuda = new AyudaVista();
-                controladorayuda = new AyudaControlador(ayuda);
+                ayuda.setVisible(true);
                 break;
             case "info":
                 System.out.println("Info");
-                acerca = new AcercaVista();
-                controladorAcerca = new AcercaControlador(acerca);
+                acerca.setVisible(true);
                 break;
             case "ajustes":
                 System.out.println("Ajustes");
-                ajustes = new AjustesVista();
-                controladorAjuste = new AjustesControlador(ajustes);
+                ajustes.setVisible(true);
                 break;
             case "salir":
                 System.exit(0);

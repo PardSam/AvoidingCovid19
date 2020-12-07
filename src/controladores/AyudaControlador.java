@@ -5,21 +5,26 @@
  */
 package controladores;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import javax.swing.ImageIcon;
 import vistas.AyudaVista;
 
 /**
  *
  * @author aries
  */
-public class AyudaControlador implements ActionListener {
+public class AyudaControlador implements ActionListener, ComponentListener {
 
     private AyudaVista vista;
+    private ImageIcon femeninoImagen;
 
     public AyudaControlador(AyudaVista vista) {
         this.vista = vista;
+        this.vista.principalPanel.addComponentListener(this);
 
         this.vista.atrasBoton.addActionListener(this);
         this.vista.siguienteBoton.addActionListener(this);
@@ -43,5 +48,27 @@ public class AyudaControlador implements ActionListener {
                 this.vista.setVisible(false);
                 break;
         }
+    }
+
+    @Override
+    public void componentResized(ComponentEvent e) {
+
+        int width = e.getComponent().getWidth();
+        int height = e.getComponent().getHeight();
+        this.vista.imagenAyudaEtiqueta.setIcon(new ImageIcon(this.vista.imgAyuda.getImage().getScaledInstance(width, height, Image.SCALE_FAST)));
+    }
+
+    @Override
+    public void componentMoved(ComponentEvent e) {
+
+    }
+
+    @Override
+    public void componentShown(ComponentEvent e) {
+
+    }
+
+    @Override
+    public void componentHidden(ComponentEvent e) {
     }
 }

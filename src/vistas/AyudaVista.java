@@ -51,7 +51,7 @@ public class AyudaVista extends JFrame {
         tituloEtiqueta = new JLabel("AYUDA");
         Font font = new Font("Roboto", Font.BOLD, 32);
         tituloEtiqueta.setFont(font);
-        tituloEtiqueta.setForeground(new Color(0XFFFFFF));
+        tituloEtiqueta.setForeground(Paleta.getPlanoPrimario());
         
         imgAyuda = new ImageIcon("./src/assets/img-ayuda.png");
         imagenAyudaEtiqueta = new JLabel();
@@ -61,19 +61,18 @@ public class AyudaVista extends JFrame {
         
         atrasBoton = new MiBoton();
         atrasBoton.setText("Atras");
+        atrasBoton.setForeground(Paleta.getPlanoPrimario());
+        atrasBoton.setBackground(Paleta.getFondoSuperficie());
+        
         siguienteBoton = new MiBoton();
         siguienteBoton.setText("Siguiente");
+         siguienteBoton.setForeground(Paleta.getPlanoPrimario());
+        siguienteBoton.setBackground(Paleta.getFondoSuperficie());
+        
         cerrarBoton = new MiBoton();
         cerrarBoton.setText("Cerrar");
-
-        atrasBoton.setForeground(Color.white);
-        atrasBoton.setBackground(new Color(0X0a4f8f));
-
-        siguienteBoton.setForeground(Color.white);
-        siguienteBoton.setBackground(new Color(0X0a4f8f));
-
-        cerrarBoton.setForeground(Color.white);
-        cerrarBoton.setBackground(new Color(0X0a4f8f));
+        cerrarBoton.setForeground(Paleta.getPlanoPrimario());
+        cerrarBoton.setBackground(Paleta.getFondoSuperficie());        
 
         atrasBoton.setActionCommand("atras");
         siguienteBoton.setActionCommand("siguiente");
@@ -95,7 +94,7 @@ public class AyudaVista extends JFrame {
 
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridy = 0;
-        gbc.weightx = 52;
+        gbc.weightx = 1;
         gbc.weighty = 0;
         generalPanel.add(encabezadoPanel, gbc);
 
@@ -124,12 +123,13 @@ public class AyudaVista extends JFrame {
 
     private void crearPrincipalPanel() {
         principalPanel = new JPanel();
-        principalPanel.setLayout(new BoxLayout(principalPanel, BoxLayout.X_AXIS));
+        principalPanel.setLayout(new BoxLayout(principalPanel, BoxLayout.PAGE_AXIS));
+        principalPanel.setBorder(new EmptyBorder(0, 32, 0, 32));
         principalPanel.setOpaque(false);
 
-        principalPanel.add(Box.createHorizontalStrut(90));
+        //principalPanel.add(Box.createHorizontalStrut(90));
         principalPanel.add(imagenAyudaEtiqueta);
-        principalPanel.add(Box.createHorizontalStrut(30));
+        //principalPanel.add(Box.createHorizontalStrut(30));
     }
 
     private void crearBarraAccionesPanel() {

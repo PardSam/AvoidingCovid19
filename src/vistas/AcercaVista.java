@@ -21,7 +21,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import ui.MiBoton;
-import ui.MiBotonIcono;
 import ui.Paleta;
 
 /**
@@ -88,7 +87,7 @@ public class AcercaVista extends JFrame {
 
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridy = 0;
-        gbc.weightx = 52;
+        gbc.weightx = 1;
         gbc.weighty = 0;
         generalPanel.add(encabezadoPanel, gbc);
 
