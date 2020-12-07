@@ -31,7 +31,7 @@ public class AjustesControlador implements ActionListener {
         this.vista.femenino.addActionListener(this);
 
         this.vista.setLocationRelativeTo(null);
-        this.vista.setVisible(true);
+        this.vista.setVisible(false);
     }
 
     @Override

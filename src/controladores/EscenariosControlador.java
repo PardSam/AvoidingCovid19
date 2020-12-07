@@ -7,7 +7,6 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import vistas.EscenariosVista;
 
 /**
@@ -25,8 +24,8 @@ public class EscenariosControlador implements ActionListener {
         vista.cerrarBoton.addActionListener(this);
         
          this.vista.setLocationRelativeTo(null);
-        this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        vista.setVisible(true);
+        
+        vista.setVisible(false);
     }
 
     @Override
@@ -36,6 +35,7 @@ public class EscenariosControlador implements ActionListener {
                 System.out.println("Aceptar");
                 break;
             case "cerrar":
+                this.vista.setVisible(false);
                 System.out.println("Cerrar");
                 break;
 

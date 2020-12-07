@@ -31,7 +31,7 @@ public class AyudaControlador implements ActionListener, ComponentListener {
         this.vista.cerrarBoton.addActionListener(this);
 
         this.vista.setLocationRelativeTo(null);
-        this.vista.setVisible(true);
+        this.vista.setVisible(false);
     }
 
     @Override

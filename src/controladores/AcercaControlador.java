@@ -23,7 +23,7 @@ public class AcercaControlador implements ActionListener{
         this.vista.cerrarBoton.addActionListener(this);
         
         this.vista.setLocationRelativeTo(null);        
-        this.vista.setVisible(true);
+        this.vista.setVisible(false);
     }
     @Override
     public void actionPerformed(ActionEvent e) {

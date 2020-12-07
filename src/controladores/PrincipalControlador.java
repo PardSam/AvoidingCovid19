@@ -52,14 +52,9 @@ public class PrincipalControlador implements ActionListener {
         controladorAjuste = new AjustesControlador(ajustes);
         
         vista.setVisible(true);
-        escenario.setVisible(false);
-        ayuda.setVisible(false);
-        acerca.setVisible(false);
-        ajustes.setVisible(false);
-        
         this.vista.setLocationRelativeTo(null);
         this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+
     }
 
     @Override
@@ -73,6 +68,7 @@ public class PrincipalControlador implements ActionListener {
                 break;
             case "escenarios":
                 System.out.println("Escenarios");
+
                 escenario.setVisible(true);
                 break;
             case "personajes":
@@ -80,14 +76,17 @@ public class PrincipalControlador implements ActionListener {
                 break;
             case "ayuda":
                 System.out.println("Ayuda");
+
                 ayuda.setVisible(true);
                 break;
             case "info":
                 System.out.println("Info");
+
                 acerca.setVisible(true);
                 break;
             case "ajustes":
                 System.out.println("Ajustes");
+
                 ajustes.setVisible(true);
                 break;
             case "salir":
