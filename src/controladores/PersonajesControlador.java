@@ -32,8 +32,8 @@ public class PersonajesControlador implements ActionListener {
         this.vista.setLocationRelativeTo(null);
 
         this.vista.principalPanel.add(crearPersonaje("david", "David", "./src/assets/personajes/david/prevista.png"));
-        this.vista.principalPanel.add(crearPersonaje("marco", "Marco", "./src/assets/personajes/david/prevista.png"));
-        this.vista.principalPanel.add(crearPersonaje("juan", "Juan", "./src/assets/personajes/david/prevista.png"));
+        this.vista.principalPanel.add(crearPersonaje("marco", "Marco", "./src/assets/personajes/marco/prevista.png"));
+        this.vista.principalPanel.add(crearPersonaje("juan", "Juan", "./src/assets/personajes/juan/prevista.png"));
 
         vista.setVisible(false);
     }

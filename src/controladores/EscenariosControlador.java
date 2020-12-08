@@ -36,8 +36,8 @@ public class EscenariosControlador implements ActionListener {
         
        
         this.vista.principalPanel.add(crearEscenario("trabajo", "Trabajo", "./src/assets/escenarios/trabajo/prevista.png"));
-        this.vista.principalPanel.add(crearEscenario("hospital", "Hospital", "./src/assets/escenarios/trabajo/prevista.png"));
-        this.vista.principalPanel.add(crearEscenario("hospital", "Comisaria", "./src/assets/escenarios/trabajo/prevista.png"));
+        this.vista.principalPanel.add(crearEscenario("comisaria", "Comisaria", "./src/assets/escenarios/comisaria/prevista.png"));
+        this.vista.principalPanel.add(crearEscenario("hospital", "Hospital", "./src/assets/escenarios/hospital/prevista.png"));
         
         vista.setVisible(false);
 
