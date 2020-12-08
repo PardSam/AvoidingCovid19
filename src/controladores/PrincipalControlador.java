@@ -12,6 +12,7 @@ import vistas.AcercaVista;
 import vistas.AjustesVista;
 import vistas.AyudaVista;
 import vistas.EscenariosVista;
+import vistas.PersonajesVista;
 import vistas.PrincipalVista;
 
 /**
@@ -29,6 +30,8 @@ public class PrincipalControlador implements ActionListener {
     private AyudaControlador controladorayuda;
     private EscenariosVista escenario;
     private EscenariosControlador controladorEscenario;
+    private PersonajesVista personaje;
+    private PersonajesControlador controladorPersonaje;
 
     public PrincipalControlador(PrincipalVista vista) {
         this.vista = vista;
@@ -44,22 +47,25 @@ public class PrincipalControlador implements ActionListener {
 
         escenario = new EscenariosVista();
         controladorEscenario = new EscenariosControlador(escenario);
+        personaje = new PersonajesVista();
+        controladorPersonaje = new PersonajesControlador(personaje);
         ayuda = new AyudaVista();
         controladorayuda = new AyudaControlador(ayuda);
         acerca = new AcercaVista();
         controladorAcerca = new AcercaControlador(acerca);
         ajustes = new AjustesVista();
         controladorAjuste = new AjustesControlador(ajustes);
-        
+
         vista.setVisible(true);
         escenario.setVisible(false);
+        personaje.setVisible(false);
         ayuda.setVisible(false);
         acerca.setVisible(false);
         ajustes.setVisible(false);
-        
+
         this.vista.setLocationRelativeTo(null);
         this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+
     }
 
     @Override
@@ -77,6 +83,7 @@ public class PrincipalControlador implements ActionListener {
                 break;
             case "personajes":
                 System.out.println("Personajes");
+                personaje.setVisible(true);
                 break;
             case "ayuda":
                 System.out.println("Ayuda");

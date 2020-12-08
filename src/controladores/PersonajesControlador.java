@@ -14,17 +14,17 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import ui.Paleta;
-import vistas.EscenariosVista;
+import vistas.PersonajesVista;
 
 /**
  *
  * @author fernandomonjav
  */
-public class EscenariosControlador implements ActionListener {
+public class PersonajesControlador implements ActionListener {
 
-    private EscenariosVista vista;
+    private PersonajesVista vista;
 
-    public EscenariosControlador(EscenariosVista vista) {
+    public PersonajesControlador(PersonajesVista vista) {
         this.vista = vista;
 
         vista.aceptarBoton.addActionListener(this);
@@ -32,12 +32,11 @@ public class EscenariosControlador implements ActionListener {
 
         this.vista.setLocationRelativeTo(null);
         this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
-        
-        this.vista.principalPanel.add(crearEscenario("trabajo", "Trabajo", "./src/assets/escenarios/trabajo/prevista.png"));
-        this.vista.principalPanel.add(crearEscenario("hospital", "Hospital", "./src/assets/escenarios/trabajo/prevista.png"));
-        this.vista.principalPanel.add(crearEscenario("hospital", "Comisaria", "./src/assets/escenarios/trabajo/prevista.png"));
-        
+
+        this.vista.principalPanel.add(crearPersonaje("david", "David", "./src/assets/personajes/david/prevista.png"));
+        this.vista.principalPanel.add(crearPersonaje("marco", "Marco", "./src/assets/personajes/david/prevista.png"));
+        this.vista.principalPanel.add(crearPersonaje("juan", "Juan", "./src/assets/personajes/david/prevista.png"));
+
         vista.setVisible(true);
     }
 
@@ -55,10 +54,10 @@ public class EscenariosControlador implements ActionListener {
         }
     }
 
-    public JPanel crearEscenario(String id, String nombre, String rutaImagen) {
-        JPanel escenarioPanel = new JPanel();
-        escenarioPanel.setLayout(new BoxLayout(escenarioPanel, BoxLayout.Y_AXIS));
-        escenarioPanel.setOpaque(false);
+    public JPanel crearPersonaje(String id, String nombre, String rutaImagen) {
+        JPanel personajePanel = new JPanel();
+        personajePanel.setLayout(new BoxLayout(personajePanel, BoxLayout.Y_AXIS));
+        personajePanel.setOpaque(false);
 
         ImageIcon imagen = new ImageIcon(rutaImagen);
 
@@ -69,9 +68,9 @@ public class EscenariosControlador implements ActionListener {
         nombreEtiqueta.setFont(new Font("Artial", Font.BOLD, 16));
         nombreEtiqueta.setForeground(Paleta.getPlano());
 
-        escenarioPanel.add(imagenEtiqueta);
-        escenarioPanel.add(nombreEtiqueta);
+        personajePanel.add(imagenEtiqueta);
+        personajePanel.add(nombreEtiqueta);
 
-        return escenarioPanel;
+        return personajePanel;
     }
 }
