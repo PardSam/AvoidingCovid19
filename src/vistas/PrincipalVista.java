@@ -59,7 +59,7 @@ public class PrincipalVista extends JFrame {
         nombreEtiqueta = new JLabel("Avoiding COVID 19");
         Font font = new Font("Arial", Font.BOLD, 72);
         nombreEtiqueta.setFont(font);
-        nombreEtiqueta.setForeground(new Color(0XFFFFFF));
+        nombreEtiqueta.setForeground(Paleta.getPlano());
 
         playBoton = new MiBotonIcono();
         playBoton.setIcon(new ImageIcon("./src/assets/jugar.png"));

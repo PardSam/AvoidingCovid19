@@ -41,6 +41,10 @@ public class AyudaVista extends JFrame {
     public JPanel principalPanel;
     public JPanel barraAccionesPanel;
     
+        
+    public int width;
+    public int height;  
+    
     public AyudaVista() {
         this.setSize(500, 400);
         iniciarComponentes();
@@ -53,7 +57,7 @@ public class AyudaVista extends JFrame {
         tituloEtiqueta.setFont(font);
         tituloEtiqueta.setForeground(Paleta.getPlanoPrimario());
         
-        imgAyuda = new ImageIcon("./src/assets/img-ayuda.png");
+        imgAyuda = new ImageIcon("./src/assets/img__ayuda-1.png");
         imagenAyudaEtiqueta = new JLabel();
         imagenAyudaEtiqueta.setSize(320,160);
         imagenAyudaEtiqueta.setIcon(new ImageIcon(imgAyuda.getImage().getScaledInstance(imagenAyudaEtiqueta.

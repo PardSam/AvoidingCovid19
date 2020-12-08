@@ -47,7 +47,7 @@ public class AcercaVista extends JFrame {
         tituloEtiqueta = new JLabel("ACERCA");
         Font font = new Font("Roboto", Font.BOLD, 24);
         tituloEtiqueta.setFont(font);
-        tituloEtiqueta.setForeground(new Color(0XFFFFFF));
+        tituloEtiqueta.setForeground(Paleta.getPlano());
 
         informacionArea = new JTextArea();
         informacionArea.setText(

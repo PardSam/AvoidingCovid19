@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import vistas.AyudaVista;
 
 /**
@@ -20,7 +21,9 @@ import vistas.AyudaVista;
 public class AyudaControlador implements ActionListener, ComponentListener {
 
     private AyudaVista vista;
-    private ImageIcon femeninoImagen;
+    public int op = 4;
+    final String HELP[] = {"./src/assets/img__ayuda-1.png", "./src/assets/img__ayuda-2.png", "./src/assets/img__ayuda-3.png",
+        "./src/assets/img__ayuda-4.png", "./src/assets/img__ayuda-5.png"};
 
     public AyudaControlador(AyudaVista vista) {
         this.vista = vista;
@@ -36,12 +39,16 @@ public class AyudaControlador implements ActionListener, ComponentListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         switch (e.getActionCommand()) {
             case "atras":
                 System.out.println("Atras");
+                opcionAyuda(this.vista.imagenAyudaEtiqueta,1);
+                this.vista.imagenAyudaEtiqueta.updateUI();
                 break;
             case "siguiente":
                 System.out.println("Siguiente");
+                opcionAyuda(this.vista.imagenAyudaEtiqueta,2);
                 break;
             case "cerrar":
                 System.out.println("Cerrar");
@@ -50,12 +57,41 @@ public class AyudaControlador implements ActionListener, ComponentListener {
         }
     }
 
+    public ImageIcon imagenRuta(String ruta) {
+
+        ImageIcon img = new ImageIcon(ruta);
+
+        return img;
+    }
+
+    public void opcionAyuda(JLabel etiqueta, int ayuda) {
+        System.out.println(op + "_____________________");
+        if (ayuda == 1) {
+            op--;
+            if (op < 0) {
+                op = this.HELP.length-1;
+            }
+
+        } else if (ayuda == 2) {
+            op++;
+            if (op >= this.HELP.length) {
+                op = 0;
+            }
+        }
+        this.vista.imgAyuda = imagenRuta(this.HELP[op]);
+        this.vista.imagenAyudaEtiqueta.setIcon(new ImageIcon(this.vista.imgAyuda.getImage().
+                getScaledInstance(this.vista.width, this.vista.height, Image.SCALE_FAST)));
+    }
+
     @Override
     public void componentResized(ComponentEvent e) {
 
-        int width = e.getComponent().getWidth();
-        int height = e.getComponent().getHeight();
-        this.vista.imagenAyudaEtiqueta.setIcon(new ImageIcon(this.vista.imgAyuda.getImage().getScaledInstance(width, height, Image.SCALE_FAST)));
+        this.vista.width = e.getComponent().getWidth() - 50;
+        this.vista.height = e.getComponent().getHeight();
+
+        this.vista.imagenAyudaEtiqueta.setIcon(new ImageIcon(this.vista.imgAyuda.getImage().
+                getScaledInstance(this.vista.width, this.vista.height, Image.SCALE_FAST)));
+
     }
 
     @Override

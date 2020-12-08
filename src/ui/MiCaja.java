@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 public class MiCaja extends JTextField {
 
     private Shape shape;
-    private int borderRadius = 32;
+    private int borderRadius = 16;
 
     public MiCaja() {
         super();

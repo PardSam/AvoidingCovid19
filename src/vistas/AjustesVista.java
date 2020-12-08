@@ -25,6 +25,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import ui.MiBoton;
+import ui.MiCaja;
 import ui.Paleta;
 
 /**
@@ -50,6 +51,7 @@ public class AjustesVista extends JFrame {
     public JPanel encabezadoPanel;
     public JPanel principalPanel;
     public JPanel barraAccionesPanel;
+  
     
     public AjustesVista() {
         this.setSize(400, 320);
@@ -60,18 +62,18 @@ public class AjustesVista extends JFrame {
         tituloEtiqueta = new JLabel("Ajustes");
         Font font = new Font("Roboto", Font.BOLD, 24);
         tituloEtiqueta.setFont(font);
-        tituloEtiqueta.setForeground(new Color(0XFFFFFF));
+        tituloEtiqueta.setForeground(Paleta.getPlano());
 
         //validar el maximo y minimo de caracteres en la caja
         nombreEtiqueta = new JLabel("Nombre");
-        nombreEtiqueta.setForeground(new Color(0XFFFFFF));
+        nombreEtiqueta.setForeground(Paleta.getPlano());
         
-        nombreCaja = new JTextField();
+        nombreCaja = new MiCaja();
         nombreCaja.setForeground(Paleta.getPlanoPrimario());
         nombreCaja.setBackground(Paleta.getFondoSuperficie());
         
         generoEtiqueta = new JLabel("Genero");
-        generoEtiqueta.setForeground(new Color(0XFFFFFF));
+        generoEtiqueta.setForeground(Paleta.getPlano());
         
         masculino = new JRadioButton();
         femenino = new JRadioButton();
@@ -82,9 +84,9 @@ public class AjustesVista extends JFrame {
         femaleIcon = new ImageIcon("./src/assets/femenino.png");
         
         masculino.setIcon(new ImageIcon(maleIcon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
-        masculino.setBackground(new Color(0X073763));
+        masculino.setOpaque(false);
         femenino.setIcon(new ImageIcon(femaleIcon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
-        femenino.setBackground(new Color(0X073763));
+        femenino.setOpaque(false);
         
         generoGrupo = new ButtonGroup();
         generoGrupo.add(masculino);
@@ -111,7 +113,7 @@ public class AjustesVista extends JFrame {
         
         Container contenedor = this.getContentPane();
         contenedor.setLayout(new GridLayout(1, 1));
-        contenedor.setBackground(new Color(0X073763));
+        contenedor.setBackground(Paleta.getFondo());
         
         generalPanel = new JPanel();
         generalPanel.setLayout(new GridBagLayout());
@@ -174,7 +176,7 @@ public class AjustesVista extends JFrame {
         
         JPanel generoPanel = new JPanel();
         generoPanel.setLayout(new BoxLayout(generoPanel, BoxLayout.X_AXIS));
-        //generoPanel.setOpaque(false);
+        generoPanel.setOpaque(false);
         
         nombrePanel.add(Box.createHorizontalStrut(10));
         nombrePanel.add(nombreEtiqueta);
