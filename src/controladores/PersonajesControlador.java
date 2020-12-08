@@ -5,9 +5,12 @@
  */
 package controladores;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -22,7 +25,8 @@ import vistas.PersonajesVista;
 public class PersonajesControlador implements ActionListener {
 
     private PersonajesVista vista;
-
+    private List<JPanel> personajes = new ArrayList();
+    
     public PersonajesControlador(PersonajesVista vista) {
         this.vista = vista;
 
@@ -30,11 +34,19 @@ public class PersonajesControlador implements ActionListener {
         vista.cerrarBoton.addActionListener(this);
 
         this.vista.setLocationRelativeTo(null);
+        
+        personajes.add(crearPersonaje("david", "David", "./src/assets/personajes/david/prevista.png"));
+        personajes.add(crearPersonaje("marco", "Marco", "./src/assets/personajes/marco/prevista.png"));
+        personajes.add(crearPersonaje("juan", "Juan", "./src/assets/personajes/juan/prevista.png"));
 
-        this.vista.principalPanel.add(crearPersonaje("david", "David", "./src/assets/personajes/david/prevista.png"));
-        this.vista.principalPanel.add(crearPersonaje("marco", "Marco", "./src/assets/personajes/marco/prevista.png"));
-        this.vista.principalPanel.add(crearPersonaje("juan", "Juan", "./src/assets/personajes/juan/prevista.png"));
+        for (int i = 0; i < personajes.size(); i++) {
+            this.vista.principalPanel.add(this.personajes.get(i));
+        }
+        
+        JLabel label = (JLabel) personajes.get(2).getClientProperty("nombre-juan");
 
+        label.setForeground(Color.yellow);
+        
         vista.setVisible(false);
     }
 
@@ -68,6 +80,8 @@ public class PersonajesControlador implements ActionListener {
 
         personajePanel.add(imagenEtiqueta);
         personajePanel.add(nombreEtiqueta);
+
+        personajePanel.putClientProperty("nombre-" + id, nombreEtiqueta);
 
         return personajePanel;
     }
