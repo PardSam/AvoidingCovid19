@@ -5,7 +5,6 @@
  */
 package vistas;
 
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -27,7 +26,7 @@ import ui.Paleta;
  *
  * @author fernandomonjav
  */
-public class EscenariosVista extends JFrame {
+public class PersonajesVista extends JFrame {
 
     public JLabel tituloEtiqueta;
     public JButton aceptarBoton;
@@ -38,8 +37,7 @@ public class EscenariosVista extends JFrame {
     public JPanel principalPanel;
     public JPanel barraAccionesPanel;
 
-    public EscenariosVista() {
-
+    public PersonajesVista() {
         setSize(new Dimension(680, 380));
         setLocationRelativeTo(null);
         setResizable(false);
@@ -49,7 +47,7 @@ public class EscenariosVista extends JFrame {
 
     public void inicializarComponentes() {
         // Crear las etiquetas
-        tituloEtiqueta = new JLabel("ESCENARIOS");
+        tituloEtiqueta = new JLabel("PERSONAJES");
         Font font = new Font("Arial", Font.BOLD, 24);
         tituloEtiqueta.setFont(font);
         tituloEtiqueta.setForeground(Paleta.getPlano());
