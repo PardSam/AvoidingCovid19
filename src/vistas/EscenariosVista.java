@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 import ui.MiBoton;
 import ui.Paleta;
@@ -135,4 +136,5 @@ public class EscenariosVista extends JFrame {
         barraAccionesPanel.add(cerrarBoton);
     }
 
+    
 }

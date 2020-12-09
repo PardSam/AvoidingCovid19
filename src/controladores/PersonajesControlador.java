@@ -12,6 +12,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import ui.Paleta;
 import vistas.PersonajesVista;
 
@@ -48,7 +49,16 @@ public class PersonajesControlador implements ActionListener {
                 System.out.println("Cerrar");
                 this.vista.setVisible(false);
                 break;
-
+            case "david":
+                System.out.println("David");
+                
+                break;
+            case "marco":
+                System.out.println("Marco");
+                break;
+            case "juan":
+                System.out.println("Juan");
+                break;
         }
     }
 
@@ -56,17 +66,21 @@ public class PersonajesControlador implements ActionListener {
         JPanel personajePanel = new JPanel();
         personajePanel.setLayout(new BoxLayout(personajePanel, BoxLayout.Y_AXIS));
         personajePanel.setOpaque(false);
-
+        
         ImageIcon imagen = new ImageIcon(rutaImagen);
 
-        JLabel imagenEtiqueta = new JLabel(imagen);
-        imagenEtiqueta.setSize(200, 200);
+        JRadioButton imagenRadioBoton = new JRadioButton(imagen);
+        imagenRadioBoton.setSize(200, 200);
+        imagenRadioBoton.setActionCommand(id);
+        imagenRadioBoton.setOpaque(false);
 
         JLabel nombreEtiqueta = new JLabel(nombre);
         nombreEtiqueta.setFont(new Font("Artial", Font.BOLD, 16));
         nombreEtiqueta.setForeground(Paleta.getPlano());
+        
+        imagenRadioBoton.addActionListener(this);
 
-        personajePanel.add(imagenEtiqueta);
+        personajePanel.add(imagenRadioBoton);
         personajePanel.add(nombreEtiqueta);
 
         return personajePanel;
