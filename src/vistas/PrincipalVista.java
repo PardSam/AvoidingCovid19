@@ -62,44 +62,45 @@ public class PrincipalVista extends JFrame {
         nombreEtiqueta.setForeground(Paleta.getPlano());
 
         playBoton = new MiBotonIcono();
-        playBoton.setIcon(new ImageIcon("./src/assets/jugar.png"));
+        playBoton.setIcon(new ImageIcon(getClass().getResource("/assets/jugar.png")));
+
         playBoton.setBackground(Paleta.getFondoSuperficie());
 
         comenzarBoton = new MiBoton();
         comenzarBoton.setText("COMENZAR");
-        comenzarBoton.setIcon(new ImageIcon("./src/assets/comenzar.png"));
+        comenzarBoton.setIcon(new ImageIcon(getClass().getResource("/assets/comenzar.png")));
         comenzarBoton.setForeground(Paleta.getPlanoPrimario());
         comenzarBoton.setBackground(Paleta.getFondoPrimario());
 
         escenariosBoton = new MiBoton();
         escenariosBoton.setText("ESCENARIOS");
-        escenariosBoton.setIcon(new ImageIcon("./src/assets/escenario.png"));
+        escenariosBoton.setIcon(new ImageIcon(getClass().getResource("/assets/escenario.png")));
         escenariosBoton.setForeground(Paleta.getPlanoSecundario());
         escenariosBoton.setBackground(Paleta.getFondoSecundario());
 
         personajesBoton = new MiBoton();
         personajesBoton.setText("PERSONAJES");
-        personajesBoton.setIcon(new ImageIcon("./src/assets/personaje.png"));
+        personajesBoton.setIcon(new ImageIcon(getClass().getResource("/assets/personaje.png")));
         personajesBoton.setForeground(Paleta.getPlanoSecundario());
         personajesBoton.setBackground(Paleta.getFondoSecundario());
 
         ayudaBoton = new MiBotonIcono();
-        ayudaBoton.setIcon(new ImageIcon("./src/assets/ayuda.png"));
+        ayudaBoton.setIcon(new ImageIcon(getClass().getResource("/assets/ayuda.png")));
         ayudaBoton.setForeground(Paleta.getPlanoSecundario());
         ayudaBoton.setBackground(Paleta.getFondoSecundario());
 
         infoBoton = new MiBotonIcono();
-        infoBoton.setIcon(new ImageIcon("./src/assets/info.png"));
+        infoBoton.setIcon(new ImageIcon(getClass().getResource("/assets/info.png")));
         infoBoton.setForeground(Paleta.getPlanoSecundario());
         infoBoton.setBackground(Paleta.getFondoSecundario());
 
         ajustesBoton = new MiBotonIcono();
-        ajustesBoton.setIcon(new ImageIcon("./src/assets/ajustes.png"));
+        ajustesBoton.setIcon(new ImageIcon(getClass().getResource("/assets/ajustes.png")));
         ajustesBoton.setForeground(Paleta.getPlanoSecundario());
         ajustesBoton.setBackground(Paleta.getFondoSecundario());
 
         salirBoton = new MiBotonIcono();
-        salirBoton.setIcon(new ImageIcon("./src/assets/salir.png"));
+        salirBoton.setIcon(new ImageIcon(getClass().getResource("/assets/salir.png")));
         salirBoton.setForeground(Paleta.getPlanoSecundario());
         salirBoton.setBackground(Paleta.getFondoSecundario());
 

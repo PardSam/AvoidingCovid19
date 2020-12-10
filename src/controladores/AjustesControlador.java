@@ -48,20 +48,20 @@ public class AjustesControlador implements ActionListener {
                 this.vista.setVisible(false);
                 break;
             case "Masculino":
-                masculinoImagen = new ImageIcon("./src/assets/masculino-activo.png");
+                masculinoImagen = new ImageIcon(getClass().getResource("/assets/masculino-activo.png"));
                 this.vista.masculino.setIcon(new ImageIcon(masculinoImagen.getImage().
                         getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
 
-                femeninoImagen = new ImageIcon("./src/assets/femenino.png");
+                femeninoImagen = new ImageIcon(getClass().getResource("/assets/femenino.png"));
                 this.vista.femenino.setIcon(new ImageIcon(femeninoImagen.getImage().
                         getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
                 break;
             case "Femenino":
-                femeninoImagen = new ImageIcon("./src/assets/femenino-activo.png");
+                femeninoImagen = new ImageIcon(getClass().getResource("/assets/femenino-activo.png"));
                 this.vista.femenino.setIcon(new ImageIcon(femeninoImagen.getImage().
                         getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
 
-                masculinoImagen = new ImageIcon("./src/assets/masculino.png");
+                masculinoImagen = new ImageIcon(getClass().getResource("/assets/masculino.png"));
                 this.vista.masculino.setIcon(new ImageIcon(masculinoImagen.getImage().
                         getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
                 break;

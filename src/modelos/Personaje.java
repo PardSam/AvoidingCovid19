@@ -5,11 +5,20 @@
  */
 package modelos;
 
+import java.awt.Graphics2D;
+import java.awt.geom.Area;
+
 /**
  *
  * @author aries
  */
 public abstract class Personaje {
 
-    public abstract void dibujar();
+    public abstract void dibujar(Graphics2D g);
+
+    public abstract String getRutaImagen();
+
+    public abstract void mover();
+
+    public abstract Area getBounds();
 }

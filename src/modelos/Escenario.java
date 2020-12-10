@@ -5,12 +5,26 @@
  */
 package modelos;
 
+import java.awt.Graphics2D;
+
 /**
  *
  * @author aries
  */
 public abstract class Escenario {
-
-    public abstract void diseñar();
+    private int xInicial,xAuxiliar;
+    
+    public abstract void dibujar(Graphics2D g);
+    public abstract String getRutaImagen();
+    
+    public void mover() {
+         xInicial = xInicial - 2;
+         xAuxiliar = xAuxiliar - 2;
+        
+        if (xInicial == 0 && xAuxiliar == -1300) {
+            xInicial = 1300;
+            xAuxiliar = 0;
+        }
+    }
 
 }

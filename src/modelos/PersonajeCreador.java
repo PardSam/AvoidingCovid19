@@ -12,7 +12,7 @@ package modelos;
 public class PersonajeCreador extends PersonajeCreadorAbstracto {
 
     public PersonajeCreador() {
-
+       
     }
 
     @Override

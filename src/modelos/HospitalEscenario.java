@@ -5,6 +5,9 @@
  */
 package modelos;
 
+import java.awt.Graphics2D;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author aries
@@ -12,23 +15,28 @@ package modelos;
 public class HospitalEscenario extends Escenario {
 
     private String titulo;
-    private String rutaImagen;
-    private int ancho, alto, nivel;
 
+    @Override
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+    public  String rutaImagen;
+    private int ancho, alto, nivel;
+    private int xInicial, yInicial;
+    private int xAuxiliar, yAuxiliar;
+    
     public HospitalEscenario() {
         this.titulo = "Hospital";
         this.ancho = 8;
         this.alto = 3;
         this.nivel = 2;
-        this.rutaImagen = "Hospital ruta";
+        this.rutaImagen = "/assets/escenarios/hospital/fondo.png";
     }
 
     @Override
-    public void diseñar() {
-        System.out.println("Ruta imagen: " + this.rutaImagen);
-        System.out.println("Titulo " + this.titulo);
-        System.out.println("Ancho : " + this.ancho);
-        System.out.println("Alto : " + this.alto);
-        System.out.println("Nivel : " + this.nivel);
+    public void dibujar(Graphics2D g) {
+        ImageIcon escenario = new ImageIcon(getClass().getResource(this.rutaImagen));
+        g.drawImage(escenario.getImage(), xInicial, yInicial, ancho, alto, null);
+        g.drawImage(escenario.getImage(), xAuxiliar, yAuxiliar, ancho, alto, null);
     }
 }

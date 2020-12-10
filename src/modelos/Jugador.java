@@ -14,11 +14,10 @@ public class Jugador {
     private static Jugador jugador = null;
     private String nombre;
     private String genero;
-    private int score;
 
     public static Jugador getJugador() {
         if (jugador == null) {
-            return new Jugador();
+            jugador = new Jugador();
         }
         return jugador;
     }
@@ -37,13 +36,5 @@ public class Jugador {
 
     public void setGenero(String genero) {
         this.genero = genero;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
     }
 }

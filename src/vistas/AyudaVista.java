@@ -57,7 +57,7 @@ public class AyudaVista extends JFrame {
         tituloEtiqueta.setFont(font);
         tituloEtiqueta.setForeground(Paleta.getPlanoPrimario());
         
-        imgAyuda = new ImageIcon("./src/assets/img__ayuda-1.png");
+        imgAyuda = new ImageIcon(getClass().getResource("/assets/img__ayuda-1.png"));
         imagenAyudaEtiqueta = new JLabel();
         imagenAyudaEtiqueta.setSize(320,160);
         imagenAyudaEtiqueta.setIcon(new ImageIcon(imgAyuda.getImage().getScaledInstance(imagenAyudaEtiqueta.

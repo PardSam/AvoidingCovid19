@@ -80,8 +80,8 @@ public class AjustesVista extends JFrame {
         masculino.setActionCommand("Masculino");
         femenino.setActionCommand("Femenino");
         
-        maleIcon = new ImageIcon("./src/assets/masculino.png");
-        femaleIcon = new ImageIcon("./src/assets/femenino.png");
+        maleIcon = new ImageIcon(getClass().getResource("/assets/masculino.png"));
+        femaleIcon = new ImageIcon(getClass().getResource("/assets/femenino.png"));
         
         masculino.setIcon(new ImageIcon(maleIcon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
         masculino.setOpaque(false);

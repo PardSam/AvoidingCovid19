@@ -22,8 +22,8 @@ public class AyudaControlador implements ActionListener, ComponentListener {
 
     private AyudaVista vista;
     public int op = 4;
-    final String HELP[] = {"./src/assets/img__ayuda-1.png", "./src/assets/img__ayuda-2.png", "./src/assets/img__ayuda-3.png",
-        "./src/assets/img__ayuda-4.png", "./src/assets/img__ayuda-5.png"};
+    final String HELP[] = {"/assets/img__ayuda-1.png", "/assets/img__ayuda-2.png", "/assets/img__ayuda-3.png",
+        "/assets/img__ayuda-4.png", "/assets/img__ayuda-5.png"};
 
     public AyudaControlador(AyudaVista vista) {
         this.vista = vista;
@@ -59,7 +59,7 @@ public class AyudaControlador implements ActionListener, ComponentListener {
 
     public ImageIcon imagenRuta(String ruta) {
 
-        ImageIcon img = new ImageIcon(ruta);
+        ImageIcon img = new ImageIcon(getClass().getResource(ruta));
 
         return img;
     }

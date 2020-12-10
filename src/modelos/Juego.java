@@ -5,6 +5,11 @@
  */
 package modelos;
 
+import controladores.PrincipalControlador;
+import java.applet.AudioClip;
+import java.net.URL;
+import vistas.PrincipalVista;
+
 /**
  *
  * @author fernandomonjav
@@ -15,26 +20,34 @@ public class Juego implements IJuego {
     private Escenario escenario;
     private PersonajeCreadorAbstracto creadorPersonaje;
     private EscenarioCreadorAbstracto creadorEscenario;
+    private PrincipalVista vista;
+    private PrincipalControlador controlador;
     private int puntaje;
     private int vidas;
     private int nivel;
+    public boolean juegoFinalizado = false;
+    public boolean pierdeVida = false;
+    URL urlSonidoSalto, urlSonidoChoque;
+    AudioClip sonidoSalto, sonidoChoque;
 
-    public Juego(int puntaje, int vidas, int nivel) {
+    public Juego() {
         creadorPersonaje = new PersonajeCreador();
         creadorEscenario = new EscenarioCreador();
-        this.puntaje = puntaje;
-        this.vidas = vidas;
-        this.nivel = nivel;
+
+        this.puntaje = 0;
+        this.vidas = 0;
+        this.nivel = 0;
     }
 
     @Override
-    public void ejecutarJuego() {
-
+    public void ejecutarJuego() {        
+        vista = new PrincipalVista();
+        controlador = new PrincipalControlador(vista);
     }
 
     @Override
     public void elegirPersonaje(int pj) {
-         personaje = creadorPersonaje.crear(pj);
+        personaje = creadorPersonaje.crear(pj);
     }
 
     @Override
@@ -51,18 +64,9 @@ public class Juego implements IJuego {
     public void mostrarEscenario() {
 
     }
-    
+
     public static void main(String[] args) {
-        System.out.println("Juego");
-        Juego play = new Juego(0,3,1);
-        
-        play.elegirPersonaje(1);
-        play.personaje.dibujar();
-        
-        System.out.println("____________________________________");
-        
-        play.elegirEscenario(2);
-        play.escenario.diseñar();
+       Juego play = new Juego();               
     }
 
 }

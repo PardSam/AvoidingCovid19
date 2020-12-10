@@ -8,10 +8,12 @@ package controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import modelos.Jugador;
 import vistas.AcercaVista;
 import vistas.AjustesVista;
 import vistas.AyudaVista;
 import vistas.EscenariosVista;
+import vistas.PartidaVista;
 import vistas.PersonajesVista;
 import vistas.PrincipalVista;
 
@@ -20,22 +22,23 @@ import vistas.PrincipalVista;
  * @author fernandomonjav
  */
 public class PrincipalControlador implements ActionListener {
-
-    private PrincipalVista vista;
-    private AcercaVista acerca;
-    private AcercaControlador controladorAcerca;
-    private AjustesVista ajustes;
-    private AjustesControlador controladorAjuste;
-    private AyudaVista ayuda;
-    private AyudaControlador controladorayuda;
-    private EscenariosVista escenario;
-    private EscenariosControlador controladorEscenario;
-    private PersonajesVista personaje;
-    private PersonajesControlador controladorPersonaje;
-
+    
+    public PrincipalVista vista;
+    public AcercaVista acerca;
+    public AcercaControlador controladorAcerca;
+    public AjustesVista ajustes;
+    public AjustesControlador controladorAjuste;
+    public AyudaVista ayuda;
+    public AyudaControlador controladorayuda;
+    public EscenariosVista escenario;
+    public EscenariosControlador controladorEscenario;
+    public PersonajesVista personaje;
+    public PersonajesControlador controladorPersonaje;
+    public PartidaVista partida;
+    
     public PrincipalControlador(PrincipalVista vista) {
         this.vista = vista;
-
+        
         vista.playBoton.addActionListener(this);
         vista.comenzarBoton.addActionListener(this);
         vista.escenariosBoton.addActionListener(this);
@@ -44,7 +47,7 @@ public class PrincipalControlador implements ActionListener {
         vista.infoBoton.addActionListener(this);
         vista.ajustesBoton.addActionListener(this);
         vista.salirBoton.addActionListener(this);
-
+        
         escenario = new EscenariosVista();
         controladorEscenario = new EscenariosControlador(escenario);
         personaje = new PersonajesVista();
@@ -55,33 +58,40 @@ public class PrincipalControlador implements ActionListener {
         controladorAcerca = new AcercaControlador(acerca);
         ajustes = new AjustesVista();
         controladorAjuste = new AjustesControlador(ajustes);
-
+        partida = new PartidaVista();
+        
         vista.setVisible(true);
-
+        
         escenario.setVisible(false);
         personaje.setVisible(false);
         ayuda.setVisible(false);
         acerca.setVisible(false);
         ajustes.setVisible(false);
-
-
+        partida.setVisible(false);
+        
         this.vista.setLocationRelativeTo(null);
         this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+        
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "play":
                 System.out.println("Play");
+                
+                partida = new PartidaVista();
+                partida.setVisible(true);
+                //this.vista.setVisible(false);
                 break;
             case "comenzar":
                 System.out.println("Comenzar");
+                partida = new PartidaVista();
+                partida.setVisible(true);
+                //this.vista.setVisible(false);
                 break;
             case "escenarios":
                 System.out.println("Escenarios");
-
                 escenario.setVisible(true);
                 break;
             case "personajes":
@@ -90,17 +100,14 @@ public class PrincipalControlador implements ActionListener {
                 break;
             case "ayuda":
                 System.out.println("Ayuda");
-
                 ayuda.setVisible(true);
                 break;
             case "info":
                 System.out.println("Info");
-
                 acerca.setVisible(true);
                 break;
             case "ajustes":
                 System.out.println("Ajustes");
-
                 ajustes.setVisible(true);
                 break;
             case "salir":
