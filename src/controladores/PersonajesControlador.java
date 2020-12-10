@@ -16,6 +16,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import modelos.Item;
+import modelos.ItemLista;
+import modelos.Iterador;
 import modelos.Perfil;
 import modelos.PersonajeCreador;
 import ui.Paleta;
@@ -31,7 +34,8 @@ public class PersonajesControlador implements ActionListener {
     private List<JPanel> personajes = new ArrayList();
     private JLabel label;
     public int opc;
-    
+    ItemLista itemLista;
+
     public PersonajesControlador(PersonajesVista vista) {
         this.vista = vista;
 
@@ -40,13 +44,8 @@ public class PersonajesControlador implements ActionListener {
 
         this.vista.setLocationRelativeTo(null);
 
-        personajes.add(crearPersonaje(1, "David", "/assets/personajes/david/prevista.png"));
-        personajes.add(crearPersonaje(2, "Marco", "/assets/personajes/marco/prevista.png"));
-        personajes.add(crearPersonaje(3, "Juan", "/assets/personajes/juan/prevista.png"));
-
-        for (int i = 0; i < personajes.size(); i++) {
-            this.vista.principalPanel.add(this.personajes.get(i));
-        }
+        obtenerPersonajes();
+        crearPersonajes();
 
         vista.setVisible(false);
     }
@@ -56,7 +55,7 @@ public class PersonajesControlador implements ActionListener {
         switch (e.getActionCommand()) {
             case "aceptar":
                 System.out.println("Aceptar");
-                Perfil.gePerfil().setPersonaje(new PersonajeCreador().crear(opc + 1));
+                Perfil.gePerfil().setPersonaje(new PersonajeCreador().crear(opc));
                 System.out.println(Perfil.gePerfil().getPersonaje().getRutaImagen());
                 this.vista.setVisible(false);
                 break;
@@ -66,38 +65,35 @@ public class PersonajesControlador implements ActionListener {
                 break;
             case "David":
                 System.out.println("David");
-                for (int i = 0; i < personajes.size(); i++) {
-                    label = (JLabel) personajes.get(i).getClientProperty(i+1);
-                    label.setForeground(Color.WHITE);
-                    if (i == 0) {
-                        label.setForeground(Paleta.getFondoSecundario());
-                        opc = i;
-                    }
-                }
-
+                seleccionarPersonaje(1);
                 break;
             case "Marco":
                 System.out.println("Marco");
-                for (int i = 0; i < personajes.size(); i++) {
-                    label = (JLabel) personajes.get(i).getClientProperty(i+1);
-                    label.setForeground(Color.WHITE);
-                    if (i == 1) {
-                        label.setForeground(Paleta.getFondoSecundario());
-                        opc = i;
-                    }
-                }
+                seleccionarPersonaje(2);
                 break;
             case "Juan":
                 System.out.println("Juan");
-                for (int i = 0; i < personajes.size(); i++) {
-                    label = (JLabel) personajes.get(i).getClientProperty(i+1);
-                    label.setForeground(Color.WHITE);
-                    if (i == 2) {
-                        label.setForeground(Paleta.getFondoSecundario());
-                        opc = i;
-                    }
-                }
+                seleccionarPersonaje(3);
+
                 break;
+        }
+    }
+
+    public void seleccionarPersonaje(int pos) {
+
+        Iterador iterador = itemLista.iterador();
+
+        while (iterador.hasNext()) {
+            iterador.next();
+            int i = iterador.size();
+
+            label = (JLabel) personajes.get(i - 1).getClientProperty(i);
+            label.setForeground(Color.WHITE);
+
+            if (i == pos) {
+                label.setForeground(Paleta.getFondoSecundario());
+                opc = i;
+            }
         }
     }
 
@@ -125,5 +121,24 @@ public class PersonajesControlador implements ActionListener {
         personajePanel.putClientProperty(id, nombreEtiqueta);
 
         return personajePanel;
+    }
+
+    public void obtenerPersonajes() {
+        itemLista = new ItemLista("personajes");
+        itemLista.agregar(new Item(1, "David", "", "/assets/personajes/david/prevista.png"));
+        itemLista.agregar(new Item(2, "Marco", "", "/assets/personajes/marco/prevista.png"));
+        itemLista.agregar(new Item(3, "Juan", "", "/assets/personajes/juan/prevista.png"));
+    }
+
+    public void crearPersonajes() {
+        Iterador iterador = itemLista.iterador();
+
+        while (iterador.hasNext()) {
+            Item item = (Item) iterador.next();
+
+            JPanel personajePanel = crearPersonaje(item.getId(), item.getNombre(), item.getRutaImagen());
+            this.personajes.add(personajePanel);
+            this.vista.principalPanel.add(personajePanel);
+        }
     }
 }
