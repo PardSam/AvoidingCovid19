@@ -18,6 +18,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import modelos.EscenarioCreador;
+import modelos.Item;
+import modelos.ItemLista;
+import modelos.Iterador;
 import modelos.Perfil;
 import ui.Paleta;
 
@@ -30,9 +33,10 @@ import vistas.EscenariosVista;
 public class EscenariosControlador implements ActionListener {
 
     public EscenariosVista vista;
-    public List<JPanel> escenario = new ArrayList();
+    public List<JPanel> escenarios = new ArrayList();
     public JLabel label;
     public int opc;
+    ItemLista itemLista;
 
     public EscenariosControlador(EscenariosVista vista) {
         this.vista = vista;
@@ -42,13 +46,9 @@ public class EscenariosControlador implements ActionListener {
 
         this.vista.setLocationRelativeTo(null);
 
-        escenario.add(crearEscenario(1, "Trabajo", "/assets/escenarios/trabajo/prevista.png"));
-        escenario.add(crearEscenario(2, "Hospital", "/assets/escenarios/trabajo/prevista.png"));
-        escenario.add(crearEscenario(3, "Comisaria", "/assets/escenarios/trabajo/prevista.png"));
+        obtenerEscenarios();
+        crearEscenarios();
 
-        for (int i = 0; i < escenario.size(); i++) {
-            this.vista.principalPanel.add(this.escenario.get(i));
-        }
         vista.setVisible(false);
 
     }
@@ -58,9 +58,10 @@ public class EscenariosControlador implements ActionListener {
         switch (e.getActionCommand()) {
             case "aceptar":
                 System.out.println("Aceptar");
-
-                Perfil.gePerfil().setEscenario(new EscenarioCreador().crearTipo(opc + 1));
-                Perfil.gePerfil().setNivel(opc + 1);
+                System.out.println(opc);
+                Perfil.gePerfil().setEscenario(new EscenarioCreador().crearTipo(opc));
+                Perfil.gePerfil().setNivel(opc);
+                System.out.println(Perfil.gePerfil().getEscenario().getRutaImagen());
                 this.vista.setVisible(false);
                 break;
             case "cerrar":
@@ -69,37 +70,34 @@ public class EscenariosControlador implements ActionListener {
                 break;
             case "Trabajo":
                 System.out.println("Trabajo");
-                for (int i = 0; i < escenario.size(); i++) {
-                    label = (JLabel) escenario.get(i).getClientProperty(i + 1);
-                    label.setForeground(Color.WHITE);
-                    if (i == 0) {
-                        label.setForeground(Paleta.getFondoSecundario());
-                        opc = i;
-                    }
-                }
+                seleccionarEscenario(1);
                 break;
             case "Hospital":
                 System.out.println("Hospital");
-                for (int i = 0; i < escenario.size(); i++) {
-                    label = (JLabel) escenario.get(i).getClientProperty(i + 1);
-                    label.setForeground(Color.WHITE);
-                    if (i == 1) {
-                        label.setForeground(Paleta.getFondoSecundario());
-                        opc = i;
-                    }
-                }
+                seleccionarEscenario(2);
                 break;
             case "Comisaria":
                 System.out.println("Comisaria");
-                for (int i = 0; i < escenario.size(); i++) {
-                    label = (JLabel) escenario.get(i).getClientProperty(i + 1);
-                    label.setForeground(Color.WHITE);
-                    if (i == 2) {
-                        label.setForeground(Paleta.getFondoSecundario());
-                        opc = i;
-                    }
-                }
+                seleccionarEscenario(3);
                 break;
+        }
+    }
+
+    public void seleccionarEscenario(int pos) {
+
+        Iterador iterador = itemLista.iterador();
+
+        while (iterador.hasNext()) {
+            iterador.next();
+            int i = iterador.size();
+
+            label = (JLabel) escenarios.get(i - 1).getClientProperty(i);
+            label.setForeground(Color.WHITE);
+
+            if (i == pos) {
+                label.setForeground(Paleta.getFondoSecundario());
+                opc = i;
+            }
         }
     }
 
@@ -127,5 +125,24 @@ public class EscenariosControlador implements ActionListener {
         escenarioPanel.putClientProperty(id, nombreEtiqueta);
 
         return escenarioPanel;
+    }
+
+    public void obtenerEscenarios() {
+        itemLista = new ItemLista("escenarios");
+        itemLista.agregar(new Item(1, "Trabajo", "", "/assets/escenarios/trabajo/prevista.png"));
+        itemLista.agregar(new Item(2, "Hospital", "", "/assets/escenarios/hospital/prevista.png"));
+        itemLista.agregar(new Item(3, "Comisaria", "", "/assets/escenarios/comisaria/prevista.png"));
+    }
+
+    public void crearEscenarios() {
+        Iterador iterador = itemLista.iterador();
+
+        while (iterador.hasNext()) {
+            Item item = (Item) iterador.next();
+
+            JPanel escenarioPanel = crearEscenario(item.getId(), item.getNombre(), item.getRutaImagen());
+            this.escenarios.add(escenarioPanel);
+            this.vista.principalPanel.add(escenarioPanel);
+        }
     }
 }
