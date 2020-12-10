@@ -11,21 +11,33 @@ import java.util.List;
  *
  * @author fernandomonjav
  */
-public class ItemIterator implements Iterador {
+public class ItemIterator implements Iterador<Item> {
 
-    private List<Item> ItemList;
+    private List<Item> items;
+    private int posicion = 0;
 
-    public ItemIterator() {
-
+    public ItemIterator(List<Item> items) {
+        this.items = items;
     }
 
     @Override
-    public boolean hasnext() {
-        return true;//Cambiar
+    public boolean hasNext() {
+        if (items.size() > posicion) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public Item next() {
-        return new Item();//Cambiar
+        Item i = this.items.get(posicion);
+        posicion++;
+        return i;
+    }
+
+    @Override
+    public int size() {
+        return posicion;
     }
 }

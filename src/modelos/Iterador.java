@@ -8,10 +8,13 @@ package modelos;
 /**
  *
  * @author aries
+ * @param <E>
  */
-public interface Iterador {
+public interface Iterador<E extends Object> {
 
-    public abstract boolean hasnext();
+    public abstract boolean hasNext();
 
-    public abstract Item next();
+    public abstract E next();
+    
+    public abstract int size();
 }

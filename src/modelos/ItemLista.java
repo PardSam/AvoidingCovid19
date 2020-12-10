@@ -5,27 +5,31 @@
  */
 package modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author aries
  */
 public class ItemLista {
 
+    private final List<Item> itemLista = new ArrayList<>();
     private String nombreLista;
 
-    public ItemLista() {
-
+    public ItemLista(String nombreLista) {
+        this.nombreLista = nombreLista;
     }
 
     public String getNombreLista() {
         return nombreLista;
     }
 
-    public void agregar() {
-
+    public void agregar(Item item) {
+        itemLista.add(item);
     }
 
     public ItemIterator iterador() {
-        return new ItemIterator(); // cambiar
+        return new ItemIterator(itemLista);
     }
 }

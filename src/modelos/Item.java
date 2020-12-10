@@ -11,7 +11,7 @@ package modelos;
  */
 public class Item {
 
-    private String id;
+    private int id;
     private String nombre;
     private String descripcion;
     private String rutaImagen;
@@ -20,18 +20,18 @@ public class Item {
 
     }
 
-    public Item(String id, String nombre, String descripcion, String rutaImagen) {
+    public Item(int id, String nombre, String descripcion, String rutaImagen) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.rutaImagen = rutaImagen;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
