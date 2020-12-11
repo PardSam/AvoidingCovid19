@@ -58,10 +58,9 @@ public class EscenariosControlador implements ActionListener {
         switch (e.getActionCommand()) {
             case "aceptar":
                 System.out.println("Aceptar");
-                System.out.println(opc);
-                Perfil.gePerfil().setEscenario(new EscenarioCreador().crearTipo(opc));
-                Perfil.gePerfil().setNivel(opc);
-                System.out.println(Perfil.gePerfil().getEscenario().getRutaImagen());
+                Perfil perfil = Perfil.gePerfil();
+                perfil.setEscenarioId(opc);
+                perfil.setNivel(opc);
                 this.vista.setVisible(false);
                 break;
             case "cerrar":

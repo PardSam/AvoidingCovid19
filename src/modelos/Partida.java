@@ -10,16 +10,30 @@ package modelos;
  * @author aries
  */
 public abstract class Partida {
+
     private Personaje personaje;
     private int puntaje;
     private int proteccion;
     private int defensa;
     private Escenario escenario;
-    
+    private int ancho;
+    private int alto;
+
     public abstract void inicializar();
-    public abstract void generar();
-    public abstract void comportamiento();
-    public abstract void finalizar();
+
+    public abstract void jugar();
+
+    public abstract boolean juegoFinalizado();
+
+    public abstract void resultado();
+
+    public final void generar() {
+        inicializar();
+        while (!juegoFinalizado()) {
+            jugar();
+        }
+        resultado();
+    }
 
     public Personaje getPersonaje() {
         return personaje;
@@ -60,6 +74,48 @@ public abstract class Partida {
     public void setEscenario(Escenario escenario) {
         this.escenario = escenario;
     }
-    
-    
+
+    public int getAncho() {
+        return ancho;
+    }
+
+    public void setAncho(int ancho) {
+        this.ancho = ancho;
+    }
+
+    public int getAlto() {
+        return alto;
+    }
+
+    public void setAlto(int alto) {
+        this.alto = alto;
+    }
+
+    public void getComando(IComando comando) {
+
+    }
+
+    public IComando setComando() {
+        return null;
+    }
+
+    public ScoreMemento crearScoreMemento() {
+        return null;
+    }
+
+    public ScoreMemento setScoreMemento() {
+        return null;
+    }
+
+    public void notificar() {
+
+    }
+
+    public void agregarObservador(IPartidaObservador observador) {
+
+    }
+
+    public void observador(IPartidaObservador observador) {
+
+    }
 }

@@ -15,12 +15,21 @@ import javax.swing.ImageIcon;
 public class TrabajoEscenario extends Escenario {
 
     private String titulo;
-    public  String rutaImagen;
+    public String rutaImagen;
     private int ancho, alto, nivel;
     private int xInicial, yInicial;
     private int xAuxiliar, yAuxiliar;
-    
+
     public TrabajoEscenario() {
+        this.titulo = "Trabajo";
+        this.ancho = 8;
+        this.alto = 3;
+        this.nivel = 1;
+        this.rutaImagen = "/assets/escenarios/trabajo/fondo.png";
+    }
+        
+    public TrabajoEscenario(Partida partida) {
+        super(partida);
         this.titulo = "Trabajo";
         this.ancho = 8;
         this.alto = 3;
@@ -33,7 +42,7 @@ public class TrabajoEscenario extends Escenario {
         return rutaImagen;
     }
 
-        @Override
+    @Override
     public void dibujar(Graphics2D g) {
         ImageIcon escenario = new ImageIcon(getClass().getResource(this.rutaImagen));
         g.drawImage(escenario.getImage(), xInicial, yInicial, ancho, alto, null);

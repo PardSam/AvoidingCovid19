@@ -22,7 +22,7 @@ import vistas.PrincipalVista;
  * @author fernandomonjav
  */
 public class PrincipalControlador implements ActionListener {
-    
+
     public PrincipalVista vista;
     public AcercaVista acerca;
     public AcercaControlador controladorAcerca;
@@ -35,10 +35,11 @@ public class PrincipalControlador implements ActionListener {
     public PersonajesVista personaje;
     public PersonajesControlador controladorPersonaje;
     public PartidaVista partida;
-    
+    public PartidaControlador controladorPartida;
+
     public PrincipalControlador(PrincipalVista vista) {
         this.vista = vista;
-        
+
         vista.playBoton.addActionListener(this);
         vista.comenzarBoton.addActionListener(this);
         vista.escenariosBoton.addActionListener(this);
@@ -47,46 +48,50 @@ public class PrincipalControlador implements ActionListener {
         vista.infoBoton.addActionListener(this);
         vista.ajustesBoton.addActionListener(this);
         vista.salirBoton.addActionListener(this);
-        
+
         escenario = new EscenariosVista();
         controladorEscenario = new EscenariosControlador(escenario);
+
         personaje = new PersonajesVista();
         controladorPersonaje = new PersonajesControlador(personaje);
+
         ayuda = new AyudaVista();
         controladorayuda = new AyudaControlador(ayuda);
+
         acerca = new AcercaVista();
         controladorAcerca = new AcercaControlador(acerca);
+
         ajustes = new AjustesVista();
         controladorAjuste = new AjustesControlador(ajustes);
-        partida = new PartidaVista();
-        
+
         vista.setVisible(true);
-        
+
         escenario.setVisible(false);
         personaje.setVisible(false);
         ayuda.setVisible(false);
         acerca.setVisible(false);
         ajustes.setVisible(false);
-        partida.setVisible(false);
-        
+
         this.vista.setLocationRelativeTo(null);
         this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "play":
                 System.out.println("Play");
-                
+
                 partida = new PartidaVista();
+                controladorPartida = new PartidaControlador(partida);
                 partida.setVisible(true);
                 //this.vista.setVisible(false);
                 break;
             case "comenzar":
                 System.out.println("Comenzar");
                 partida = new PartidaVista();
+                controladorPartida = new PartidaControlador(partida);
                 partida.setVisible(true);
                 //this.vista.setVisible(false);
                 break;

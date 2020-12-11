@@ -9,26 +9,26 @@ package modelos;
  *
  * @author aries
  */
-public class Nivel3 extends Partida{
+public class Nivel3 extends Partida {
 
     @Override
     public void inicializar() {
-        
+        Perfil perfil = Perfil.gePerfil();
+        setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
+        System.out.println("Inicializando partida: " + getEscenario().getRutaImagen());
     }
 
     @Override
-    public void generar() {
-       
+    public void jugar() {
     }
 
     @Override
-    public void comportamiento() {
-       
+    public boolean juegoFinalizado() {
+        return true;
     }
 
     @Override
-    public void finalizar() {
-        
+    public void resultado() {
     }
-    
+
 }

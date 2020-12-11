@@ -14,23 +14,33 @@ import javax.swing.ImageIcon;
  */
 public class ComisariaEscenario extends Escenario {
 
-    @Override
-    public String getRutaImagen() {
-        return rutaImagen;
-    }
-
     private String titulo;
-    public  String rutaImagen;
+    public String rutaImagen;
     private int ancho, alto, nivel;
     private int xInicial, yInicial;
     private int xAuxiliar, yAuxiliar;
-    
+
     public ComisariaEscenario() {
+        super();
         this.titulo = "Comisaria";
         this.ancho = 8;
         this.alto = 3;
         this.nivel = 3;
         this.rutaImagen = "/assets/escenarios/comisaria/fondo.png";
+    }
+        
+    public ComisariaEscenario(Partida partida) {
+        super(partida);
+        this.titulo = "Comisaria";
+        this.ancho = 8;
+        this.alto = 3;
+        this.nivel = 3;
+        this.rutaImagen = "/assets/escenarios/comisaria/fondo.png";
+    }
+
+    @Override
+    public String getRutaImagen() {
+        return rutaImagen;
     }
 
     @Override

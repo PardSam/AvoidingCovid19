@@ -15,22 +15,31 @@ import javax.swing.ImageIcon;
 public class HospitalEscenario extends Escenario {
 
     private String titulo;
-
-    @Override
-    public String getRutaImagen() {
-        return rutaImagen;
-    }
-    public  String rutaImagen;
+    public String rutaImagen;
     private int ancho, alto, nivel;
     private int xInicial, yInicial;
     private int xAuxiliar, yAuxiliar;
-    
+
     public HospitalEscenario() {
         this.titulo = "Hospital";
         this.ancho = 8;
         this.alto = 3;
         this.nivel = 2;
         this.rutaImagen = "/assets/escenarios/hospital/fondo.png";
+    }
+
+    public HospitalEscenario(Partida partida) {
+        super(partida);
+        this.titulo = "Hospital";
+        this.ancho = 8;
+        this.alto = 3;
+        this.nivel = 2;
+        this.rutaImagen = "/assets/escenarios/hospital/fondo.png";
+    }
+
+    @Override
+    public String getRutaImagen() {
+        return rutaImagen;
     }
 
     @Override
