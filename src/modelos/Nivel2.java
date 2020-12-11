@@ -15,7 +15,7 @@ public class Nivel2 extends Partida {
     public void inicializar() {
         Perfil perfil = Perfil.gePerfil();
         setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
-        System.out.println("Inicializando partida: " + getEscenario().getRutaImagen());
+        setPersonaje(new PersonajeCreador().crear(perfil.getPersonajeId()));
     }
 
     @Override
