@@ -54,7 +54,7 @@ public class AcercaVista extends JFrame {
                 "\n     Avoiding COVID-19. Version 1.0\n\n"
                 + "     Colaboradores:\n\n"
                 + "     - Monja Vásquez Fernando\n"
-                + "     - Sánchez Pardo Samuel\n "
+                + "     - Sánchez Pardo Samuel\n"
                 + "     - More Villegas Fiorella\n"
                 + "     - Diaz Coronado Jenniffer\n"
                 + "     - Ugaz Arenas Carlos\n"
