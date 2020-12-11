@@ -10,17 +10,22 @@ package modelos;
  * @author aries
  */
 public abstract class  Obstaculo {
-
+    private Partida partida;
     private int ancho;
     private int alto;
     private int inicialX;
     private int inicialY;
+    
+    public Obstaculo(Partida partida) {
+        this.partida = partida;
+    }
     
     public abstract void clonar() ;
 
     public int getAncho() {
         return ancho;
     }
+
 
     public void setAncho(int ancho) {
         this.ancho = ancho;

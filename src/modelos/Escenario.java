@@ -13,9 +13,26 @@ import java.awt.Graphics2D;
  */
 public abstract class Escenario {
     private int xInicial,xAuxiliar;
+    private Partida partida;
+    
+    public Escenario() {
+    }
+    
+    public Escenario(Partida partida) {
+        this.partida = partida;
+    }
+    
+    public Partida getPartida() {
+        return this.partida;
+    }
+    
+    public void setPartida(Partida partida) {
+        this.partida = partida;
+    }
     
     public abstract void dibujar(Graphics2D g);
     public abstract String getRutaImagen();
+    
     
     public void mover() {
          xInicial = xInicial - 2;

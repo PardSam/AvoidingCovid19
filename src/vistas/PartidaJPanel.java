@@ -27,8 +27,8 @@ public class PartidaJPanel extends JPanel{
     }
 
     private void dibujar(Graphics2D g2) {
-        Perfil.gePerfil().getEscenario().dibujar(g2);
-        Perfil.gePerfil().getPersonaje().dibujar(g2);
+        //Perfil.gePerfil().getEscenario().dibujar(g2);
+        //Perfil.gePerfil().getPersonaje().dibujar(g2);
         mover();
     }
 
@@ -37,7 +37,7 @@ public class PartidaJPanel extends JPanel{
     }
 
     private void mover() {
-        Perfil.gePerfil().getEscenario().mover();
-        Perfil.gePerfil().getPersonaje().mover();
+        //Perfil.gePerfil().getEscenario().mover();
+        //Perfil.gePerfil().getPersonaje().mover();
     }
 }

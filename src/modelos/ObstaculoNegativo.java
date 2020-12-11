@@ -11,6 +11,10 @@ package modelos;
  */
 public class ObstaculoNegativo extends Obstaculo {
 
+    public ObstaculoNegativo(Partida partida) {
+        super(partida);
+    }
+
     @Override
     public void clonar() {
     }

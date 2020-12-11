@@ -29,12 +29,17 @@ public class CivilPersonaje extends Personaje {
 
     public CivilPersonaje() {
         this.tipo = 1;
-        this.rutaImagen = "/assets/personaje/david/normal.png";
+        this.rutaImagen = "/assets/personajes/david/normal.png";
     }
-
+    public CivilPersonaje(Partida partida){
+        super(partida);
+        this.tipo = 1;
+        this.rutaImagen = "/assets/personajes/david/normal.png";
+    }
     @Override
     public void dibujar(Graphics2D g) {
-        ImageIcon personaje = new ImageIcon(getClass().getResource("/multimedia/tractor.png"));
+        System.out.println("DIbujo personaje");
+        ImageIcon personaje = new ImageIcon(getClass().getResource(this.rutaImagen));
         g.drawImage(personaje.getImage(), xInicial, yInicial, ancho, alto, null);
     }
 

@@ -12,10 +12,10 @@ package modelos;
 public class Perfil {
 
     private static Perfil perfil = null;
-    private Personaje personaje = new PersonajeCreador().crear(1);
     private int nivel = 1;
     private int score = 0;
-    private Escenario escenario = new EscenarioCreador().crearTipo(nivel);
+    private int personajeId = 1;
+    private int escenarioId = 1;
 
     public static Perfil gePerfil() {
         if (perfil == null) {
@@ -24,21 +24,28 @@ public class Perfil {
         return perfil;
     }
 
-    public Escenario getEscenario() {
-
-        return escenario;
+    public static Perfil getPerfil() {
+        return perfil;
     }
 
-    public void setEscenario(Escenario escenario) {
-        this.escenario = escenario;
+    public static void setPerfil(Perfil perfil) {
+        Perfil.perfil = perfil;
     }
 
-    public Personaje getPersonaje() {
-        return personaje;
+    public int getPersonajeId() {
+        return personajeId;
     }
 
-    public void setPersonaje(Personaje personaje) {
-        this.personaje = personaje;
+    public void setPersonajeId(int personajeId) {
+        this.personajeId = personajeId;
+    }
+
+    public int getEscenarioId() {
+        return escenarioId;
+    }
+
+    public void setEscenarioId(int escenarioId) {
+        this.escenarioId = escenarioId;
     }
 
     public int getNivel() {

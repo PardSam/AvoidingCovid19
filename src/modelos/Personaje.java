@@ -13,7 +13,13 @@ import java.awt.geom.Area;
  * @author aries
  */
 public abstract class Personaje {
-
+    private Partida partida;
+      public Personaje() {
+    }
+    
+    public Personaje(Partida partida) {
+        this.partida = partida;
+    }
     public abstract void dibujar(Graphics2D g);
 
     public abstract String getRutaImagen();

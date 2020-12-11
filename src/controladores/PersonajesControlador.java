@@ -55,8 +55,8 @@ public class PersonajesControlador implements ActionListener {
         switch (e.getActionCommand()) {
             case "aceptar":
                 System.out.println("Aceptar");
-                Perfil.gePerfil().setPersonaje(new PersonajeCreador().crear(opc));
-                System.out.println(Perfil.gePerfil().getPersonaje().getRutaImagen());
+                Perfil.gePerfil().setPersonajeId(opc);
+                System.out.println(Perfil.gePerfil().getPersonajeId());
                 this.vista.setVisible(false);
                 break;
             case "cerrar":
