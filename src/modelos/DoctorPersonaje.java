@@ -15,29 +15,29 @@ import javax.swing.ImageIcon;
  */
 public class DoctorPersonaje extends Personaje {
 
-    private boolean sube;
-    private boolean baja;
-    private boolean salta;
+    private boolean sube = false;
+    private boolean baja = false;
+    private boolean salta = false;
     private int tipo;
     private String rutaImagen;
+    private int ancho = 112;
+    private int alto = 110;
     private int xInicial = 50;
-    private int yInicial = 270;
+    private int yInicial = 360;
     private int xAuxiliar = 0;
     private int yAuxiliar = 0;
-    private int alto = 0;
-    private int ancho = 0;
 
     public DoctorPersonaje() {
         this.baja = false;
         this.sube = false;
         this.salta = false;
         this.tipo = 1;
-        this.rutaImagen = "/assets/personaje/marco/normal.png";
+        this.rutaImagen = "/assets/personajes/marco/normal.png";
     }
 
     @Override
     public void dibujar(Graphics2D g) {
-        ImageIcon personaje = new ImageIcon(getClass().getResource("/multimedia/tractor.png"));
+        ImageIcon personaje = new ImageIcon(getClass().getResource(this.rutaImagen));
         g.drawImage(personaje.getImage(), xInicial, yInicial, ancho, alto, null);
     }
 

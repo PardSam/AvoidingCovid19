@@ -21,9 +21,9 @@ public class CivilPersonaje extends Personaje {
     private int tipo;
     private String rutaImagen;
     private int ancho =112;
-    private int alto = 78;
+    private int alto = 110;
     private int xInicial = 50;
-    private int yInicial =270;
+    private int yInicial =360;
     private int xAuxiliar = 0;
     private int yAuxiliar = 0;
 
