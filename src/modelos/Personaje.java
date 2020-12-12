@@ -6,6 +6,7 @@
 package modelos;
 
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.awt.geom.Area;
 
 /**
@@ -13,18 +14,23 @@ import java.awt.geom.Area;
  * @author aries
  */
 public abstract class Personaje {
+
     private Partida partida;
-      public Personaje() {
+
+    public Personaje() {
     }
-    
+
     public Personaje(Partida partida) {
         this.partida = partida;
     }
+
     public abstract void dibujar(Graphics2D g);
 
     public abstract String getRutaImagen();
 
     public abstract void mover();
+
+    public abstract void keyPressed(KeyEvent e);
 
     public abstract Area getBounds();
 }

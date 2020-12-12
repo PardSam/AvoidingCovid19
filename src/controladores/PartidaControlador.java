@@ -9,6 +9,8 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
 import modelos.Nivel1;
 import modelos.Nivel2;
@@ -22,7 +24,7 @@ import vistas.PartidaVista;
  *
  * @author Fernando
  */
-public class PartidaControlador implements ActionListener {
+public class PartidaControlador implements ActionListener, KeyListener {
 
     private Partida partida;
 
@@ -50,13 +52,19 @@ public class PartidaControlador implements ActionListener {
         }
 
         partidaPanel = new PartidaPanel(partida);
+        
         this.vista.inicializarComponentes(partidaPanel);
+        
         partida.generar();
+        
         this.vista.partidaPanel.player.addActionListener(this);
+        this.vista.partidaPanel.setFocusable(true);
+        this.vista.partidaPanel.addKeyListener(this);
+
         this.vista.setLocationRelativeTo(null);
 
         vista.setVisible(true);
-  
+
     }
 
     @Override
@@ -77,5 +85,25 @@ public class PartidaControlador implements ActionListener {
                 this.vista.partidaPanel.player.setIcon(new ImageIcon(playerIcon.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
                 break;
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        System.out.println("saltar keyTyped");
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        if (ke.getKeyCode() == KeyEvent.VK_SPACE) {
+            partida.getPersonaje().keyPressed(ke);
+        }
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        System.out.println("saltar keyReleased");
+
     }
 }
