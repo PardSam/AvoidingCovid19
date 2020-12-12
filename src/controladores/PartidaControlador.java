@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
+import javax.swing.KeyStroke;
 import modelos.Nivel1;
 import modelos.Nivel2;
 import modelos.Nivel3;
@@ -52,12 +54,13 @@ public class PartidaControlador implements ActionListener, KeyListener {
         }
 
         partidaPanel = new PartidaPanel(partida);
-        
+
         this.vista.inicializarComponentes(partidaPanel);
-        
+
         partida.generar();
-        
+
         this.vista.partidaPanel.player.addActionListener(this);
+
         this.vista.partidaPanel.setFocusable(true);
         this.vista.partidaPanel.addKeyListener(this);
 
@@ -71,7 +74,6 @@ public class PartidaControlador implements ActionListener, KeyListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Player":
-
                 if (val) {
                     playerIcon = new ImageIcon(getClass().getResource("/assets/play.png"));
                     val = false;
@@ -81,6 +83,7 @@ public class PartidaControlador implements ActionListener, KeyListener {
                     this.vista.partidaPanel.updateUI();
                 }
                 this.vista.partidaPanel.player.setIcon(new ImageIcon(playerIcon.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
+                this.vista.partidaPanel.player.setFocusable(false);
                 break;
         }
     }
@@ -95,6 +98,10 @@ public class PartidaControlador implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent ke) {
         if (ke.getKeyCode() == KeyEvent.VK_SPACE) {
             partida.getPersonaje().keyPressed(ke);
+        }
+
+        if (ke.getKeyCode() == KeyEvent.VK_P) {
+            this.partidaPanel.player.doClick();
         }
 
     }
