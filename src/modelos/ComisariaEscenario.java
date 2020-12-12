@@ -43,8 +43,8 @@ public class ComisariaEscenario extends Escenario {
         xInicial = xInicial - 2;
         xAuxiliar = xAuxiliar - 2;
 
-        if (xInicial == 0 && xAuxiliar == -1300) {
-            xInicial = 1300;
+        if (xInicial == 0 || xAuxiliar == -1024) {
+            xInicial = 1024;
             xAuxiliar = 0;
         }
     }

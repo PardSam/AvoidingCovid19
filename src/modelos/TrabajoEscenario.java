@@ -23,7 +23,7 @@ public class TrabajoEscenario extends Escenario {
     public TrabajoEscenario() {
         this.titulo = "Trabajo";
         this.ancho = 1024;
-        this.alto = 500;
+        this.alto = 550;
         this.nivel = 1;
         this.rutaImagen = "/assets/escenarios/trabajo/fondo.png";
     }
@@ -32,7 +32,7 @@ public class TrabajoEscenario extends Escenario {
         super(partida);
         this.titulo = "Trabajo";
         this.ancho = 1024;
-        this.alto = 500;
+        this.alto = 550;
         this.nivel = 1;
         this.rutaImagen = "/assets/escenarios/trabajo/fondo.png";
     }
@@ -46,8 +46,8 @@ public class TrabajoEscenario extends Escenario {
         xInicial = xInicial - 2;
         xAuxiliar = xAuxiliar - 2;
         
-        if (xInicial == 0 && xAuxiliar == -1300) {
-            xInicial = 1300;
+        if (xInicial == 0 || xAuxiliar == -1024) {
+            xInicial = 1024;
             xAuxiliar = 0;
         }
         System.out.println(xInicial);

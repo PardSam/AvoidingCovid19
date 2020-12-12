@@ -16,7 +16,7 @@ public class HospitalEscenario extends Escenario {
 
     private String titulo;
     public String rutaImagen;
-    private int ancho =1024, alto = 500, nivel= 2;
+    private int ancho =1024, alto = 550, nivel= 2;
     private int xInicial = 1024, yInicial = 0;
     private int xAuxiliar = 0, yAuxiliar = 0;
 
@@ -37,8 +37,8 @@ public class HospitalEscenario extends Escenario {
         xInicial = xInicial - 2;
         xAuxiliar = xAuxiliar - 2;
 
-        if (xInicial == 0 && xAuxiliar == -1300) {
-            xInicial = 1300;
+        if (xInicial == 0 || xAuxiliar == -1024) {
+            xInicial = 1024;
             xAuxiliar = 0;
         }
     }

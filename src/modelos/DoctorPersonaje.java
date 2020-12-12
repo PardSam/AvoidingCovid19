@@ -23,7 +23,7 @@ public class DoctorPersonaje extends Personaje {
     private int ancho = 112;
     private int alto = 110;
     private int xInicial = 50;
-    private int yInicial = 360;
+    private int yInicial = 370;
     private int xAuxiliar = 0;
     private int yAuxiliar = 0;
 
