@@ -5,53 +5,20 @@
  */
 package modelos;
 
+import java.awt.Graphics2D;
+import java.awt.geom.Area;
+
 /**
  *
  * @author aries
  */
-public abstract class  Obstaculo {
-    private Partida partida;
-    private int ancho;
-    private int alto;
-    private int inicialX;
-    private int inicialY;
-    
-    public Obstaculo(Partida partida) {
-        this.partida = partida;
-    }
-    
-    public abstract void clonar() ;
+public abstract class Obstaculo {
 
-    public int getAncho() {
-        return ancho;
-    }
+    public abstract void mover();
 
+    public abstract void dibujar(Graphics2D g);
 
-    public void setAncho(int ancho) {
-        this.ancho = ancho;
-    }
+    public abstract Area getBounds();
 
-    public int getAlto() {
-        return alto;
-    }
-
-    public void setAlto(int alto) {
-        this.alto = alto;
-    }
-
-    public int getInicialX() {
-        return inicialX;
-    }
-
-    public void setInicialX(int inicialX) {
-        this.inicialX = inicialX;
-    }
-
-    public int getInicialY() {
-        return inicialY;
-    }
-
-    public void setInicialY(int inicialY) {
-        this.inicialY = inicialY;
-    }
+    public abstract boolean colision();
 }

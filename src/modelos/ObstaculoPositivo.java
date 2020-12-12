@@ -5,19 +5,33 @@
  */
 package modelos;
 
+import java.awt.Graphics2D;
+import java.awt.geom.Area;
+
 /**
  *
  * @author aries
  */
 public class ObstaculoPositivo extends Obstaculo {
 
-    public ObstaculoPositivo(Partida partida) {
-        super(partida);
+    @Override
+    public void mover() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void clonar() {
+    public void dibujar(Graphics2D g) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
+    @Override
+    public Area getBounds() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean colision() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

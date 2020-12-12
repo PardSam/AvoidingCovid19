@@ -6,8 +6,10 @@
 package modelos;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
 import javax.swing.ImageIcon;
 
 /**
@@ -27,6 +29,8 @@ public class PoliciaPersonaje extends Personaje {
     private int yInicial = 370;
     private int xAuxiliar = 0;
     private int yAuxiliar = 0;
+
+    private Area piernaIzquierda, piernaDerecha, cuerpo, personajeArea;
 
     public PoliciaPersonaje() {
         this.baja = false;
@@ -75,6 +79,7 @@ public class PoliciaPersonaje extends Personaje {
         }
     }
 
+    @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             salta = true;
@@ -83,7 +88,21 @@ public class PoliciaPersonaje extends Personaje {
 
     @Override
     public Area getBounds() {
-        return null;
+        Rectangle forma1 = new Rectangle(xInicial, yInicial, 95, 62);
+        cuerpo = new Area(forma1);
+        
+        Ellipse2D forma2 = new Ellipse2D.Double(xInicial, yInicial + 28, 48, 48);
+        piernaDerecha = new Area(forma2);
+        
+        Ellipse2D forma3 = new Ellipse2D.Double(xInicial + 73, yInicial + 39, 38, 38);
+        piernaIzquierda = new Area(forma3);
+        
+        personajeArea = cuerpo;
+        personajeArea.add(cuerpo);
+        personajeArea.add(personajeArea);
+        personajeArea.add(piernaIzquierda);
+        
+        return personajeArea;
     }
 
     @Override

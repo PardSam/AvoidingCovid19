@@ -21,10 +21,13 @@ public abstract class Partida {
     private int defensa;
     private int vidas;
     private Escenario escenario;
+    private Obstaculo osctaculo = new ObstaculoNegativo(this);
     private int ancho;
     private int alto;
-    private boolean  val =  true;
-    
+    private boolean val = true;
+    public boolean juegoFinalizado = false;
+    public boolean pierdeVida = false;
+
     public abstract void inicializar();
 
     public abstract void jugar();
@@ -136,14 +139,16 @@ public abstract class Partida {
     public void dibujar(Graphics2D g, boolean val) {
         escenario.dibujar(g);
         personaje.dibujar(g);
-        if(val){
+        osctaculo.dibujar(g);
+        if (val) {
             mover();
-        }        
+        }
     }
 
     public void mover() {
         escenario.mover();
         personaje.mover();
+        osctaculo.mover();
     }
 
     public void dibujarPuntaje(Graphics2D g) {
@@ -162,5 +167,16 @@ public abstract class Partida {
             g2.setColor(Color.yellow);
             g2.drawString("Perdiste", ((float)getBounds().getCenterX() / 2) + 170, 70);
         }*/
+    }
+
+   public void finJuego() {       
+        juegoFinalizado = true;
+        this.val = false;
+    }
+
+    public void pierdeVida() {
+        
+        pierdeVida = true;
+        this.val = false;
     }
 }

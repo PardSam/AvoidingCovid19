@@ -8,16 +8,11 @@ package vistas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import modelos.Escenario;
-import modelos.EscenarioCreador;
 import modelos.Partida;
-import modelos.Perfil;
 
 /**
  *
@@ -27,7 +22,7 @@ public class PartidaPanel extends JPanel {
 
     private Graphics2D gAuxiliar;
     private Partida partida;
-    public  JRadioButton player;
+    public JRadioButton player;
     private JLabel icono;
     private JLabel mascarilla;
     private ImageIcon imagen;
@@ -55,9 +50,12 @@ public class PartidaPanel extends JPanel {
         super.paintComponents(g);
         Graphics2D g2 = (Graphics2D) g;
         gAuxiliar = g2;
-        this.partida.dibujar(g2,this.partida.isVal());
+        this.partida.dibujar(g2, this.partida.isVal());
         this.partida.dibujarPuntaje(g2);
-        this.updateUI();
+        if (this.partida.isVal()) {
+            this.updateUI();
+        }
+
         System.out.println("hola");
 
     }
@@ -69,17 +67,17 @@ public class PartidaPanel extends JPanel {
         imagen = new ImageIcon(getClass().getResource("/assets/pause.png"));
         player.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
         player.setOpaque(false);
-        
+
         icono = new JLabel();
         icono.setBounds(15, 15, 55, 55);
         imagen = new ImageIcon(getClass().getResource("/assets/covid.png"));
         icono.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
-        
+
         mascarilla = new JLabel();
         mascarilla.setBounds(15, 80, 55, 55);
         imagen = new ImageIcon(getClass().getResource("/assets/mascarilla.png"));
         mascarilla.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
-        
+
         this.add(player);
         this.add(icono);
         this.add(mascarilla);
