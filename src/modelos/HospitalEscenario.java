@@ -16,26 +16,31 @@ public class HospitalEscenario extends Escenario {
 
     private String titulo;
     public String rutaImagen;
-    private int ancho, alto, nivel;
-    private int xInicial =1024, yInicial=0;
-    private int xAuxiliar=0, yAuxiliar=0;
+    private int ancho =1024, alto = 500, nivel= 2;
+    private int xInicial = 1024, yInicial = 0;
+    private int xAuxiliar = 0, yAuxiliar = 0;
 
     public HospitalEscenario() {
         super();
         this.titulo = "Hospital";
-        this.ancho = 1024;
-        this.alto = 500;
-        this.nivel = 2;
         this.rutaImagen = "/assets/escenarios/hospital/fondo.png";
     }
 
     public HospitalEscenario(Partida partida) {
         super(partida);
         this.titulo = "Hospital";
-        this.ancho = 1024;
-        this.alto = 500;
-        this.nivel = 2;
         this.rutaImagen = "/assets/escenarios/hospital/fondo.png";
+    }
+
+    @Override
+    public void mover() {
+        xInicial = xInicial - 2;
+        xAuxiliar = xAuxiliar - 2;
+
+        if (xInicial == 0 && xAuxiliar == -1300) {
+            xInicial = 1300;
+            xAuxiliar = 0;
+        }
     }
 
     @Override

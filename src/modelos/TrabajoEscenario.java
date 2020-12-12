@@ -41,7 +41,17 @@ public class TrabajoEscenario extends Escenario {
     public String getRutaImagen() {
         return rutaImagen;
     }
-
+    @Override
+    public void mover() {
+        xInicial = xInicial - 2;
+        xAuxiliar = xAuxiliar - 2;
+        
+        if (xInicial == 0 && xAuxiliar == -1300) {
+            xInicial = 1300;
+            xAuxiliar = 0;
+        }
+        System.out.println(xInicial);
+    }
     @Override
     public void dibujar(Graphics2D g) {
         ImageIcon escenario = new ImageIcon(getClass().getResource(this.rutaImagen));
@@ -49,5 +59,5 @@ public class TrabajoEscenario extends Escenario {
         g.drawImage(escenario.getImage(), xAuxiliar, yAuxiliar, ancho, alto, null);
         System.out.println(this.rutaImagen);
     }
-
+    
 }

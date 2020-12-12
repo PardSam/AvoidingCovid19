@@ -17,25 +17,36 @@ public class ComisariaEscenario extends Escenario {
     private String titulo;
     public String rutaImagen;
     private int ancho, alto, nivel;
-    private int xInicial = 1024, yInicial=0;
-    private int xAuxiliar=0, yAuxiliar=0;
+    private int xInicial = 1024, yInicial = 0;
+    private int xAuxiliar = 0, yAuxiliar = 0;
 
     public ComisariaEscenario() {
         super();
         this.titulo = "Comisaria";
         this.ancho = 1024;
-        this.alto = 500;
+        this.alto = 550;
         this.nivel = 3;
         this.rutaImagen = "/assets/escenarios/comisaria/fondo.png";
     }
-        
+
     public ComisariaEscenario(Partida partida) {
         super(partida);
         this.titulo = "Comisaria";
         this.ancho = 1024;
-        this.alto = 500;
+        this.alto = 550;
         this.nivel = 3;
         this.rutaImagen = "/assets/escenarios/comisaria/fondo.png";
+    }
+
+    @Override
+    public void mover() {
+        xInicial = xInicial - 2;
+        xAuxiliar = xAuxiliar - 2;
+
+        if (xInicial == 0 && xAuxiliar == -1300) {
+            xInicial = 1300;
+            xAuxiliar = 0;
+        }
     }
 
     @Override

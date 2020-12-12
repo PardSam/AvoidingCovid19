@@ -5,6 +5,8 @@
  */
 package modelos;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 
 /**
@@ -17,6 +19,7 @@ public abstract class Partida {
     private int puntaje;
     private int proteccion;
     private int defensa;
+    private int vidas;
     private Escenario escenario;
     private int ancho;
     private int alto;
@@ -120,8 +123,33 @@ public abstract class Partida {
     public void observador(IPartidaObservador observador) {
 
     }
-      public void dibujar(Graphics2D g) {
+
+    public void dibujar(Graphics2D g) {
         escenario.dibujar(g);
         personaje.dibujar(g);
+
+        mover();
+    }
+
+    public void mover() {
+        escenario.mover();
+    }
+
+    public void dibujarPuntaje(Graphics2D g) {
+
+        Graphics2D g1 = g, g2 = g;
+
+        Font score = new Font("Arial", Font.BOLD, 30);
+        g.setFont(score);
+        g.setColor(Color.white);
+        //g1.drawString("Vidas: " + vidas, 20, 45);
+        g1.drawString("Nivel: " + Perfil.gePerfil().getNivel(), 450, 45);
+        g1.drawString("Score: " + puntaje, 600, 45);
+        //g1.drawString("Pause ", 890, 45);
+
+        /*if (juegoFinalizado) {
+            g2.setColor(Color.yellow);
+            g2.drawString("Perdiste", ((float)getBounds().getCenterX() / 2) + 170, 70);
+        }*/
     }
 }

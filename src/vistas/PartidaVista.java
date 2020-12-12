@@ -6,8 +6,11 @@
 package vistas;
 
 import java.awt.Dimension;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 
 /**
  *
@@ -21,16 +24,17 @@ public class PartidaVista extends JFrame {
     public PartidaVista() {
         setMinimumSize(new Dimension(1024, 576));
         setLocationRelativeTo(null);
-       // inicializarComponentes();
+        // inicializarComponentes();
+        this.setVisible(true);
     }
 
     public void inicializarComponentes(PartidaPanel panel) {
+
         partidaPanel = panel;
 
         this.add(partidaPanel);
 
         partidaPanel.repaint();
-
     }
 
 }

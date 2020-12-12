@@ -6,6 +6,10 @@
 package controladores;
 
 import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import modelos.Nivel1;
 import modelos.Nivel2;
 import modelos.Nivel3;
@@ -18,12 +22,14 @@ import vistas.PartidaVista;
  *
  * @author Fernando
  */
-public class PartidaControlador {
+public class PartidaControlador implements ActionListener {
 
     private Partida partida;
 
+    private boolean val = true;
+    private ImageIcon playerIcon;
+
     private PartidaVista vista;
-    
     private PartidaPanel partidaPanel;
 
     public PartidaControlador(PartidaVista vista) {
@@ -43,13 +49,31 @@ public class PartidaControlador {
                 partida = new Nivel1();
         }
 
-        partida.generar();   
-        
         partidaPanel = new PartidaPanel(partida);
         this.vista.inicializarComponentes(partidaPanel);
-        
+        partida.generar();
+        this.vista.partidaPanel.player.addActionListener(this);
         this.vista.setLocationRelativeTo(null);
 
-        vista.setVisible(false);
+        vista.setVisible(true);
+  
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        switch (e.getActionCommand()) {
+            case "Player":
+
+                if (val) {
+                    playerIcon = new ImageIcon(getClass().getResource("/assets/play.png"));
+                    val = false;
+                } else if (val == false) {
+                    playerIcon = new ImageIcon(getClass().getResource("/assets/pause.png"));
+                    val = true;
+                    this.vista.partidaPanel.updateUI();
+                }
+                this.vista.partidaPanel.player.setIcon(new ImageIcon(playerIcon.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
+                break;
+        }
     }
 }
