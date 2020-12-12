@@ -50,7 +50,6 @@ public class TrabajoEscenario extends Escenario {
             xInicial = 1024;
             xAuxiliar = 0;
         }
-        System.out.println(xInicial);
     }
     @Override
     public void dibujar(Graphics2D g) {

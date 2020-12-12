@@ -6,6 +6,7 @@
 package modelos;
 
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.awt.geom.Area;
 import javax.swing.ImageIcon;
 
@@ -20,10 +21,10 @@ public class CivilPersonaje extends Personaje {
     private boolean salta = false;
     private int tipo;
     private String rutaImagen;
-    private int ancho =112;
+    private int ancho = 112;
     private int alto = 110;
     private int xInicial = 50;
-    private int yInicial =370;
+    private int yInicial = 370;
     private int xAuxiliar = 0;
     private int yAuxiliar = 0;
 
@@ -31,11 +32,13 @@ public class CivilPersonaje extends Personaje {
         this.tipo = 1;
         this.rutaImagen = "/assets/personajes/david/normal.png";
     }
-    public CivilPersonaje(Partida partida){
+
+    public CivilPersonaje(Partida partida) {
         super(partida);
         this.tipo = 1;
         this.rutaImagen = "/assets/personajes/david/normal.png";
     }
+
     @Override
     public void dibujar(Graphics2D g) {
         System.out.println("DIbujo personaje");
@@ -45,7 +48,41 @@ public class CivilPersonaje extends Personaje {
 
     @Override
     public void mover() {
-        
+        if (xInicial + xAuxiliar > 0 && xInicial + xAuxiliar < 1000 - ancho) {
+            xInicial = xInicial + xAuxiliar;
+        }
+
+        if (salta) {
+            if (yInicial == 370) {
+                sube = true;
+                yAuxiliar = -2;
+                baja = false;
+            }
+
+            if (yInicial == 150) {
+                baja = true;
+                yAuxiliar = 2;
+                sube = false;
+            }
+
+            if (sube) {
+                yInicial = yInicial + yAuxiliar;
+            }
+
+            if (baja) {
+                yInicial = yInicial + yAuxiliar;
+
+                if (yInicial == 370) {
+                    salta = false;
+                }
+            }
+        }
+    }
+
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            salta = true;
+        }
     }
 
     @Override

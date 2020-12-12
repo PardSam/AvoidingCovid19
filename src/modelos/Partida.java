@@ -133,6 +133,7 @@ public abstract class Partida {
 
     public void mover() {
         escenario.mover();
+        personaje.mover();
     }
 
     public void dibujarPuntaje(Graphics2D g) {
