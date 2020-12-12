@@ -67,9 +67,11 @@ public class PartidaControlador implements ActionListener {
                 if (val) {
                     playerIcon = new ImageIcon(getClass().getResource("/assets/play.png"));
                     val = false;
+                    this.partida.setVal(false);
                 } else if (val == false) {
                     playerIcon = new ImageIcon(getClass().getResource("/assets/pause.png"));
                     val = true;
+                    this.partida.setVal(true);
                     this.vista.partidaPanel.updateUI();
                 }
                 this.vista.partidaPanel.player.setIcon(new ImageIcon(playerIcon.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));

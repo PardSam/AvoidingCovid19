@@ -55,7 +55,7 @@ public class PartidaPanel extends JPanel {
         super.paintComponents(g);
         Graphics2D g2 = (Graphics2D) g;
         gAuxiliar = g2;
-        this.partida.dibujar(g2);
+        this.partida.dibujar(g2,this.partida.isVal());
         this.partida.dibujarPuntaje(g2);
         this.updateUI();
         System.out.println("hola");

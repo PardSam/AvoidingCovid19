@@ -23,7 +23,8 @@ public abstract class Partida {
     private Escenario escenario;
     private int ancho;
     private int alto;
-
+    private boolean  val =  true;
+    
     public abstract void inicializar();
 
     public abstract void jugar();
@@ -96,6 +97,14 @@ public abstract class Partida {
         this.alto = alto;
     }
 
+    public boolean isVal() {
+        return val;
+    }
+
+    public void setVal(boolean val) {
+        this.val = val;
+    }
+
     public void getComando(IComando comando) {
 
     }
@@ -124,11 +133,12 @@ public abstract class Partida {
 
     }
 
-    public void dibujar(Graphics2D g) {
+    public void dibujar(Graphics2D g, boolean val) {
         escenario.dibujar(g);
         personaje.dibujar(g);
-
-        mover();
+        if(val){
+            mover();
+        }        
     }
 
     public void mover() {
