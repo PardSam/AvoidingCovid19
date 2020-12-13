@@ -71,6 +71,7 @@ public class AjustesVista extends JFrame {
         nombreCaja = new MiCaja();
         nombreCaja.setForeground(Paleta.getPlanoPrimario());
         nombreCaja.setBackground(Paleta.getFondoSuperficie());
+        nombreCaja.setText("");
         
         generoEtiqueta = new JLabel("Genero");
         generoEtiqueta.setForeground(Paleta.getPlano());

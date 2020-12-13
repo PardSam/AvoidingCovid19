@@ -32,7 +32,7 @@ public class ObstaculoNegativo extends Obstaculo {
     public ObstaculoNegativo(Partida partida) {
         this.partida = partida;
     }
-
+ 
     @Override
     public void mover() {
         if (xInicial <= -100) {

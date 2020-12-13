@@ -9,6 +9,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import vistas.AjustesVista;
 
 /**
@@ -39,33 +40,61 @@ public class AjustesControlador implements ActionListener {
         switch (e.getActionCommand()) {
             case "aceptar":
                 System.out.println("Aceptar");
-                 this.vista.setVisible(false);
+                metodoAceptar();
                 break;
             case "restablecer":
                 System.out.println("Restablecer");
+                metodoRestablecer();
                 break;
             case "cerrar":
                 System.out.println("Cerrar");
                 this.vista.setVisible(false);
                 break;
             case "Masculino":
-                masculinoImagen = new ImageIcon(getClass().getResource("/assets/masculino-activo.png"));
-                this.vista.masculino.setIcon(new ImageIcon(masculinoImagen.getImage().
-                        getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
-
-                femeninoImagen = new ImageIcon(getClass().getResource("/assets/femenino.png"));
-                this.vista.femenino.setIcon(new ImageIcon(femeninoImagen.getImage().
-                        getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
+                metodoMasculino();
                 break;
             case "Femenino":
-                femeninoImagen = new ImageIcon(getClass().getResource("/assets/femenino-activo.png"));
-                this.vista.femenino.setIcon(new ImageIcon(femeninoImagen.getImage().
-                        getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
-
-                masculinoImagen = new ImageIcon(getClass().getResource("/assets/masculino.png"));
-                this.vista.masculino.setIcon(new ImageIcon(masculinoImagen.getImage().
-                        getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
+                metodoFemenino();
                 break;
         }
+    }
+
+    public void metodoAceptar() {
+        if ("".equals(this.vista.nombreCaja.getText()) || this.vista.masculino.isSelected() == false && this.vista.femenino.isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Rellene todos los datos");
+        } else {
+            this.vista.setVisible(false);
+        }
+    }
+
+    public void metodoMasculino() {
+        masculinoImagen = new ImageIcon(getClass().getResource("/assets/masculino-activo.png"));
+        this.vista.masculino.setIcon(new ImageIcon(masculinoImagen.getImage().
+                getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
+
+        femeninoImagen = new ImageIcon(getClass().getResource("/assets/femenino.png"));
+        this.vista.femenino.setIcon(new ImageIcon(femeninoImagen.getImage().
+                getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
+    }
+
+    public void metodoFemenino() {
+        femeninoImagen = new ImageIcon(getClass().getResource("/assets/femenino-activo.png"));
+        this.vista.femenino.setIcon(new ImageIcon(femeninoImagen.getImage().
+                getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
+
+        masculinoImagen = new ImageIcon(getClass().getResource("/assets/masculino.png"));
+        this.vista.masculino.setIcon(new ImageIcon(masculinoImagen.getImage().
+                getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
+    }
+    public void metodoRestablecer(){
+        this.vista.nombreCaja.setText("");
+        this.vista.generoGrupo.clearSelection();
+        femeninoImagen = new ImageIcon(getClass().getResource("/assets/femenino.png"));
+        this.vista.femenino.setIcon(new ImageIcon(femeninoImagen.getImage().
+                getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
+
+        masculinoImagen = new ImageIcon(getClass().getResource("/assets/masculino.png"));
+        this.vista.masculino.setIcon(new ImageIcon(masculinoImagen.getImage().
+                getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
     }
 }
