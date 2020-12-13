@@ -30,7 +30,6 @@ public class PartidaControlador implements ActionListener, KeyListener {
 
     private Partida partida;
 
-    private boolean val = true;
     private ImageIcon playerIcon;
 
     private PartidaVista vista;
@@ -74,14 +73,12 @@ public class PartidaControlador implements ActionListener, KeyListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Player":
-                if (val) {
+                if (!partida.isPausaPartida()) {
                     playerIcon = new ImageIcon(getClass().getResource("/assets/play.png"));
-                    val = false;
-                    this.partida.setVal(false);
-                } else if (val == false) {
+                    partida.setPausaPartida(true);
+                } else if (partida.isPausaPartida()) {
                     playerIcon = new ImageIcon(getClass().getResource("/assets/pause.png"));
-                    val = true;
-                    this.partida.setVal(true);
+                    partida.setPausaPartida(false);
                     this.vista.partidaPanel.updateUI();
                 }
                 this.vista.partidaPanel.player.setIcon(new ImageIcon(playerIcon.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));

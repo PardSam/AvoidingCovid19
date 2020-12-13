@@ -18,18 +18,34 @@ import javax.swing.ImageIcon;
  */
 public class CivilPersonaje extends Personaje {
 
+    private int tipo;
+    private String rutaImagen;
+
+    private int ancho = 112;
+    private int alto = 110;
+
+    private int xInicial = 50;
+    public  int yInicial = 370;
+    private int xAuxiliar = 0;
+    private int yAuxiliar = 0;
+
     private boolean sube = false;
     private boolean baja = false;
     private boolean salta = false;
-    private int tipo;
-    private String rutaImagen;
-    private int ancho = 112;
-    private int alto = 110;
-    private int xInicial = 50;
-    private int yInicial = 370;
-    private int xAuxiliar = 0;
-    private int yAuxiliar = 0;
-    private Area piernaIzquierda, piernaDerecha, cuerpo, personajeArea;
+
+    private Area piernaIzquierda;
+    private Area piernaDerecha;
+    private Area cuerpo;
+    private Area personajeArea;
+
+    public boolean isSalta() {
+        return salta;
+    }
+
+    @Override
+    public void setSalta(boolean salta) {
+        this.salta = salta;
+    }
 
     public CivilPersonaje() {
         this.tipo = 1;
@@ -40,6 +56,44 @@ public class CivilPersonaje extends Personaje {
         super(partida);
         this.tipo = 1;
         this.rutaImagen = "/assets/personajes/david/normal.png";
+    }
+
+    @Override
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public int getxInicial() {
+        return xInicial;
+    }
+
+    public void setxInicial(int xInicial) {
+        this.xInicial = xInicial;
+    }
+
+    public int getyInicial() {
+        return yInicial;
+    }
+
+    public void setyInicial(int yInicial) {
+        this.yInicial = yInicial;
+    }
+
+    public int getxAuxiliar() {
+        return xAuxiliar;
+    }
+
+    public void setxAuxiliar(int xAuxiliar) {
+        this.xAuxiliar = xAuxiliar;
+    }
+
+    public int getyAuxiliar() {
+        return yAuxiliar;
+    }
+
+    @Override
+    public void setyAuxiliar(int yAuxiliar) {
+        this.yAuxiliar = yAuxiliar;
     }
 
     @Override
@@ -82,7 +136,6 @@ public class CivilPersonaje extends Personaje {
         }
     }
 
-    @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             salta = true;
@@ -93,24 +146,19 @@ public class CivilPersonaje extends Personaje {
     public Area getBounds() {
         Rectangle forma1 = new Rectangle(xInicial, yInicial, 95, 62);
         cuerpo = new Area(forma1);
-        
+
         Ellipse2D forma2 = new Ellipse2D.Double(xInicial, yInicial + 28, 48, 48);
         piernaDerecha = new Area(forma2);
-        
+
         Ellipse2D forma3 = new Ellipse2D.Double(xInicial + 73, yInicial + 39, 38, 38);
         piernaIzquierda = new Area(forma3);
-        
+
         personajeArea = cuerpo;
         personajeArea.add(cuerpo);
         personajeArea.add(personajeArea);
         personajeArea.add(piernaIzquierda);
-        
-        return personajeArea;
-    }
 
-    @Override
-    public String getRutaImagen() {
-        return rutaImagen;
+        return personajeArea;
     }
 
 }

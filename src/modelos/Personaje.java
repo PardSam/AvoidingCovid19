@@ -27,6 +27,10 @@ public abstract class Personaje {
     public abstract void dibujar(Graphics2D g);
 
     public abstract String getRutaImagen();
+    
+    public abstract void setSalta(boolean salta);
+    
+    public abstract void setyAuxiliar(int yAuxiliar);
 
     public abstract void mover();
 

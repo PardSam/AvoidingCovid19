@@ -32,6 +32,20 @@ public class DoctorPersonaje extends Personaje {
     
     private     Area piernaIzquierda, piernaDerecha, cuerpo, personajeArea;
 
+    @Override
+    public void setyAuxiliar(int yAuxiliar) {
+        this.yAuxiliar = yAuxiliar;
+    }
+
+    public boolean isSalta() {
+        return salta;
+    }
+
+    @Override
+    public void setSalta(boolean salta) {
+        this.salta = salta;
+    }
+
     public DoctorPersonaje() {
         this.baja = false;
         this.sube = false;

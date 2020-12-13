@@ -25,12 +25,26 @@ public class PoliciaPersonaje extends Personaje {
     private String rutaImagen;
     private int ancho = 112;
     private int alto = 110;
+
+    @Override
+    public void setyAuxiliar(int yAuxiliar) {
+        this.yAuxiliar = yAuxiliar;
+    }
     private int xInicial = 50;
     private int yInicial = 370;
     private int xAuxiliar = 0;
     private int yAuxiliar = 0;
 
     private Area piernaIzquierda, piernaDerecha, cuerpo, personajeArea;
+
+    public boolean isSalta() {
+        return salta;
+    }
+
+    @Override
+    public void setSalta(boolean salta) {
+        this.salta = salta;
+    }
 
     public PoliciaPersonaje() {
         this.baja = false;

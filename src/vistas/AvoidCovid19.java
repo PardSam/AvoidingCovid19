@@ -5,9 +5,7 @@
  */
 package vistas;
 
-import controladores.PrincipalControlador;
 import modelos.Juego;
-
 
 /**
  *
@@ -19,7 +17,7 @@ public class AvoidCovid19 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       //PrincipalVista vista = new PrincipalVista();
+        //PrincipalVista vista = new PrincipalVista();
         //PrincipalControlador controlador = new PrincipalControlador(vista);    
         Juego juego = new Juego();
         juego.ejecutarJuego();
