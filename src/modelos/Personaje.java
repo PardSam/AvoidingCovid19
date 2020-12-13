@@ -34,7 +34,7 @@ public abstract class Personaje {
 
     public abstract void mover();
 
-    public abstract void keyPressed(KeyEvent e);
+    public abstract void saltar();
 
     public abstract Area getBounds();
 }

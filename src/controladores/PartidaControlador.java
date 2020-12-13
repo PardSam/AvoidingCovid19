@@ -5,17 +5,20 @@
  */
 package controladores;
 
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
+import modelos.ControlInvocador;
+import modelos.IComando;
 import modelos.Nivel1;
 import modelos.Nivel2;
 import modelos.Nivel3;
 import modelos.Partida;
+import modelos.PausarComando;
 import modelos.Perfil;
+import modelos.SaltarComando;
 import vistas.PartidaPanel;
 import vistas.PartidaVista;
 
@@ -25,12 +28,12 @@ import vistas.PartidaVista;
  */
 public class PartidaControlador implements ActionListener, KeyListener {
 
-    private Partida partida;
+    public Partida partida;
 
-    private ImageIcon playerIcon;
+    public ImageIcon playerIcon;
 
-    private PartidaVista vista;
-    private PartidaPanel partidaPanel;
+    public PartidaVista vista;
+    public PartidaPanel partidaPanel;
 
     public PartidaControlador(PartidaVista vista) {
         this.vista = vista;
@@ -63,23 +66,19 @@ public class PartidaControlador implements ActionListener, KeyListener {
         this.vista.setLocationRelativeTo(null);
 
         vista.setVisible(true);
-        
+
+    }
+
+    private void ejecutarComando(IComando comando) {
+        ControlInvocador control = new ControlInvocador(comando);
+        control.run();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Player":
-                if (!partida.isPausaPartida()) {
-                    playerIcon = new ImageIcon(getClass().getResource("/assets/play.png"));
-                    partida.setPausaPartida(true);
-                } else if (partida.isPausaPartida()) {
-                    playerIcon = new ImageIcon(getClass().getResource("/assets/pause.png"));
-                    partida.setPausaPartida(false);
-                    this.vista.partidaPanel.updateUI();
-                }
-                this.vista.partidaPanel.player.setIcon(new ImageIcon(playerIcon.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
-                this.vista.partidaPanel.player.setFocusable(false);
+                ejecutarComando(new PausarComando(this));
                 break;
         }
     }
@@ -92,7 +91,7 @@ public class PartidaControlador implements ActionListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent ke) {
         if (ke.getKeyCode() == KeyEvent.VK_SPACE) {
-            partida.getPersonaje().keyPressed(ke);
+            ejecutarComando(new SaltarComando(partida));
         }
 
         if (ke.getKeyCode() == KeyEvent.VK_P) {

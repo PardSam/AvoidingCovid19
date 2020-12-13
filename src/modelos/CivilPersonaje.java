@@ -27,8 +27,8 @@ public class CivilPersonaje extends Personaje {
     // private int alto = 110;
 
     private int xInicial = 50;
-   
-    public  int yInicial = 370;
+
+    public int yInicial = 370;
     private int xAuxiliar = 0;
     private int yAuxiliar = 0;
 
@@ -95,7 +95,6 @@ public class CivilPersonaje extends Personaje {
         return yAuxiliar;
     }
 
-
     public void setyAuxiliar(int yAuxiliar) {
         this.yAuxiliar = yAuxiliar;
     }
@@ -139,10 +138,9 @@ public class CivilPersonaje extends Personaje {
         }
     }
 
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            salta = true;
-        }
+    @Override
+    public void saltar() {
+        salta = true;
     }
 
     @Override

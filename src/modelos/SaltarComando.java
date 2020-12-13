@@ -9,11 +9,17 @@ package modelos;
  *
  * @author aries
  */
-public class Saltar implements IComando{
+public class SaltarComando implements IComando {
+
+    private Partida partida;
+
+    public SaltarComando(Partida partida) {
+        this.partida = partida;
+    }
 
     @Override
     public void ejecutar() {
-        
+        partida.getPersonaje().saltar();
     }
-    
+
 }

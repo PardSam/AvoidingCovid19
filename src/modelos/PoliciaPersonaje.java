@@ -96,10 +96,8 @@ public class PoliciaPersonaje extends Personaje {
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            salta = true;
-        }
+    public void saltar() {
+        salta = true;
     }
 
     @Override
