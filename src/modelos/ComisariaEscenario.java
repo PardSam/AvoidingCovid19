@@ -16,9 +16,11 @@ public class ComisariaEscenario extends Escenario {
 
     private String titulo;
     public String rutaImagen;
+    public String rutaNocheImagen;
     private int ancho, alto, nivel;
     private int xInicial = 1024, yInicial = 0;
     private int xAuxiliar = 0, yAuxiliar = 0;
+    private ImageIcon escenarioImg;
 
     public ComisariaEscenario() {
         super();
@@ -27,6 +29,7 @@ public class ComisariaEscenario extends Escenario {
         this.alto = 550;
         this.nivel = 3;
         this.rutaImagen = "/assets/escenarios/comisaria/fondo.png";
+        this.rutaNocheImagen = "/assets/escenarios/comisaria/fondo.png";
     }
 
     public ComisariaEscenario(Partida partida) {
@@ -36,6 +39,7 @@ public class ComisariaEscenario extends Escenario {
         this.alto = 550;
         this.nivel = 3;
         this.rutaImagen = "/assets/escenarios/comisaria/fondo.png";
+        this.rutaNocheImagen = "/assets/escenarios/comisaria/fondo.png";
     }
 
     @Override
@@ -50,15 +54,39 @@ public class ComisariaEscenario extends Escenario {
     }
 
     @Override
+    public String getRutaNocheImagen() {
+        return rutaNocheImagen;
+    }
+
+    @Override
     public String getRutaImagen() {
         return rutaImagen;
     }
 
     @Override
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    @Override
+    public ImageIcon getEscenarioImg() {
+        return escenarioImg;
+    }
+
+    @Override
+    public void setEscenarioImg(ImageIcon escenarioImg) {
+        this.escenarioImg = escenarioImg;
+    }
+
+    @Override
     public void dibujar(Graphics2D g) {
-        ImageIcon escenario = new ImageIcon(getClass().getResource(this.rutaImagen));
-        g.drawImage(escenario.getImage(), xInicial, yInicial, ancho, alto, null);
-        g.drawImage(escenario.getImage(), xAuxiliar, yAuxiliar, ancho, alto, null);
+        //ImageIcon escenario = new ImageIcon(getClass().getResource(this.rutaImagen));
+        g.drawImage(escenarioImg.getImage(), xInicial, yInicial, ancho, alto, null);
+        g.drawImage(escenarioImg.getImage(), xAuxiliar, yAuxiliar, ancho, alto, null);
     }
 
 }

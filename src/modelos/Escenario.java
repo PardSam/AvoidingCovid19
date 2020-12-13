@@ -6,6 +6,7 @@
 package modelos;
 
 import java.awt.Graphics2D;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -31,7 +32,10 @@ public abstract class Escenario {
     }
     
     public abstract void dibujar(Graphics2D g);
-    public abstract String getRutaImagen();   
-    
+    public abstract String getRutaImagen(); 
+    public abstract String getRutaNocheImagen();   
+    public abstract int getNivel();   
+    public abstract void setEscenarioImg(ImageIcon escenarioImg);   
+    public abstract ImageIcon getEscenarioImg();   
     public abstract void mover() ;
 }

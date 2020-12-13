@@ -22,12 +22,12 @@ public class DiaPartida extends AmbientePartidaDecorador {
 
     @Override
     public void dibujar(Graphics2D g) {
-        //System.out.println("Dia");
+        getDecorado().setEscenarioImg(new ImageIcon(getClass().getResource(getDecorado().getRutaImagen())));
         getDecorado().dibujar(g);
     }
 
     @Override
-    public String getRutaImagen() {        
+    public String getRutaImagen() {
         return getDecorado().getRutaImagen();
     }
 
@@ -36,5 +36,23 @@ public class DiaPartida extends AmbientePartidaDecorador {
         getDecorado().mover();
     }
 
+    @Override
+    public int getNivel() {
+        return getDecorado().getNivel();
+    }
 
+    @Override
+    public void setEscenarioImg(ImageIcon escenarioImg) {
+        getDecorado().getEscenarioImg();
+    }
+
+    @Override
+    public ImageIcon getEscenarioImg() {
+        return getDecorado().getEscenarioImg();
+    }
+
+    @Override
+    public String getRutaNocheImagen() {
+        return getDecorado().getRutaNocheImagen();
+    }
 }

@@ -16,10 +16,11 @@ public class TrabajoEscenario extends Escenario {
 
     private String titulo;
     public String rutaImagen;
+    public String rutaNocheImagen;
     private int ancho, alto, nivel;
     private int xInicial = 1024, yInicial = 0;
     private int xAuxiliar = 0, yAuxiliar = 0;
-    private ImageIcon escenarioImg ;
+    private ImageIcon escenarioImg;
 
     public TrabajoEscenario() {
         this.titulo = "Trabajo";
@@ -27,6 +28,7 @@ public class TrabajoEscenario extends Escenario {
         this.alto = 550;
         this.nivel = 1;
         this.rutaImagen = "/assets/escenarios/trabajo/fondo.png";
+        this.rutaNocheImagen = "/assets/escenarios/trabajo/fondo.png";
     }
 
     public TrabajoEscenario(Partida partida) {
@@ -36,6 +38,31 @@ public class TrabajoEscenario extends Escenario {
         this.alto = 550;
         this.nivel = 1;
         this.rutaImagen = "/assets/escenarios/trabajo/fondo.png";
+        this.rutaNocheImagen = "/assets/escenarios/trabajo/fondo.png";
+    }
+
+    @Override
+    public String getRutaNocheImagen() {
+        return rutaNocheImagen;
+    }
+
+    @Override
+    public ImageIcon getEscenarioImg() {
+        return escenarioImg;
+    }
+
+    @Override
+    public void setEscenarioImg(ImageIcon escenarioImg) {
+        this.escenarioImg = escenarioImg;
+    }
+
+    @Override
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
     }
 
     @Override
@@ -56,9 +83,9 @@ public class TrabajoEscenario extends Escenario {
 
     @Override
     public void dibujar(Graphics2D g) {
-        ImageIcon escenario = new ImageIcon(getClass().getResource(this.rutaImagen));
-        g.drawImage(escenario.getImage(), xInicial, yInicial, ancho, alto, null);
-        g.drawImage(escenario.getImage(), xAuxiliar, yAuxiliar, ancho, alto, null);
+        //ImageIcon escenario = new ImageIcon(getClass().getResource(this.rutaImagen));
+        g.drawImage(escenarioImg.getImage(), xInicial, yInicial, ancho, alto, null);
+        g.drawImage(escenarioImg.getImage(), xAuxiliar, yAuxiliar, ancho, alto, null);
     }
 
 }

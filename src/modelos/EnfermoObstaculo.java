@@ -83,7 +83,7 @@ public class EnfermoObstaculo extends Obstaculo {
 
     @Override
     public void dibujar(Graphics2D g) {
-        ImageIcon obstaculo = new ImageIcon(getClass().getResource(rutaImagen));
+        ImageIcon obstaculo = new ImageIcon(getClass().getResource(rutaImagen));        
         g.drawImage(obstaculo.getImage(), getxInicial(), getyInicial(), getAncho(), getAlto(), null);
 
         

@@ -45,7 +45,7 @@ public class AjustesControlador implements ActionListener {
                 metodoRestablecer();
                 break;
             case "cerrar":
-                this.vista.setVisible(false);
+                metodoAceptar();
                 break;
             case "Masculino":
                 metodoMasculino();
@@ -83,7 +83,8 @@ public class AjustesControlador implements ActionListener {
         this.vista.masculino.setIcon(new ImageIcon(masculinoImagen.getImage().
                 getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
     }
-    public void metodoRestablecer(){
+
+    public void metodoRestablecer() {
         this.vista.nombreCaja.setText("");
         this.vista.generoGrupo.clearSelection();
         femeninoImagen = new ImageIcon(getClass().getResource("/assets/femenino.png"));

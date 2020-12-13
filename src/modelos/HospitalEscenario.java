@@ -16,20 +16,24 @@ public class HospitalEscenario extends Escenario {
 
     private String titulo;
     public String rutaImagen;
-    private int ancho =1024, alto = 550, nivel= 2;
+    public String rutaNocheImagen;
+    private int ancho = 1024, alto = 550, nivel = 2;
     private int xInicial = 1024, yInicial = 0;
     private int xAuxiliar = 0, yAuxiliar = 0;
+    private ImageIcon escenarioImg;
 
     public HospitalEscenario() {
         super();
         this.titulo = "Hospital";
         this.rutaImagen = "/assets/escenarios/hospital/fondo.png";
+        this.rutaNocheImagen = "/assets/escenarios/hospital/fondo.png";
     }
 
     public HospitalEscenario(Partida partida) {
         super(partida);
         this.titulo = "Hospital";
         this.rutaImagen = "/assets/escenarios/hospital/fondo.png";
+        this.rutaNocheImagen = "/assets/escenarios/hospital/fondo.png";
     }
 
     @Override
@@ -44,14 +48,41 @@ public class HospitalEscenario extends Escenario {
     }
 
     @Override
+    public String getRutaNocheImagen() {
+        return rutaNocheImagen;
+    }
+
+    @Override
     public String getRutaImagen() {
         return rutaImagen;
     }
 
     @Override
-    public void dibujar(Graphics2D g) {
-        ImageIcon escenario = new ImageIcon(getClass().getResource(this.rutaImagen));
-        g.drawImage(escenario.getImage(), xInicial, yInicial, ancho, alto, null);
-        g.drawImage(escenario.getImage(), xAuxiliar, yAuxiliar, ancho, alto, null);
+    public int getNivel() {
+        return nivel;
     }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+
+    @Override
+    public ImageIcon getEscenarioImg() {
+        return escenarioImg;
+    }
+
+    @Override
+    public void setEscenarioImg(ImageIcon escenarioImg) {
+        this.escenarioImg = escenarioImg;
+    }
+
+    @Override
+    public void dibujar(Graphics2D g) {
+       // ImageIcon escenario = new ImageIcon(getClass().getResource(this.rutaImagen));
+        g.drawImage(escenarioImg.getImage(), xInicial, yInicial, ancho, alto, null);
+        g.drawImage(escenarioImg.getImage(), xAuxiliar, yAuxiliar, ancho, alto, null);
+    }
+
+
 }

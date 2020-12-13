@@ -76,7 +76,7 @@ public class PrincipalControlador implements ActionListener {
         personaje.setVisible(false);
         ayuda.setVisible(false);
         acerca.setVisible(false);
-        ajustes.setVisible(false);
+        ajustes.setVisible(true);
         ranking.setVisible(false);
         
         this.vista.setLocationRelativeTo(null);

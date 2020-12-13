@@ -27,15 +27,19 @@ public class NochePartida extends AmbientePartidaDecorador {
         Image grayImage = GrayFilter.createDisabledImage(normalImage);
         escenario.setImage(grayImage);
     }
-*/
-@Override
+     */
+    @Override
     public void dibujar(Graphics2D g) {
-        //System.out.println("Noche");
+        getDecorado().setEscenarioImg(new ImageIcon(getClass().getResource(getDecorado().getRutaImagen())));
+        Image normalImage = getDecorado().getEscenarioImg().getImage();
+        Image grayImage = GrayFilter.createDisabledImage(normalImage);
+        getDecorado().getEscenarioImg().setImage(grayImage);
+
         getDecorado().dibujar(g);
     }
 
     @Override
-    public String getRutaImagen() {        
+    public String getRutaImagen() {
         return getDecorado().getRutaImagen();
     }
 
@@ -43,4 +47,25 @@ public class NochePartida extends AmbientePartidaDecorador {
     public void mover() {
         getDecorado().mover();
     }
+
+    @Override
+    public int getNivel() {
+        return getDecorado().getNivel();
+    }
+
+    @Override
+    public void setEscenarioImg(ImageIcon escenarioImg) {
+        getDecorado().getEscenarioImg();
+    }
+
+    @Override
+    public ImageIcon getEscenarioImg() {
+        return getDecorado().getEscenarioImg();
+    }
+
+    @Override
+    public String getRutaNocheImagen() {
+        return getDecorado().getRutaNocheImagen();
+    }
+
 }
