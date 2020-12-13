@@ -9,10 +9,11 @@ package modelos;
  *
  * @author aries
  */
-public class Nivel3 extends Partida {
+public class HospitalPartida extends Partida {
 
     @Override
     public void inicializar() {
+        setPuntajePartida(20);
         Perfil perfil = Perfil.gePerfil();
         setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
         if (isHorario()) {

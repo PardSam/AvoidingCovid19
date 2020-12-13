@@ -48,7 +48,7 @@ public class EscenariosControlador implements ActionListener {
 
         obtenerEscenarios();
         crearEscenarios();
-
+        //cargar();
         vista.setVisible(false);
 
     }
@@ -138,5 +138,11 @@ public class EscenariosControlador implements ActionListener {
             this.escenarios.add(escenarioPanel);
             this.vista.principalPanel.add(escenarioPanel);
         }
+    }
+
+    public void cargar() {
+        Perfil perfil = Perfil.gePerfil();
+        int escenarioId = perfil.getEscenarioId();
+        seleccionarEscenario(escenarioId);
     }
 }

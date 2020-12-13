@@ -29,7 +29,7 @@ public class ComisariaEscenario extends Escenario {
         this.alto = 550;
         this.nivel = 3;
         this.rutaImagen = "/assets/escenarios/comisaria/fondo.png";
-        this.rutaNocheImagen = "/assets/escenarios/comisaria/fondo.png";
+        this.rutaNocheImagen = "/assets/escenarios/comisaria/fondo-noche.png";
     }
 
     public ComisariaEscenario(Partida partida) {
@@ -39,7 +39,7 @@ public class ComisariaEscenario extends Escenario {
         this.alto = 550;
         this.nivel = 3;
         this.rutaImagen = "/assets/escenarios/comisaria/fondo.png";
-        this.rutaNocheImagen = "/assets/escenarios/comisaria/fondo.png";
+        this.rutaNocheImagen = "/assets/escenarios/comisaria/fondo-noche.png";
     }
 
     @Override

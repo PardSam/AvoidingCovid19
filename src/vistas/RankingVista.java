@@ -22,7 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
-import modelos.Persona;
+import modelos.Jugador;
 import ui.MiBoton;
 import ui.ModeloTabla;
 import ui.Paleta;
@@ -41,7 +41,7 @@ public class RankingVista extends JFrame {
     public JLabel tituloEtiqueta;
     public JTable listaTabla;
     public JButton cerrarBoton;
-    public List<Persona> personas;
+    public List<Jugador> personas;
 
     public RankingVista() {
         this.setSize(540, 320);
@@ -55,7 +55,7 @@ public class RankingVista extends JFrame {
         tituloEtiqueta.setFont(font);
         tituloEtiqueta.setForeground(Paleta.getPlano());
 
-        Persona per1 = new Persona("Sam", "Masculino", 50);
+        Jugador per1 = new Jugador("Sam", "Masculino", 50);
 
         personas.add(per1);
         System.out.println("prueba");

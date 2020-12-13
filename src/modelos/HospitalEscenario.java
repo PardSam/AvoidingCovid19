@@ -26,14 +26,14 @@ public class HospitalEscenario extends Escenario {
         super();
         this.titulo = "Hospital";
         this.rutaImagen = "/assets/escenarios/hospital/fondo.png";
-        this.rutaNocheImagen = "/assets/escenarios/hospital/fondo.png";
+        this.rutaNocheImagen = "/assets/escenarios/hospital/fondo-noche.png";
     }
 
     public HospitalEscenario(Partida partida) {
         super(partida);
         this.titulo = "Hospital";
         this.rutaImagen = "/assets/escenarios/hospital/fondo.png";
-        this.rutaNocheImagen = "/assets/escenarios/hospital/fondo.png";
+        this.rutaNocheImagen = "/assets/escenarios/hospital/fondo-noche.png";
     }
 
     @Override

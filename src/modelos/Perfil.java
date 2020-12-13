@@ -16,10 +16,12 @@ public class Perfil {
     private int score = 0;
     private int personajeId = 1;
     private int escenarioId = 1;
+    private Jugador jugador;
 
     public static Perfil gePerfil() {
         if (perfil == null) {
             perfil = new Perfil();
+            perfil.setJugador(new Jugador());
         }
         return perfil;
     }
@@ -30,6 +32,14 @@ public class Perfil {
 
     public static void setPerfil(Perfil perfil) {
         Perfil.perfil = perfil;
+    }
+
+    public Jugador getJugador() {
+        return jugador;
+    }
+
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
     }
 
     public int getPersonajeId() {

@@ -1,33 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelos;
 
-/**
- *
- * @author fernandomonjav
- */
 public class Jugador {
 
-    private static Jugador jugador = null;
-    private String nombre;
-    private String genero;
+    public String nombres;
+    public String genero;
+    public int score;
 
-    public static Jugador getJugador() {
-        if (jugador == null) {
-            jugador = new Jugador();
-        }
-        return jugador;
+    public Jugador() {
+        nombres = ""; 
+        genero = "";
+        score = 0;
     }
 
-    public String getNombre() {
-        return nombre;
+    public Jugador(String nombres, String genero, int score) {
+        this.nombres = nombres;
+        this.genero = genero;
+        this.score = score;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
     public String getGenero() {
@@ -37,4 +33,13 @@ public class Jugador {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+    
 }

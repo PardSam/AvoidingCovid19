@@ -7,7 +7,7 @@ package ui;
 
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import modelos.Persona;
+import modelos.Jugador;
 
 /**
  *
@@ -15,9 +15,9 @@ import modelos.Persona;
  */
 public class ModeloTabla extends AbstractTableModel{
     String [] columnas = {"Nombre","Genero","Score"};    
-    List<Persona> personas;
+    List<Jugador> personas;
     
-    public ModeloTabla(List<Persona> personas) {
+    public ModeloTabla(List<Jugador> personas) {
         this.personas = personas;
     }
     
@@ -39,7 +39,7 @@ public class ModeloTabla extends AbstractTableModel{
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
        String columna = "";
-    Persona persona = (Persona) personas.get(rowIndex);
+    Jugador persona = (Jugador) personas.get(rowIndex);
     switch(columnIndex){
         case 0: columna = persona.getNombres();
         break;
@@ -54,7 +54,7 @@ public class ModeloTabla extends AbstractTableModel{
        personas.remove(rowIndex);
     }
     
-   public void actualizar(int rowIndex,Persona p){
+   public void actualizar(int rowIndex,Jugador p){
         personas.remove(rowIndex);
         personas.add(rowIndex, p);
     }  

@@ -30,11 +30,7 @@ public class NochePartida extends AmbientePartidaDecorador {
      */
     @Override
     public void dibujar(Graphics2D g) {
-        getDecorado().setEscenarioImg(new ImageIcon(getClass().getResource(getDecorado().getRutaImagen())));
-        Image normalImage = getDecorado().getEscenarioImg().getImage();
-        Image grayImage = GrayFilter.createDisabledImage(normalImage);
-        getDecorado().getEscenarioImg().setImage(grayImage);
-
+        getDecorado().setEscenarioImg(new ImageIcon(getClass().getResource(getDecorado().getRutaNocheImagen())));
         getDecorado().dibujar(g);
     }
 

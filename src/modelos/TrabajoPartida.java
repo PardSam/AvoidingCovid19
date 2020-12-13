@@ -9,10 +9,11 @@ package modelos;
  *
  * @author aries
  */
-public class Nivel1 extends Partida {
+public class TrabajoPartida extends Partida {
 
     @Override
     public void inicializar() {
+        setPuntajePartida(10);
         Perfil perfil = Perfil.gePerfil();
 
         if (isHorario()) {

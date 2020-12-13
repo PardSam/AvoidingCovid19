@@ -45,7 +45,7 @@ public class PersonajesControlador implements ActionListener {
 
         obtenerPersonajes();
         crearPersonajes();
-
+        cargar();
         vista.setVisible(false);
     }
 
@@ -133,5 +133,11 @@ public class PersonajesControlador implements ActionListener {
             this.personajes.add(personajePanel);
             this.vista.principalPanel.add(personajePanel);
         }
+    }
+
+    public void cargar() {
+        Perfil perfil = Perfil.gePerfil();
+        int personajeId = perfil.getPersonajeId();
+        seleccionarPersonaje(personajeId);
     }
 }

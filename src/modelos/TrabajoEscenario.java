@@ -28,7 +28,7 @@ public class TrabajoEscenario extends Escenario {
         this.alto = 550;
         this.nivel = 1;
         this.rutaImagen = "/assets/escenarios/trabajo/fondo.png";
-        this.rutaNocheImagen = "/assets/escenarios/trabajo/fondo.png";
+        this.rutaNocheImagen = "/assets/escenarios/trabajo/fondo-noche.png";
     }
 
     public TrabajoEscenario(Partida partida) {
@@ -38,7 +38,7 @@ public class TrabajoEscenario extends Escenario {
         this.alto = 550;
         this.nivel = 1;
         this.rutaImagen = "/assets/escenarios/trabajo/fondo.png";
-        this.rutaNocheImagen = "/assets/escenarios/trabajo/fondo.png";
+        this.rutaNocheImagen = "/assets/escenarios/trabajo/fondo-noche.png";
     }
 
     @Override

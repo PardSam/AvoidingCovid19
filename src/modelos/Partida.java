@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 public abstract class Partida {
 
     private int puntaje;
+    private int puntajePartida;
     private int proteccion;
     private int defensa ;
 
@@ -46,6 +47,14 @@ public abstract class Partida {
 
     public boolean isHorario() {
         return horario;
+    }
+
+    public int getPuntajePartida() {
+        return puntajePartida;
+    }
+
+    public void setPuntajePartida(int puntajePartida) {
+        this.puntajePartida = puntajePartida;
     }
 
     public void setHorario(boolean horario) {

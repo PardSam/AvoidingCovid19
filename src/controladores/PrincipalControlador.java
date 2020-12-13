@@ -8,6 +8,7 @@ package controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import modelos.Perfil;
 import vistas.AcercaVista;
 import vistas.AjustesVista;
 import vistas.AyudaVista;
@@ -60,7 +61,7 @@ public class PrincipalControlador implements ActionListener {
 
         ranking = new RankingVista();
         controladorRanking = new RankingControlador(ranking);
-        
+
         ayuda = new AyudaVista();
         controladorayuda = new AyudaControlador(ayuda);
 
@@ -78,7 +79,7 @@ public class PrincipalControlador implements ActionListener {
         acerca.setVisible(false);
         ajustes.setVisible(true);
         ranking.setVisible(false);
-        
+
         this.vista.setLocationRelativeTo(null);
         this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -100,9 +101,11 @@ public class PrincipalControlador implements ActionListener {
                 //this.vista.setVisible(false);
                 break;
             case "escenarios":
+                controladorEscenario.cargar();
                 escenario.setVisible(true);
                 break;
             case "personajes":
+                controladorPersonaje.cargar();
                 personaje.setVisible(true);
                 break;
             case "ranking":
@@ -122,4 +125,5 @@ public class PrincipalControlador implements ActionListener {
                 break;
         }
     }
+
 }

@@ -6,14 +6,11 @@
 package modelos;
 
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
-import javax.swing.GrayFilter;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author Fernando
@@ -24,7 +21,7 @@ public class EnfermoObstaculo extends Obstaculo {
     private Area cabeza;
     private Area cuerpo;
     private Area enfermo;
-
+    
     public EnfermoObstaculo(Partida partida) {
         super(partida);
         this.rutaImagen = "/assets/enfermo.png";
@@ -47,15 +44,21 @@ public class EnfermoObstaculo extends Obstaculo {
                 //JOptionPane.showMessageDialog(null, "Pasaste el nivel");
                 getPartida().setGanarPartida(true);
                 Perfil.gePerfil().setEscenarioId(Perfil.gePerfil().getEscenarioId() + 1);
+                Perfil.gePerfil().setNivel(Perfil.gePerfil().getNivel()+ 1);
                 getPartida().setHorario(!getPartida().isHorario());
                 System.out.println(getPartida().isHorario());
                 
-                getPartida().inicializar();
+                getPartida().generar();
                 getPartida().reiniciar();
+            }
+            if(getPartida().getPuntajePartida()/2 == getPartida().getPuntaje() || getPartida().getPuntajePartida()/2 ==getPartida().getPuntaje() || getPartida().getPuntajePartida()/2 == getPartida().getPuntaje()){
+                getPartida().setHorario(!getPartida().isHorario());
+                System.out.println(getPartida().isHorario());
+                getPartida().generar();
             }
             if (getPartida().getPuntaje() == 30) {
                 getPartida().finalizarPartida();
-                // JOptionPane.showMessageDialog(null, "Felicidades ganaste");
+                //JOptionPane.showMessageDialog(null, "Felicidades ganaste");
             }
             setxInicial(1024);
 

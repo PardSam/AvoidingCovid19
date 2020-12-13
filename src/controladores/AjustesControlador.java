@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import modelos.Perfil;
 import vistas.AjustesVista;
 
 /**
@@ -61,6 +62,8 @@ public class AjustesControlador implements ActionListener {
             JOptionPane.showMessageDialog(null, "Rellene todos los datos");
         } else {
             this.vista.setVisible(false);
+            Perfil.gePerfil().getJugador().setNombres(this.vista.nombreCaja.getText());
+            Perfil.gePerfil().getJugador().setGenero(this.vista.generoGrupo.getSelection().getActionCommand());
         }
     }
 
@@ -94,5 +97,11 @@ public class AjustesControlador implements ActionListener {
         masculinoImagen = new ImageIcon(getClass().getResource("/assets/masculino.png"));
         this.vista.masculino.setIcon(new ImageIcon(masculinoImagen.getImage().
                 getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
+
+        Perfil.gePerfil().getJugador().setNombres("");
+        Perfil.gePerfil().getJugador().setGenero("");
+        Perfil.gePerfil().setEscenarioId(1);
+        Perfil.gePerfil().setPersonajeId(1);
+        Perfil.gePerfil().setNivel(1);
     }
 }
