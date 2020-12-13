@@ -27,8 +27,8 @@ public class CivilPersonaje extends Personaje {
     // private int alto = 110;
 
     private int xInicial = 50;
-    public  int yInicial = 335;
-    // public  int yInicial = 370;
+   
+    public  int yInicial = 370;
     private int xAuxiliar = 0;
     private int yAuxiliar = 0;
 

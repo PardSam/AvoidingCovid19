@@ -27,7 +27,8 @@ public abstract class Partida {
     private boolean pierdeProteccion = false;
     private boolean pausaPartida = false;
     private boolean finPartida = false;
-
+    private boolean ganarPartida = false;
+    
     private Escenario escenario;
     private Personaje personaje;
     private Obstaculo obstaculo;
@@ -40,6 +41,14 @@ public abstract class Partida {
         this.pierdeProteccion = false;
         this.pausaPartida = false;
         this.finPartida = false;
+    }
+
+    public boolean isGanarPartida() {
+        return ganarPartida;
+    }
+
+    public void setGanarPartida(boolean ganarPartida) {
+        this.ganarPartida = ganarPartida;
     }
 
     public int getPuntaje() {
@@ -211,10 +220,6 @@ public abstract class Partida {
         escenario.dibujar(g);
         personaje.dibujar(g);
         obstaculo.dibujar(g);
-
-        if (!pausaPartida) {
-            mover();
-        }
     }
 
     public void mover() {

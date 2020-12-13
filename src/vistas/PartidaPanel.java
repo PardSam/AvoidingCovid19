@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -58,11 +60,17 @@ public class PartidaPanel extends JPanel {
         this.partida.dibujarPuntaje(g2);
 
         if (!this.partida.isPausaPartida() && this.partida.isFinPartida() == false) {
+            this.partida.mover();
             this.updateUI();
+            try {
+                    Thread.sleep(5);
+                } catch(InterruptedException err) {
+                  
+                }
         }
         if (this.partida.isFinPartida()) {
             g2.setColor(Color.yellow);
-            g2.drawString("Perdiste", ((float) getBounds().getCenterX() / 2) + 200, 300);      
+            g2.drawString("Fin del juego", ((float) getBounds().getCenterX() / 2) + 200, 300);      
         }
     }
 

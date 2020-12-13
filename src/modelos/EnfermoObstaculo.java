@@ -10,6 +10,7 @@ import java.awt.Rectangle;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,7 +31,7 @@ public class EnfermoObstaculo extends Obstaculo {
         // setAncho(112);
         // setAlto(110);
         setxInicial(1024);
-        setyInicial(335);
+        setyInicial(370);
         // setyInicial(370);
         setxAuxiliar(-4);
         setyAuxiliar(0);
@@ -40,7 +41,17 @@ public class EnfermoObstaculo extends Obstaculo {
     public void mover() {
         if (getxInicial() <= -100) {
             getPartida().setPuntaje(getPartida().getPuntaje() + 1);
-
+            if(getPartida().getPuntaje() ==10 ||getPartida().getPuntaje() ==20){
+                //JOptionPane.showMessageDialog(null, "Pasaste el nivel");
+                getPartida().setGanarPartida(true);
+                Perfil.gePerfil().setEscenarioId(Perfil.gePerfil().getEscenarioId()+1);
+                getPartida().inicializar();
+                getPartida().reiniciar();
+            }
+            if(getPartida().getPuntaje() ==30){
+                getPartida().finalizarPartida();
+               // JOptionPane.showMessageDialog(null, "Felicidades ganaste");
+            }
             setxInicial(1024);
 
             /*
@@ -53,9 +64,10 @@ public class EnfermoObstaculo extends Obstaculo {
             if (colision()) {
                 if (getPartida().getProteccion() == 1) {
                     getPartida().finalizarPartida();
+                    //JOptionPane.showMessageDialog(null, "Perdiste");
                 }
                 this.colisionar();
-
+                
                 getPartida().reiniciar();
             } else {
                 setxInicial(getxInicial() + getxAuxiliar());

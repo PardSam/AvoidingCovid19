@@ -63,7 +63,7 @@ public class PartidaControlador implements ActionListener, KeyListener {
         this.vista.setLocationRelativeTo(null);
 
         vista.setVisible(true);
-
+        
     }
 
     @Override
@@ -103,7 +103,6 @@ public class PartidaControlador implements ActionListener, KeyListener {
 
     @Override
     public void keyReleased(KeyEvent ke) {
-       
 
     }
 }

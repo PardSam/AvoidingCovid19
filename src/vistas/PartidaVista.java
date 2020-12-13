@@ -33,8 +33,5 @@ public class PartidaVista extends JFrame {
         partidaPanel = panel;
 
         this.add(partidaPanel);
-
-        partidaPanel.repaint();
     }
-
 }
