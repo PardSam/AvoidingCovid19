@@ -5,21 +5,36 @@
  */
 package modelos;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
+import javax.swing.GrayFilter;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author aries
  */
 public class DiaPartida extends AmbientePartidaDecorador {
 
-    Escenario ambiente;
-
-    public DiaPartida(Escenario ambiente) {
-        this.ambiente = ambiente;
+    public DiaPartida(Escenario decorado) {
+        super(decorado);
     }
 
     @Override
-    public void getEscenario() {
-
+    public void dibujar(Graphics2D g) {
+        //System.out.println("Dia");
+        getDecorado().dibujar(g);
     }
+
+    @Override
+    public String getRutaImagen() {        
+        return getDecorado().getRutaImagen();
+    }
+
+    @Override
+    public void mover() {
+        getDecorado().mover();
+    }
+
 
 }

@@ -28,6 +28,7 @@ public abstract class Partida {
     private boolean pausaPartida = false;
     private boolean finPartida = false;
     private boolean ganarPartida = false;
+    private boolean horario = true;
     
     private Escenario escenario;
     private Personaje personaje;
@@ -41,6 +42,14 @@ public abstract class Partida {
         this.pierdeProteccion = false;
         this.pausaPartida = false;
         this.finPartida = false;
+    }
+
+    public boolean isHorario() {
+        return horario;
+    }
+
+    public void setHorario(boolean horario) {
+        this.horario = horario;
     }
 
     public boolean isGanarPartida() {

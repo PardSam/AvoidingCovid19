@@ -6,9 +6,11 @@
 package modelos;
 
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
+import javax.swing.GrayFilter;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -41,16 +43,19 @@ public class EnfermoObstaculo extends Obstaculo {
     public void mover() {
         if (getxInicial() <= -100) {
             getPartida().setPuntaje(getPartida().getPuntaje() + 1);
-            if(getPartida().getPuntaje() ==10 ||getPartida().getPuntaje() ==20){
+            if (getPartida().getPuntaje() == 11 || getPartida().getPuntaje() == 21) {
                 //JOptionPane.showMessageDialog(null, "Pasaste el nivel");
                 getPartida().setGanarPartida(true);
-                Perfil.gePerfil().setEscenarioId(Perfil.gePerfil().getEscenarioId()+1);
+                Perfil.gePerfil().setEscenarioId(Perfil.gePerfil().getEscenarioId() + 1);
+                getPartida().setHorario(!getPartida().isHorario());
+                System.out.println(getPartida().isHorario());
+                
                 getPartida().inicializar();
                 getPartida().reiniciar();
             }
-            if(getPartida().getPuntaje() ==30){
+            if (getPartida().getPuntaje() == 30) {
                 getPartida().finalizarPartida();
-               // JOptionPane.showMessageDialog(null, "Felicidades ganaste");
+                // JOptionPane.showMessageDialog(null, "Felicidades ganaste");
             }
             setxInicial(1024);
 
@@ -67,7 +72,7 @@ public class EnfermoObstaculo extends Obstaculo {
                     //JOptionPane.showMessageDialog(null, "Perdiste");
                 }
                 this.colisionar();
-                
+
                 getPartida().reiniciar();
             } else {
                 setxInicial(getxInicial() + getxAuxiliar());
@@ -80,6 +85,8 @@ public class EnfermoObstaculo extends Obstaculo {
     public void dibujar(Graphics2D g) {
         ImageIcon obstaculo = new ImageIcon(getClass().getResource(rutaImagen));
         g.drawImage(obstaculo.getImage(), getxInicial(), getyInicial(), getAncho(), getAlto(), null);
+
+        
     }
 
     @Override

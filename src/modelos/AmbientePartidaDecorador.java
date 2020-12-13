@@ -9,6 +9,19 @@ package modelos;
  *
  * @author aries
  */
-public abstract class AmbientePartidaDecorador {
-    public  abstract void  getEscenario();
+public abstract class AmbientePartidaDecorador extends Escenario{
+    private Escenario decorado;
+
+    public AmbientePartidaDecorador(Escenario decorado) {
+        this.decorado = decorado;
+    }
+
+    public Escenario getDecorado() {
+        return decorado;
+    }
+
+    public void setDecorado(Escenario decorado) {
+        this.decorado = decorado;
+    }
+    
 }

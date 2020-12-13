@@ -17,8 +17,9 @@ public class TrabajoEscenario extends Escenario {
     private String titulo;
     public String rutaImagen;
     private int ancho, alto, nivel;
-    private int xInicial =1024, yInicial=0;
+    private int xInicial = 1024, yInicial = 0;
     private int xAuxiliar = 0, yAuxiliar = 0;
+    private ImageIcon escenarioImg ;
 
     public TrabajoEscenario() {
         this.titulo = "Trabajo";
@@ -27,7 +28,7 @@ public class TrabajoEscenario extends Escenario {
         this.nivel = 1;
         this.rutaImagen = "/assets/escenarios/trabajo/fondo.png";
     }
-        
+
     public TrabajoEscenario(Partida partida) {
         super(partida);
         this.titulo = "Trabajo";
@@ -41,21 +42,23 @@ public class TrabajoEscenario extends Escenario {
     public String getRutaImagen() {
         return rutaImagen;
     }
+
     @Override
     public void mover() {
         xInicial = xInicial - 2;
         xAuxiliar = xAuxiliar - 2;
-        
+
         if (xInicial == 0 || xAuxiliar == -1024) {
             xInicial = 1024;
             xAuxiliar = 0;
         }
     }
+
     @Override
     public void dibujar(Graphics2D g) {
         ImageIcon escenario = new ImageIcon(getClass().getResource(this.rutaImagen));
         g.drawImage(escenario.getImage(), xInicial, yInicial, ancho, alto, null);
         g.drawImage(escenario.getImage(), xAuxiliar, yAuxiliar, ancho, alto, null);
     }
-    
+
 }

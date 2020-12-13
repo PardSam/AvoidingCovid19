@@ -5,21 +5,42 @@
  */
 package modelos;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
+import javax.swing.GrayFilter;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author aries
  */
 public class NochePartida extends AmbientePartidaDecorador {
 
-    Escenario ambiente;
+    public NochePartida(Escenario decorado) {
+        super(decorado);
+    }
 
-    public NochePartida(Escenario ambiente) {
-        this.ambiente = ambiente;
+    /*@Override
+    public void escenarioCambio(Escenario decorado) {
+        ImageIcon escenario = new ImageIcon(getClass().getResource(decorado.getRutaImagen()));
+        Image normalImage = escenario.getImage();
+        Image grayImage = GrayFilter.createDisabledImage(normalImage);
+        escenario.setImage(grayImage);
+    }
+*/
+@Override
+    public void dibujar(Graphics2D g) {
+        //System.out.println("Noche");
+        getDecorado().dibujar(g);
     }
 
     @Override
-    public void getEscenario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getRutaImagen() {        
+        return getDecorado().getRutaImagen();
     }
 
+    @Override
+    public void mover() {
+        getDecorado().mover();
+    }
 }

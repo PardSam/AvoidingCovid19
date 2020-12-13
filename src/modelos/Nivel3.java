@@ -15,6 +15,16 @@ public class Nivel3 extends Partida {
     public void inicializar() {
         Perfil perfil = Perfil.gePerfil();
         setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
+        if (isHorario()) {
+            System.out.println("horario dia");
+            setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
+            setEscenario(new DiaPartida(getEscenario()));
+        }
+        if (!isHorario()) {
+            System.out.println("horario noche");
+            setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
+            setEscenario(new NochePartida(getEscenario()));
+        }
         setPersonaje(new PersonajeCreador().crear(perfil.getPersonajeId()));
         setObstaculo(new EnfermoObstaculo(this));
     }
