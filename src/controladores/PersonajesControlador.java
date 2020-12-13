@@ -20,7 +20,6 @@ import modelos.Item;
 import modelos.ItemLista;
 import modelos.Iterador;
 import modelos.Perfil;
-import modelos.PersonajeCreador;
 import ui.Paleta;
 import vistas.PersonajesVista;
 
@@ -54,27 +53,21 @@ public class PersonajesControlador implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "aceptar":
-                System.out.println("Aceptar");
                 Perfil.gePerfil().setPersonajeId(opc);
                 System.out.println(Perfil.gePerfil().getPersonajeId());
                 this.vista.setVisible(false);
                 break;
             case "cerrar":
-                System.out.println("Cerrar");
                 this.vista.setVisible(false);
                 break;
             case "David":
-                System.out.println("David");
                 seleccionarPersonaje(1);
                 break;
             case "Marco":
-                System.out.println("Marco");
                 seleccionarPersonaje(2);
                 break;
             case "Juan":
-                System.out.println("Juan");
                 seleccionarPersonaje(3);
-
                 break;
         }
     }

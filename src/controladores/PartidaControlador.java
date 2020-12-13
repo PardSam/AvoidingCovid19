@@ -5,15 +5,12 @@
  */
 package controladores;
 
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
-import javax.swing.InputMap;
-import javax.swing.KeyStroke;
 import modelos.Nivel1;
 import modelos.Nivel2;
 import modelos.Nivel3;
@@ -89,7 +86,6 @@ public class PartidaControlador implements ActionListener, KeyListener {
 
     @Override
     public void keyTyped(KeyEvent ke) {
-        System.out.println("saltar keyTyped");
 
     }
 
@@ -107,7 +103,7 @@ public class PartidaControlador implements ActionListener, KeyListener {
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        System.out.println("saltar keyReleased");
+       
 
     }
 }

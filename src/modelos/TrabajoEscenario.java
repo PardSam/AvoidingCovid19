@@ -56,7 +56,6 @@ public class TrabajoEscenario extends Escenario {
         ImageIcon escenario = new ImageIcon(getClass().getResource(this.rutaImagen));
         g.drawImage(escenario.getImage(), xInicial, yInicial, ancho, alto, null);
         g.drawImage(escenario.getImage(), xAuxiliar, yAuxiliar, ancho, alto, null);
-        System.out.println(this.rutaImagen);
     }
     
 }

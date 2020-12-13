@@ -57,26 +57,21 @@ public class EscenariosControlador implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "aceptar":
-                System.out.println("Aceptar");
                 Perfil perfil = Perfil.gePerfil();
                 perfil.setEscenarioId(opc);
                 perfil.setNivel(opc);
                 this.vista.setVisible(false);
                 break;
             case "cerrar":
-                System.out.println("Cerrar");
                 this.vista.setVisible(false);
                 break;
             case "Trabajo":
-                System.out.println("Trabajo");
                 seleccionarEscenario(1);
                 break;
             case "Hospital":
-                System.out.println("Hospital");
                 seleccionarEscenario(2);
                 break;
             case "Comisaria":
-                System.out.println("Comisaria");
                 seleccionarEscenario(3);
                 break;
         }

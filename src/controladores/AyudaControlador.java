@@ -42,16 +42,13 @@ public class AyudaControlador implements ActionListener, ComponentListener {
 
         switch (e.getActionCommand()) {
             case "atras":
-                System.out.println("Atras");
                 opcionAyuda(this.vista.imagenAyudaEtiqueta,1);
                 this.vista.imagenAyudaEtiqueta.updateUI();
                 break;
             case "siguiente":
-                System.out.println("Siguiente");
                 opcionAyuda(this.vista.imagenAyudaEtiqueta,2);
                 break;
             case "cerrar":
-                System.out.println("Cerrar");
                 this.vista.setVisible(false);
                 break;
         }
@@ -65,7 +62,6 @@ public class AyudaControlador implements ActionListener, ComponentListener {
     }
 
     public void opcionAyuda(JLabel etiqueta, int ayuda) {
-        System.out.println(op + "_____________________");
         if (ayuda == 1) {
             op--;
             if (op < 0) {

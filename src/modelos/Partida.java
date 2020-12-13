@@ -17,8 +17,8 @@ import javax.swing.JOptionPane;
 public abstract class Partida {
 
     private int puntaje;
-    private int proteccion = 3;
-    private int defensa = 0;
+    private int proteccion;
+    private int defensa ;
 
     private int ancho;
     private int alto;
@@ -35,7 +35,7 @@ public abstract class Partida {
     public Partida() {
         this.puntaje = 0;
         this.proteccion = 3;
-        this.defensa = 0;
+        this.defensa = 3;
         this.pierdeDefensa = false;
         this.pierdeProteccion = false;
         this.pausaPartida = false;
@@ -145,7 +145,7 @@ public abstract class Partida {
 
     public void bajarProteccion() {
         pierdeProteccion = true;
-        proteccion--;
+        //proteccion--;
     }
 
     public void bajarDefensa() {
@@ -225,30 +225,20 @@ public abstract class Partida {
 
     public void dibujarPuntaje(Graphics2D g) {
 
-        Graphics2D g1 = g, g2 = g;
+        Graphics2D g1 = g;
 
         Font score = new Font("Arial", Font.BOLD, 30);
         g.setFont(score);
         g.setColor(Color.white);
-        //g1.drawString("Vidas: " + vidas, 20, 45);
         g1.drawString("Nivel: " + Perfil.gePerfil().getNivel(), 450, 45);
         g1.drawString("Score: " + puntaje, 600, 45);
         g1.drawString("" + proteccion, 100, 55);
         g1.drawString("" + defensa, 100, 120);
-
-        /* if (this.finPartida) {
-            g2.setColor(Color.yellow);
-            g2.drawString("Perdiste", ((float)getBounds().getCenterX() / 2) + 170, 70);
-        }*/
     }
 
-    public void reiniciar() {
-        System.out.println("pierde");
-        JOptionPane.showMessageDialog(null, "Cuidado");
-        this.pierdeProteccion = false;
-        this.proteccion--;
-        this.personaje.setyAuxiliar(370);
+    public void reiniciar() {        
+        this.personaje.setyInicial(370);
         this.personaje.setSalta(false);
-        this.obstaculo.setxInicial(1024);
+        this.obstaculo.setxInicial(1400);
     }
 }

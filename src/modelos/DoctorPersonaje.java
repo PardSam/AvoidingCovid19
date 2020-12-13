@@ -32,9 +32,9 @@ public class DoctorPersonaje extends Personaje {
     
     private     Area piernaIzquierda, piernaDerecha, cuerpo, personajeArea;
 
-    @Override
-    public void setyAuxiliar(int yAuxiliar) {
-        this.yAuxiliar = yAuxiliar;
+   @Override
+    public void setyInicial(int yInicial) {
+        this.yInicial = yInicial;
     }
 
     public boolean isSalta() {

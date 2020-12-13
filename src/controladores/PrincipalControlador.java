@@ -8,7 +8,6 @@ package controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import modelos.Jugador;
 import vistas.AcercaVista;
 import vistas.AjustesVista;
 import vistas.AyudaVista;
@@ -89,42 +88,33 @@ public class PrincipalControlador implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "play":
-                System.out.println("Play");
-
                 partida = new PartidaVista();
                 controladorPartida = new PartidaControlador(partida);
                 partida.setVisible(true);
                 //this.vista.setVisible(false);
                 break;
             case "comenzar":
-                System.out.println("Comenzar");
                 partida = new PartidaVista();
                 controladorPartida = new PartidaControlador(partida);
                 partida.setVisible(true);
                 //this.vista.setVisible(false);
                 break;
             case "escenarios":
-                System.out.println("Escenarios");
                 escenario.setVisible(true);
                 break;
             case "personajes":
-                System.out.println("Personajes");
                 personaje.setVisible(true);
                 break;
             case "ranking":
-                System.out.println("Ranking");
                 ranking.setVisible(true);
                 break;
             case "ayuda":
-                System.out.println("Ayuda");
                 ayuda.setVisible(true);
                 break;
             case "info":
-                System.out.println("Info");
                 acerca.setVisible(true);
                 break;
             case "ajustes":
-                System.out.println("Ajustes");
                 ajustes.setVisible(true);
                 break;
             case "salir":

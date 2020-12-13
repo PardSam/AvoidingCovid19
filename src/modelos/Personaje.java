@@ -30,7 +30,7 @@ public abstract class Personaje {
     
     public abstract void setSalta(boolean salta);
     
-    public abstract void setyAuxiliar(int yAuxiliar);
+    public abstract void setyInicial(int yInicial);
 
     public abstract void mover();
 

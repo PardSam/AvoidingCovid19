@@ -11,6 +11,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import modelos.Partida;
@@ -56,12 +57,12 @@ public class PartidaPanel extends JPanel {
         this.partida.dibujar(g2);
         this.partida.dibujarPuntaje(g2);
 
-        if (!this.partida.isPausaPartida()) {
+        if (!this.partida.isPausaPartida() && this.partida.isFinPartida() == false) {
             this.updateUI();
         }
         if (this.partida.isFinPartida()) {
             g2.setColor(Color.yellow);
-            g2.drawString("Perdiste", ((float) getBounds().getCenterX() / 2) + 200, 300);
+            g2.drawString("Perdiste", ((float) getBounds().getCenterX() / 2) + 200, 300);      
         }
     }
 

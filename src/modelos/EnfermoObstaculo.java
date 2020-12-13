@@ -38,7 +38,7 @@ public class EnfermoObstaculo extends Obstaculo {
         if (getxInicial() <= -100) {
             getPartida().setPuntaje(getPartida().getPuntaje() + 1);
 
-            setxInicial(1300);
+            setxInicial(1024);
 
             /*
             if (getPartida().getPuntaje() == 3 || getPartida().getPuntaje() == 5 || getPartida().getPuntaje() == 9 || getPartida().getPuntaje() == 12) {
@@ -48,20 +48,16 @@ public class EnfermoObstaculo extends Obstaculo {
              */
         } else {
             if (colision()) {
-                if (getPartida().getDefensa() == 0) {
+                if (getPartida().getProteccion() == 1) {
                     getPartida().finalizarPartida();
-                } else {
-                    getPartida().bajarProteccion();
-                    //getPartida().bajarDefensa();
-                   
-                }
+                } 
+                this.colisionar();
+                
+                getPartida().reiniciar();
             } else {
                 setxInicial(getxInicial() + getxAuxiliar());
-                this.colisionar();
+
             }
-        }
-        if(getPartida().getProteccion() == 0){
-            getPartida().setFinPartida(true);
         }
     }
 

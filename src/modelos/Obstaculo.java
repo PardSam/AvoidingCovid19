@@ -91,7 +91,6 @@ public abstract class Obstaculo {
     public abstract Area getBounds();
 
     public boolean colision() {
-        System.out.println(getPartida().getPersonaje().getBounds());
         Area areaA = new Area(partida.getPersonaje().getBounds());
         areaA.intersect(getBounds());
 

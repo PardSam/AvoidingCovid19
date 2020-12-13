@@ -39,15 +39,12 @@ public class AjustesControlador implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "aceptar":
-                System.out.println("Aceptar");
                 metodoAceptar();
                 break;
             case "restablecer":
-                System.out.println("Restablecer");
                 metodoRestablecer();
                 break;
             case "cerrar":
-                System.out.println("Cerrar");
                 this.vista.setVisible(false);
                 break;
             case "Masculino":

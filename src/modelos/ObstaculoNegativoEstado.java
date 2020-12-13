@@ -13,10 +13,10 @@ public class ObstaculoNegativoEstado implements IObstaculoEstado {
 
     @Override
     public void colisionar(Partida partida) {
-        if (partida.getProteccion() >= 0 && partida.getProteccion() < 3) {
+        if (partida.getDefensa() > 0) {
+            partida.setDefensa(partida.getDefensa() - 1);        
+        }else if(partida.getDefensa() == 0 && partida.getProteccion()>0){
             partida.setProteccion(partida.getProteccion() - 1);
-        } else if (partida.getDefensa() >= 0 && partida.getDefensa() < 3) {
-            partida.setDefensa(partida.getDefensa() - 1);
         }
     }
 

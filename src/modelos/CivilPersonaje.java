@@ -75,6 +75,7 @@ public class CivilPersonaje extends Personaje {
         return yInicial;
     }
 
+    @Override
     public void setyInicial(int yInicial) {
         this.yInicial = yInicial;
     }
@@ -91,14 +92,13 @@ public class CivilPersonaje extends Personaje {
         return yAuxiliar;
     }
 
-    @Override
+
     public void setyAuxiliar(int yAuxiliar) {
         this.yAuxiliar = yAuxiliar;
     }
 
     @Override
     public void dibujar(Graphics2D g) {
-        System.out.println("DIbujo personaje");
         ImageIcon personaje = new ImageIcon(getClass().getResource(this.rutaImagen));
         g.drawImage(personaje.getImage(), xInicial, yInicial, ancho, alto, null);
     }
