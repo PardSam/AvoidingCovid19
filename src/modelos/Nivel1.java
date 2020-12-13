@@ -16,15 +16,11 @@ public class Nivel1 extends Partida {
         Perfil perfil = Perfil.gePerfil();
         setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
         setPersonaje(new PersonajeCreador().crear(perfil.getPersonajeId()));
+        setObstaculo(new EnfermoObstaculo(this));
     }
 
     @Override
     public void jugar() {
-    }
-
-    @Override
-    public boolean juegoFinalizado() {
-        return true;
     }
 
     @Override

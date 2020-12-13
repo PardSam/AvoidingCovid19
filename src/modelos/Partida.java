@@ -15,41 +15,30 @@ import java.awt.Graphics2D;
  */
 public abstract class Partida {
 
-    private Personaje personaje;
     private int puntaje;
     private int proteccion;
     private int defensa;
-    private int vidas;
-    private Escenario escenario;
-    private Obstaculo osctaculo = new ObstaculoNegativo(this);
+
     private int ancho;
     private int alto;
-    private boolean val = true;
-    public boolean juegoFinalizado = false;
-    public boolean pierdeVida = false;
 
-    public abstract void inicializar();
+    private boolean pierdeDefensa = false;
+    private boolean pierdeProteccion = false;
+    private boolean pausaPartida = false;
+    private boolean finPartida = false;
 
-    public abstract void jugar();
+    private Escenario escenario;
+    private Personaje personaje;
+    private Obstaculo obstaculo;
 
-    public abstract boolean juegoFinalizado();
-
-    public abstract void resultado();
-
-    public final void generar() {
-        inicializar();
-        while (!juegoFinalizado()) {
-            jugar();
-        }
-        resultado();
-    }
-
-    public Personaje getPersonaje() {
-        return personaje;
-    }
-
-    public void setPersonaje(Personaje personaje) {
-        this.personaje = personaje;
+    public Partida() {
+        this.puntaje = 0;
+        this.proteccion = 3;
+        this.defensa = 0;
+        this.pierdeDefensa = false;
+        this.pierdeProteccion = false;
+        this.pausaPartida = false;
+        this.finPartida = false;
     }
 
     public int getPuntaje() {
@@ -76,14 +65,6 @@ public abstract class Partida {
         this.defensa = defensa;
     }
 
-    public Escenario getEscenario() {
-        return escenario;
-    }
-
-    public void setEscenario(Escenario escenario) {
-        this.escenario = escenario;
-    }
-
     public int getAncho() {
         return ancho;
     }
@@ -100,12 +81,99 @@ public abstract class Partida {
         this.alto = alto;
     }
 
-    public boolean isVal() {
-        return val;
+    public boolean isPierdeProteccion() {
+        return pierdeProteccion;
     }
 
-    public void setVal(boolean val) {
-        this.val = val;
+    public void setPierdeProteccion(boolean pierdeProteccion) {
+        this.pierdeProteccion = pierdeProteccion;
+    }
+
+    public boolean isPierdeDefensa() {
+        return pierdeDefensa;
+    }
+
+    public void setPierdeDefensa(boolean pierdeDefensa) {
+        this.pierdeDefensa = pierdeDefensa;
+    }
+
+    public boolean isPausaPartida() {
+        return pausaPartida;
+    }
+
+    public void setPausaPartida(boolean pausaPartida) {
+        this.pausaPartida = pausaPartida;
+    }
+
+    public boolean isFinPartida() {
+        return finPartida;
+    }
+
+    public void setFinPartida(boolean finPartida) {
+        this.finPartida = finPartida;
+    }
+
+    public Escenario getEscenario() {
+        return escenario;
+    }
+
+    public void setEscenario(Escenario escenario) {
+        this.escenario = escenario;
+    }
+
+    public Personaje getPersonaje() {
+        return personaje;
+    }
+
+    public void setPersonaje(Personaje personaje) {
+        this.personaje = personaje;
+    }
+
+    public Obstaculo getObstaculo() {
+        return obstaculo;
+    }
+
+    public void setObstaculo(Obstaculo obstaculo) {
+        this.obstaculo = obstaculo;
+    }
+
+    public void finalizarPartida() {
+        finPartida = true;
+        pausaPartida = true;
+    }
+
+    public void bajarProteccion() {
+        pierdeProteccion = true;
+    }
+
+    public void bajarDefensa() {
+        pierdeDefensa = true;
+    }
+
+    public abstract void inicializar();
+
+    public abstract void jugar();
+
+    public abstract void resultado();
+
+    public final void generar() {
+        inicializar();
+        /*
+        while (true) {
+
+            if (partidaFinalizado) {
+                break;
+            }
+
+            panel.repaint();
+
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException err) {
+            }
+        }
+         */
+        resultado();
     }
 
     public void getComando(IComando comando) {
@@ -136,11 +204,12 @@ public abstract class Partida {
 
     }
 
-    public void dibujar(Graphics2D g, boolean val) {
+    public void dibujar(Graphics2D g) {
         escenario.dibujar(g);
         personaje.dibujar(g);
-        osctaculo.dibujar(g);
-        if (val) {
+        obstaculo.dibujar(g);
+
+        if (!pausaPartida) {
             mover();
         }
     }
@@ -148,7 +217,7 @@ public abstract class Partida {
     public void mover() {
         escenario.mover();
         personaje.mover();
-        osctaculo.mover();
+        obstaculo.mover();
     }
 
     public void dibujarPuntaje(Graphics2D g) {
@@ -167,16 +236,5 @@ public abstract class Partida {
             g2.setColor(Color.yellow);
             g2.drawString("Perdiste", ((float)getBounds().getCenterX() / 2) + 170, 70);
         }*/
-    }
-
-   public void finJuego() {       
-        juegoFinalizado = true;
-        this.val = false;
-    }
-
-    public void pierdeVida() {
-        
-        pierdeVida = true;
-        this.val = false;
     }
 }

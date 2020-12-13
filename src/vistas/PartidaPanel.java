@@ -48,15 +48,16 @@ public class PartidaPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponents(g);
+        
         Graphics2D g2 = (Graphics2D) g;
         gAuxiliar = g2;
-        this.partida.dibujar(g2, this.partida.isVal());
+        
+        this.partida.dibujar(g2);
         this.partida.dibujarPuntaje(g2);
-        if (this.partida.isVal()) {
+        
+        if (!this.partida.isPausaPartida()) {
             this.updateUI();
         }
-
-        System.out.println("hola");
 
     }
 
