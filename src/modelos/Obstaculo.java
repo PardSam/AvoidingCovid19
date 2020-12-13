@@ -84,6 +84,20 @@ public abstract class Obstaculo {
         this.partida = partida;
     }
 
+    public void negativo() {
+        this.estado = new ObstaculoNegativoEstado();
+
+    }
+
+    public void positivo() {
+        this.estado = new ObstaculoPositivoEstado();
+
+    }
+
+    public void colisionar() {
+        estado.colisionar(partida);
+    }
+
     public abstract void mover();
 
     public abstract void dibujar(Graphics2D g);
@@ -98,7 +112,4 @@ public abstract class Obstaculo {
         return !areaA.isEmpty();
     }
 
-    public void colisionar() {
-        estado.colisionar(partida);
-    }
 }
