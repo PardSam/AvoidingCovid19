@@ -6,8 +6,11 @@
 package modelos;
 
 /**
- *
- * @author aries
+ * AmbientePartidaDecorador
+ *Es una clase abstracta que define la estructura mínima de
+ *un Decorador.
+ *@version 13/12/2020/A
+ * @author Sanchez Pardo, Monja Vasquez, More Villegas, Diaz Coronado, Gonzales Cubas, Ugaz Arenas.
  */
 public abstract class AmbientePartidaDecorador extends Escenario{
     private Escenario decorado;
