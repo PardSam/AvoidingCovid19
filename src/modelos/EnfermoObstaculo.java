@@ -24,11 +24,14 @@ public class EnfermoObstaculo extends Obstaculo {
 
     public EnfermoObstaculo(Partida partida) {
         super(partida);
-        this.rutaImagen = "/assets/personajes/juan/normal.png";
-        setAncho(112);
-        setAlto(110);
+        this.rutaImagen = "/assets/enfermo.png";
+        setAncho(70);
+        setAlto(145);
+        // setAncho(112);
+        // setAlto(110);
         setxInicial(1024);
-        setyInicial(370);
+        setyInicial(335);
+        // setyInicial(370);
         setxAuxiliar(-4);
         setyAuxiliar(0);
     }
@@ -50,9 +53,9 @@ public class EnfermoObstaculo extends Obstaculo {
             if (colision()) {
                 if (getPartida().getProteccion() == 1) {
                     getPartida().finalizarPartida();
-                } 
+                }
                 this.colisionar();
-                
+
                 getPartida().reiniciar();
             } else {
                 setxInicial(getxInicial() + getxAuxiliar());

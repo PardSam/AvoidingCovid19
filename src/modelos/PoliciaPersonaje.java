@@ -23,12 +23,12 @@ public class PoliciaPersonaje extends Personaje {
     private boolean salta = false;
     private int tipo;
     private String rutaImagen;
-    private int ancho = 112;
-    private int alto = 110;
+    private int ancho = 70;
+    private int alto = 145;
 
  
     private int xInicial = 50;
-    private int yInicial = 370;
+    private int yInicial = 335;
     private int xAuxiliar = 0;
     private int yAuxiliar = 0;
 
