@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vistas;
 
 import java.awt.Container;
@@ -13,7 +8,6 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,8 +17,15 @@ import ui.MiBoton;
 import ui.Paleta;
 
 /**
+ * Representa la vista del menú Personajes.
  *
- * @author fernandomonjav
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado,
+ * @author Gonzales Cubas,
+ * @author Ugaz Arenas.
  */
 public class PersonajesVista extends JFrame {
 
@@ -37,6 +38,9 @@ public class PersonajesVista extends JFrame {
     public JPanel principalPanel;
     public JPanel barraAccionesPanel;
 
+    /**
+     * Constructor
+     */
     public PersonajesVista() {
         setSize(new Dimension(680, 380));
         setLocationRelativeTo(null);
@@ -45,6 +49,9 @@ public class PersonajesVista extends JFrame {
         inicializarComponentes();
     }
 
+    /**
+     * Inicializa todos los componentes
+     */
     public void inicializarComponentes() {
         // Crear las etiquetas
         tituloEtiqueta = new JLabel("PERSONAJES");
@@ -103,6 +110,9 @@ public class PersonajesVista extends JFrame {
 
     }
 
+    /**
+     * Crea el panel para el encabezado
+     */
     private void crearEncabezadoPanel() {
         encabezadoPanel = new JPanel();
         encabezadoPanel.setBorder(new EmptyBorder(8, 0, 0, 0));
@@ -111,6 +121,9 @@ public class PersonajesVista extends JFrame {
         encabezadoPanel.add(tituloEtiqueta);
     }
 
+    /**
+     * Crea el Panel Principal
+     */
     private void crearPrincipalPanel() {
         principalPanel = new JPanel();
         GridLayout grid = new GridLayout(1, 3);
@@ -121,6 +134,9 @@ public class PersonajesVista extends JFrame {
 
     }
 
+    /**
+     * Crea el panel para la barra de acciones
+     */
     private void crearBarraAcionesPanel() {
         barraAccionesPanel = new JPanel();
         barraAccionesPanel.setLayout(new BoxLayout(barraAccionesPanel, BoxLayout.X_AXIS));

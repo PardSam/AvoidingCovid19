@@ -1,26 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vistas;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import modelos.Partida;
 
 /**
+ * Representa el Panel Partida.
  *
- * @author aries
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado,
+ * @author Gonzales Cubas,
+ * @author Ugaz Arenas.
  */
 public class PartidaPanel extends JPanel {
 
@@ -31,24 +29,45 @@ public class PartidaPanel extends JPanel {
     private JLabel mascarilla;
     private ImageIcon imagen;
 
+    /**
+     * obtiene gAuxiliar
+     *
+     * @return gAuxiliar
+     */
     public Graphics2D getgAuxiliar() {
         return gAuxiliar;
     }
 
+    /**
+     * Establece gAuxiliar
+     *
+     * @param gAuxiliar
+     */
     public void setgAuxiliar(Graphics2D gAuxiliar) {
         this.gAuxiliar = gAuxiliar;
     }
 
+    /**
+     * Constructor
+     */
     public PartidaPanel() {
 
     }
 
+    /**
+     * Constructor
+     */
     public PartidaPanel(Partida partida) {
         this.partida = partida;
         setLayout(null);
         componentes();
     }
 
+    /**
+     * Pinta los componentes
+     *
+     * @param: Graphics
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponents(g);
@@ -63,10 +82,10 @@ public class PartidaPanel extends JPanel {
             this.partida.mover();
             this.updateUI();
             try {
-                    Thread.sleep(5);
-                } catch(InterruptedException err) {
-                  
-                }
+                Thread.sleep(5);
+            } catch (InterruptedException err) {
+
+            }
         }
         /*if (this.partida.isFinPartida()) {
             g2.setColor(Color.yellow);
@@ -74,6 +93,9 @@ public class PartidaPanel extends JPanel {
         }*/
     }
 
+    /**
+     * inicia los componentes
+     */
     public void componentes() {
         player = new JRadioButton();
         player.setBounds(890, 15, 55, 55);

@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vistas;
 
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -25,8 +19,15 @@ import ui.MiBoton;
 import ui.Paleta;
 
 /**
+ * Representa la vista del menú Ayuda.
  *
- * @author aries
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado,
+ * @author Gonzales Cubas,
+ * @author Ugaz Arenas.
  */
 public class AyudaVista extends JFrame {
 
@@ -40,43 +41,48 @@ public class AyudaVista extends JFrame {
     public JPanel encabezadoPanel;
     public JPanel principalPanel;
     public JPanel barraAccionesPanel;
-    
-        
+
     public int width;
-    public int height;  
-    
+    public int height;
+
+    /**
+     * Constructor
+     */
     public AyudaVista() {
         this.setSize(500, 400);
         iniciarComponentes();
     }
 
+    /**
+     * Inicia todos los componentes
+     */
     public void iniciarComponentes() {
 
         tituloEtiqueta = new JLabel("AYUDA");
         Font font = new Font("Roboto", Font.BOLD, 32);
         tituloEtiqueta.setFont(font);
         tituloEtiqueta.setForeground(Paleta.getPlanoPrimario());
-        
+
         imgAyuda = new ImageIcon(getClass().getResource("/assets/img__ayuda-1.png"));
         imagenAyudaEtiqueta = new JLabel();
-        imagenAyudaEtiqueta.setSize(320,160);
+        imagenAyudaEtiqueta.setSize(320, 160);
         imagenAyudaEtiqueta.setIcon(new ImageIcon(imgAyuda.getImage().getScaledInstance(imagenAyudaEtiqueta.
-                getWidth(), imagenAyudaEtiqueta.getHeight(),Image.SCALE_SMOOTH)));
-        
+                getWidth(), imagenAyudaEtiqueta.getHeight(), Image.SCALE_SMOOTH)));
+
         atrasBoton = new MiBoton();
         atrasBoton.setText("Atras");
         atrasBoton.setForeground(Paleta.getPlanoPrimario());
         atrasBoton.setBackground(Paleta.getFondoSuperficie());
-        
+
         siguienteBoton = new MiBoton();
         siguienteBoton.setText("Siguiente");
-         siguienteBoton.setForeground(Paleta.getPlanoPrimario());
+        siguienteBoton.setForeground(Paleta.getPlanoPrimario());
         siguienteBoton.setBackground(Paleta.getFondoSuperficie());
-        
+
         cerrarBoton = new MiBoton();
         cerrarBoton.setText("Cerrar");
         cerrarBoton.setForeground(Paleta.getPlanoPrimario());
-        cerrarBoton.setBackground(Paleta.getFondoSuperficie());        
+        cerrarBoton.setBackground(Paleta.getFondoSuperficie());
 
         atrasBoton.setActionCommand("atras");
         siguienteBoton.setActionCommand("siguiente");
@@ -117,6 +123,9 @@ public class AyudaVista extends JFrame {
         contenedor.add(generalPanel);
     }
 
+    /**
+     * Crea el panel para el encabezado
+     */
     private void crearEncabezadoPanel() {
         encabezadoPanel = new JPanel();
         encabezadoPanel.setBorder(new EmptyBorder(10, 0, 0, 0));
@@ -125,6 +134,9 @@ public class AyudaVista extends JFrame {
         encabezadoPanel.add(tituloEtiqueta);
     }
 
+    /**
+     * Crea el Panel Principal
+     */
     private void crearPrincipalPanel() {
         principalPanel = new JPanel();
         principalPanel.setLayout(new BoxLayout(principalPanel, BoxLayout.PAGE_AXIS));
@@ -136,8 +148,11 @@ public class AyudaVista extends JFrame {
         //principalPanel.add(Box.createHorizontalStrut(30));
     }
 
+    /**
+     * Crea el panel para la barra de acciones
+     */
     private void crearBarraAccionesPanel() {
-       barraAccionesPanel = new JPanel();
+        barraAccionesPanel = new JPanel();
         barraAccionesPanel.setLayout(new BoxLayout(barraAccionesPanel, BoxLayout.X_AXIS));
         barraAccionesPanel.setBorder(new EmptyBorder(15, 8, 8, 8));
         barraAccionesPanel.setOpaque(false);

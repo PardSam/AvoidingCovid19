@@ -1,12 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vistas;
 
-import controladores.PrincipalControlador;
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -26,8 +19,15 @@ import ui.Paleta;
 import ui.MiBotonIcono;
 
 /**
+ * Representa la vista del menú Principal.
  *
- * @author fernandomonjav
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado,
+ * @author Gonzales Cubas,
+ * @author Ugaz Arenas.
  */
 public class PrincipalVista extends JFrame {
 
@@ -49,12 +49,18 @@ public class PrincipalVista extends JFrame {
     public JPanel barraAccionesPanel;
     public JPanel generalPanel;
 
+    /**
+     * Constructor
+     */
     public PrincipalVista() {
         setMinimumSize(new Dimension(1024, 576));
 
         inicializarComponentes();
     }
 
+    /**
+     * Inicializa todos los componentes
+     */
     public void inicializarComponentes() {
         // Crear los botones
         nombreEtiqueta = new JLabel("Avoiding COVID 19");
@@ -157,6 +163,9 @@ public class PrincipalVista extends JFrame {
 
     }
 
+    /**
+     * Crea el panel para el encabezado
+     */
     public void crearEncabezadoPanel() {
         encabezadoPanel = new JPanel();
         encabezadoPanel.setBorder(new EmptyBorder(32, 0, 0, 0));
@@ -165,6 +174,9 @@ public class PrincipalVista extends JFrame {
         encabezadoPanel.add(nombreEtiqueta);
     }
 
+    /**
+     * Crea el Panel Principal
+     */
     public void crearPrincipalPanel() {
         principalPanel = new JPanel();
         principalPanel.setLayout(new BoxLayout(principalPanel, BoxLayout.X_AXIS));
@@ -175,6 +187,9 @@ public class PrincipalVista extends JFrame {
         principalPanel.add(Box.createHorizontalGlue());
     }
 
+    /**
+     * Crea el panel para la barra de acciones
+     */
     private void crearBarraAccionesPanel() {
         barraAccionesPanel = new JPanel();
         barraAccionesPanel.setLayout(new BoxLayout(barraAccionesPanel, BoxLayout.X_AXIS));

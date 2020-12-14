@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vistas;
 
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -13,7 +7,6 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,8 +17,15 @@ import ui.MiBoton;
 import ui.Paleta;
 
 /**
+ * Representa la vista del menú Acerca.
  *
- * @author aries
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado,
+ * @author Gonzales Cubas,
+ * @author Ugaz Arenas.
  */
 public class AcercaVista extends JFrame {
 
@@ -38,11 +38,17 @@ public class AcercaVista extends JFrame {
     public JPanel principalPanel;
     public JPanel barraAccionesPanel;
 
+    /**
+     * Constructor
+     */
     public AcercaVista() {
         this.setSize(540, 320);
         iniciarComponentes();
     }
 
+    /**
+     * Inicia los componentes
+     */
     private void iniciarComponentes() {
         tituloEtiqueta = new JLabel("ACERCA");
         Font font = new Font("Roboto", Font.BOLD, 24);
@@ -106,6 +112,9 @@ public class AcercaVista extends JFrame {
         contenedor.add(generalPanel);
     }
 
+    /**
+     * Crea el panel para el encabezado
+     */
     private void crearEncabezadoPanel() {
         encabezadoPanel = new JPanel();
         encabezadoPanel.setBorder(new EmptyBorder(10, 0, 0, 0));
@@ -114,6 +123,9 @@ public class AcercaVista extends JFrame {
         encabezadoPanel.add(tituloEtiqueta);
     }
 
+    /**
+     * crea el panel principal
+     */
     private void crearPrincipalPanel() {
         principalPanel = new JPanel();
         principalPanel.setLayout(new BoxLayout(principalPanel, BoxLayout.X_AXIS));
@@ -124,6 +136,9 @@ public class AcercaVista extends JFrame {
         principalPanel.add(Box.createHorizontalStrut(30));
     }
 
+    /**
+     * Crea el panel para la barra de acciones
+     */
     private void crearBarraAccionesPanel() {
         barraAccionesPanel = new JPanel();
         barraAccionesPanel.setLayout(new BoxLayout(barraAccionesPanel, BoxLayout.X_AXIS));
