@@ -19,7 +19,10 @@ import modelos.IComando;
 import modelos.TrabajoPartida;
 import modelos.HospitalPartida;
 import modelos.ComisariaPartida;
+import modelos.ContinuarComando;
+import modelos.ContinuarPausarComando;
 import modelos.Partida;
+import modelos.PartidaCaretaker;
 import modelos.PausarComando;
 import modelos.Perfil;
 import modelos.SaltarComando;
@@ -30,7 +33,7 @@ import vistas.PartidaVista;
  *
  * @author Fernando
  */
-public class PartidaControlador implements ActionListener, KeyListener,WindowListener {
+public class PartidaControlador implements ActionListener, KeyListener, WindowListener {
 
     public Partida partida;
 
@@ -39,22 +42,31 @@ public class PartidaControlador implements ActionListener, KeyListener,WindowLis
     public PartidaVista vista;
     public PartidaPanel partidaPanel;
 
-    public PartidaControlador(PartidaVista vista) {
-        this.vista = vista;
-        this.vista.addWindowListener(this);
+    public PartidaCaretaker partidaCaretaker;
 
-        switch (Perfil.gePerfil().getNivel()) {
-            case 1:
-                partida = new TrabajoPartida();
-                break;
-            case 2:
-                partida = new HospitalPartida();
-                break;
-            case 3:
-                partida = new ComisariaPartida();
-                break;
-            default:
-                partida = new TrabajoPartida();
+    public PartidaControlador(PartidaVista vista, PartidaCaretaker partidaCaretaker) {
+        this.vista = vista;
+
+        this.partidaCaretaker = partidaCaretaker;
+
+        if (partidaCaretaker.getEstados().size() > 0) {
+            partida = partidaCaretaker.getMemento(partidaCaretaker.getEstados().size() - 1).getEstadoGuardado();
+        } else {
+
+            switch (Perfil.gePerfil().getNivel()) {
+                case 1:
+                    partida = new TrabajoPartida();
+                    break;
+                case 2:
+                    partida = new HospitalPartida();
+                    break;
+                case 3:
+                    partida = new ComisariaPartida();
+                    break;
+                default:
+                    partida = new TrabajoPartida();
+            }
+
         }
 
         partidaPanel = new PartidaPanel(partida);
@@ -63,14 +75,17 @@ public class PartidaControlador implements ActionListener, KeyListener,WindowLis
 
         partida.generar();
 
+        this.vista.addWindowListener(this);
         this.vista.partidaPanel.player.addActionListener(this);
 
         this.vista.partidaPanel.setFocusable(true);
         this.vista.partidaPanel.addKeyListener(this);
 
+        ejecutarComando(new ContinuarComando(this));
+
         this.vista.setLocationRelativeTo(null);
 
-        vista.setVisible(true);
+        vista.setVisible(false);
 
     }
 
@@ -83,7 +98,7 @@ public class PartidaControlador implements ActionListener, KeyListener,WindowLis
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Player":
-                ejecutarComando(new PausarComando(this));
+                ejecutarComando(new ContinuarPausarComando(this));
                 break;
         }
     }
@@ -100,7 +115,7 @@ public class PartidaControlador implements ActionListener, KeyListener,WindowLis
         }
 
         if (ke.getKeyCode() == KeyEvent.VK_P) {
-            this.partidaPanel.player.doClick();
+            ejecutarComando(new ContinuarPausarComando(this));
         }
 
     }
@@ -113,35 +128,45 @@ public class PartidaControlador implements ActionListener, KeyListener,WindowLis
     @Override
     public void windowOpened(WindowEvent e) {
     }
+    
+    
 
     @Override
     public void windowClosing(WindowEvent e) {
-        Component frame;
-        if (JOptionPane.showConfirmDialog(this.vista, 
-            "Are you sure you want to close this window?", "Close Window?", 
-            JOptionPane.YES_NO_OPTION,
-            JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-           
+        ejecutarComando(new PausarComando(this));
+
+        int confirmar = JOptionPane.showConfirmDialog(this.vista,
+                "Are you sure you want to close this window?", "Close Window?",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        if (confirmar == JOptionPane.YES_OPTION) {
+            partidaCaretaker.agregarMemento(partida.guardarEstado());
         }
     }
 
     @Override
-    public void windowClosed(WindowEvent e) {
+    public void windowClosed(WindowEvent e
+    ) {
     }
 
     @Override
-    public void windowIconified(WindowEvent e) {
+    public void windowIconified(WindowEvent e
+    ) {
     }
 
     @Override
-    public void windowDeiconified(WindowEvent e) {
+    public void windowDeiconified(WindowEvent e
+    ) {
     }
 
     @Override
-    public void windowActivated(WindowEvent e) {
+    public void windowActivated(WindowEvent e
+    ) {
     }
 
     @Override
-    public void windowDeactivated(WindowEvent e) {
+    public void windowDeactivated(WindowEvent e
+    ) {
     }
 }

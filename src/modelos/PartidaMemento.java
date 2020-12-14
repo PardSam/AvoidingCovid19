@@ -9,15 +9,14 @@ package modelos;
  *
  * @author aries
  */
-public class ScoreCaretaker {
+public class PartidaMemento {
+    private Partida estado;
 
-    private ScoreMemento estado;
-
-    public void agregarMemento(ScoreMemento estado) {
-
+    public PartidaMemento(Partida estado) {
+        this.estado = estado;
     }
-
-    public void getMemento() {
-
+    
+    public Partida getEstadoGuardado() {
+        return estado;
     }
 }
