@@ -19,7 +19,7 @@ public abstract class Partida extends PartidaSujeto{
     private int puntaje;
     private int puntajePartida;
     private int proteccion;
-    private int defensa ;
+    private int defensa;
 
     private int ancho;
     private int alto;
@@ -30,7 +30,7 @@ public abstract class Partida extends PartidaSujeto{
     private boolean finPartida = false;
     private boolean ganarPartida = false;
     private boolean horario = true;
-    
+
     private Escenario escenario;
     private Personaje personaje;
     private Obstaculo obstaculo;
@@ -206,19 +206,24 @@ public abstract class Partida extends PartidaSujeto{
         resultado();
     }
 
-    public void getComando(IComando comando) {
-
+    public PartidaMemento guardarEstado() {
+        return new PartidaMemento(this);
     }
 
-    public IComando setComando() {
+    public void recuperarEstado(PartidaMemento estado) {
+        this.proteccion = estado.getEstadoGuardado().getProteccion();
+        this.defensa = estado.getEstadoGuardado().getDefensa();
+        this.puntaje = estado.getEstadoGuardado().getPuntaje();
+        this.escenario = estado.getEstadoGuardado().getEscenario();
+        this.personaje = estado.getEstadoGuardado().getPersonaje();
+        this.obstaculo = estado.getEstadoGuardado().getObstaculo();
+    }
+
+    public PartidaMemento crearScoreMemento() {
         return null;
     }
 
-    public ScoreMemento crearScoreMemento() {
-        return null;
-    }
-
-    public ScoreMemento setScoreMemento() {
+    public PartidaMemento setScoreMemento() {
         return null;
     }
 
@@ -256,7 +261,7 @@ public abstract class Partida extends PartidaSujeto{
         g1.drawString("" + defensa, 100, 120);
     }
 
-    public void reiniciar() {        
+    public void reiniciar() {
         this.personaje.setyInicial(370);
         this.personaje.setSalta(false);
         this.obstaculo.setxInicial(1400);

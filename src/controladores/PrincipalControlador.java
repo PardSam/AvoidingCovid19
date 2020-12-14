@@ -8,7 +8,7 @@ package controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import modelos.Perfil;
+import modelos.PartidaCaretaker;
 import vistas.AcercaVista;
 import vistas.AjustesVista;
 import vistas.AyudaVista;
@@ -39,6 +39,8 @@ public class PrincipalControlador implements ActionListener {
     public PartidaControlador controladorPartida;
     public RankingVista ranking;
     public RankingControlador controladorRanking;
+
+    public PartidaCaretaker partidaCaretaker;
 
     public PrincipalControlador(PrincipalVista vista) {
         this.vista = vista;
@@ -80,6 +82,8 @@ public class PrincipalControlador implements ActionListener {
         ajustes.setVisible(true);
         ranking.setVisible(false);
 
+        partidaCaretaker = new PartidaCaretaker();
+        
         this.vista.setLocationRelativeTo(null);
         this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -90,15 +94,13 @@ public class PrincipalControlador implements ActionListener {
         switch (e.getActionCommand()) {
             case "play":
                 partida = new PartidaVista();
-                controladorPartida = new PartidaControlador(partida);
+                controladorPartida = new PartidaControlador(partida, partidaCaretaker);
                 partida.setVisible(true);
-                //this.vista.setVisible(false);
                 break;
             case "comenzar":
                 partida = new PartidaVista();
-                controladorPartida = new PartidaControlador(partida);
+                controladorPartida = new PartidaControlador(partida, partidaCaretaker);
                 partida.setVisible(true);
-                //this.vista.setVisible(false);
                 break;
             case "escenarios":
                 controladorEscenario.cargar();

@@ -25,7 +25,6 @@ public class PartidaVista extends JFrame {
         setMinimumSize(new Dimension(1024, 576));
         setLocationRelativeTo(null);
         // inicializarComponentes();
-        this.setVisible(true);
     }
 
     public void inicializarComponentes(PartidaPanel panel) {
