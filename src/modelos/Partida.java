@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author aries
  */
-public abstract class Partida {
+public abstract class Partida extends PartidaSujeto{
 
     private int puntaje;
     private int puntajePartida;
@@ -167,7 +167,7 @@ public abstract class Partida {
 
     public void finalizarPartida() {
         finPartida = true;
-        //pausaPartida = true;
+        this.notificar();
     }
 
     public void bajarProteccion() {
@@ -222,9 +222,6 @@ public abstract class Partida {
         return null;
     }
 
-    public void notificar() {
-
-    }
 
     public void agregarObservador(IPartidaObservador observador) {
 

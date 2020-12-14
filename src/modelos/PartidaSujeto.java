@@ -5,16 +5,29 @@
  */
 package modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author aries
  */
-public abstract class PartidaSujeto implements IPartidaObservador {
+public abstract class PartidaSujeto  {
 
-    public abstract void agregar(IPartidaObservador observador);
+    protected List<IPartidaObservador> listaObservadores = new ArrayList<>();
 
-    public abstract void remover(IPartidaObservador observador);
+    public  void agregar(IPartidaObservador observador){
+        listaObservadores.add(observador);
+    }
 
-    @Override
-    public abstract void notificar();
+    public  void remover(IPartidaObservador observador){
+        listaObservadores.remove(observador);
+    }
+
+
+    public  void notificar(){
+        for (int i = 0; i < listaObservadores.size(); i++) {
+            listaObservadores.get(i).notificar();
+        }
+    }
 }

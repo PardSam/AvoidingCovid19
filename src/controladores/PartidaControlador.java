@@ -23,6 +23,7 @@ import modelos.Partida;
 import modelos.PausarComando;
 import modelos.Perfil;
 import modelos.SaltarComando;
+import modelos.VidaConcretoObservador;
 import vistas.PartidaPanel;
 import vistas.PartidaVista;
 
@@ -56,7 +57,8 @@ public class PartidaControlador implements ActionListener, KeyListener,WindowLis
             default:
                 partida = new TrabajoPartida();
         }
-
+        partida.agregar(new VidaConcretoObservador(partida));
+        
         partidaPanel = new PartidaPanel(partida);
 
         this.vista.inicializarComponentes(partidaPanel);
