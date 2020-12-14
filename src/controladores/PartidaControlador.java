@@ -71,7 +71,7 @@ public class PartidaControlador implements ActionListener, KeyListener, WindowLi
             }
             
         }
-        partida.agregar(new VidaConcretoObservador(partida));
+        partida.agregar(new VidaConcretoObservador(partida, this));
         
         partidaPanel = new PartidaPanel(partida);
         
