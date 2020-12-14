@@ -59,6 +59,7 @@ public class AjustesVista extends JFrame {
     public AjustesVista() {
         this.setSize(400, 320);
         iniciarComponentes();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
     }
 
     /**

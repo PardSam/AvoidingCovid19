@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelos;
 
 import controladores.PartidaControlador;
@@ -10,17 +5,28 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author aries
+ * descripcion
+ * @version 13/12/2020/A*@version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author  Monja Vasquez
+ * @author  More Villegas
+ * @author  Diaz Coronado, 
+ * @author  Gonzales Cubas,
+ * @author  Ugaz Arenas.
  */
 public class PausarComando implements IComando {
 
     private PartidaControlador controlador;
-
+    /**
+     * Comando para pausar la partida
+     * @param controlador parametro que indica si se pausa el juego 
+     */
     public PausarComando(PartidaControlador controlador) {
         this.controlador = controlador;
     }
-
+    /**
+     * Es la funcion que ejecuta la pausa en la Partida
+     */
     @Override
     public void ejecutar() {
         controlador.playerIcon = new ImageIcon(getClass().getResource("/assets/play.png"));

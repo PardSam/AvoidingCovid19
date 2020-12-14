@@ -1,16 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelos;
 
 /**
- *
- * @author aries
+ *Es una clase abstracta que define la estructura mínima de
+ *un Decorador.
+ *@version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author  Monja Vasquez
+ * @author  More Villegas
+ * @author  Diaz Coronado, 
+ * @author  Gonzales Cubas,
+ * @author  Ugaz Arenas.
  */
 public class ComisariaPartida extends Partida {
-
+    /**
+     * Inicialización del Nivel 3
+     */
     @Override
     public void inicializar() {
         setPuntajePartida(30);
@@ -29,11 +33,15 @@ public class ComisariaPartida extends Partida {
         setPersonaje(new PersonajeCreador().crear(perfil.getPersonajeId()));
         setObstaculo(new EnfermoObstaculo(this));
     }
-
+    /**
+     * Jugar el Nivel 3
+     */
     @Override
     public void jugar() {
     }
-
+    /**
+     * Resultados del Nivel 3
+     */
     @Override
     public void resultado() {
     }
