@@ -1,22 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JButton;
 
+/**
+ * Diseño de botones extendido de JButton
+ *
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas.
+ */
 public class MiBoton extends JButton {
 
     private Shape shape;
     private int borderRadius = 32;
 
+    /**
+     * Constructor
+     */
     public MiBoton() {
         super();
         setOpaque(false);
@@ -26,6 +34,11 @@ public class MiBoton extends JButton {
         setFont(new Font("Roboto", Font.BOLD, 12));
     }
 
+    /**
+     * Pinta componentes
+     *
+     * @param g Gráficos
+     */
     @Override
     protected void paintComponent(Graphics g) {
         g.setColor(getBackground());
@@ -33,12 +46,23 @@ public class MiBoton extends JButton {
         super.paintComponent(g);
     }
 
+    /**
+     * Pinta los bordes
+     *
+     * @param g Gráficos
+     */
     @Override
     protected void paintBorder(Graphics g) {
         g.setColor(getBackground());
         g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, borderRadius, borderRadius);
     }
 
+    /**
+     * Contenedor
+     *
+     * @param x posicion
+     * @param y posicion
+     */
     @Override
     public boolean contains(int x, int y) {
         if (shape == null || !shape.getBounds().equals(getBounds())) {

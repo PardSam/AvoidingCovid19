@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controladores;
 
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -31,8 +25,16 @@ import vistas.PartidaPanel;
 import vistas.PartidaVista;
 
 /**
+ * Representa una implementación de ActionListener, KeyListener y WindowListener
+ * para el Controlador de Partida
  *
- * @author Fernando
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas.
  */
 public class PartidaControlador implements ActionListener, KeyListener, WindowListener {
 
@@ -45,6 +47,11 @@ public class PartidaControlador implements ActionListener, KeyListener, WindowLi
 
     public PartidaCaretaker partidaCaretaker;
 
+    /**
+     * Vista de la partida y sus diferentes aspectos.
+     *
+     * @param vista Diseño
+     */
     public PartidaControlador(PartidaVista vista, PartidaCaretaker partidaCaretaker) {
         this.vista = vista;
 
@@ -93,11 +100,21 @@ public class PartidaControlador implements ActionListener, KeyListener, WindowLi
 
     }
 
+    /**
+     * Ejecuta los comandos que se le asigne
+     *
+     * @param comando comando
+     */
     private void ejecutarComando(IComando comando) {
         ControlInvocador control = new ControlInvocador(comando);
         control.run();
     }
 
+    /**
+     * Detectar y manejar la acción sobre el evento
+     *
+     * @param e Acción en el evento
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
@@ -107,11 +124,22 @@ public class PartidaControlador implements ActionListener, KeyListener, WindowLi
         }
     }
 
+    /**
+     * Ejecutar cuando presiona una tecla, pero que esta corresponda a
+     * caracteres
+     *
+     * @param KeyEvent llave del evento
+     */
     @Override
     public void keyTyped(KeyEvent ke) {
 
     }
 
+    /**
+     * Ejecutar cuando se presiona la tecla space
+     *
+     * @param KeyEvent llave del evento
+     */
     @Override
     public void keyPressed(KeyEvent ke) {
         if (ke.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -124,15 +152,30 @@ public class PartidaControlador implements ActionListener, KeyListener, WindowLi
 
     }
 
+    /**
+     * Se ejecuta cuando se libera la tecla
+     *
+     * @param KeyEvent llave del evento
+     */
     @Override
     public void keyReleased(KeyEvent ke) {
 
     }
 
+    /**
+     * Muestra una ventana por primera vez
+     *
+     * @param WindowEvent ventana
+     */
     @Override
     public void windowOpened(WindowEvent e) {
     }
 
+    /**
+     * Elimina la ventana de la pantalla
+     *
+     * @param WindowEvent ventana
+     */
     @Override
     public void windowClosing(WindowEvent e) {
         ejecutarComando(new PausarComando(this));
@@ -140,8 +183,8 @@ public class PartidaControlador implements ActionListener, KeyListener, WindowLi
         if (partida.isFinPartida()) {
             JOptionPane.showMessageDialog(null, "Fin de partida");
             perfil.setContinuarPartida(false);
-        }else{
-            
+        } else {
+
             int confirmar = JOptionPane.showConfirmDialog(this.vista,
                     "Are you sure you want to close this window?", "Close Window?",
                     JOptionPane.YES_NO_OPTION,
@@ -156,26 +199,51 @@ public class PartidaControlador implements ActionListener, KeyListener, WindowLi
 
     }
 
+    /**
+     * Cierra la ventana de la pantalla
+     *
+     * @param WindowEvent ventana
+     */
     @Override
     public void windowClosed(WindowEvent e
     ) {
     }
 
+    /**
+     * Reducir la ventana a ícono
+     *
+     * @param WindowEvent ventana
+     */
     @Override
     public void windowIconified(WindowEvent e
     ) {
     }
 
+    /**
+     * Restaura la ventana a tamaño original
+     *
+     * @param WindowEvent ventana
+     */
     @Override
     public void windowDeiconified(WindowEvent e
     ) {
     }
 
+    /**
+     * Ventana enfocada
+     *
+     * @param WindowEvent ventana
+     */
     @Override
     public void windowActivated(WindowEvent e
     ) {
     }
 
+    /**
+     * Ventana desenfocada
+     *
+     * @param WindowEvent ventana
+     */
     @Override
     public void windowDeactivated(WindowEvent e
     ) {

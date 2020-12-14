@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controladores;
 
 import java.awt.Image;
@@ -14,8 +9,16 @@ import modelos.Perfil;
 import vistas.AjustesVista;
 
 /**
+ * Representa una implementación de ActionListener para el Controlador de la
+ * ventana Ajustes
  *
- * @author aries
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas.
  */
 public class AjustesControlador implements ActionListener {
 
@@ -23,6 +26,11 @@ public class AjustesControlador implements ActionListener {
     private ImageIcon masculinoImagen;
     private ImageIcon femeninoImagen;
 
+    /**
+     * Controla la vista de la ventana Ajustes.
+     *
+     * @param vista Diseño
+     */
     public AjustesControlador(AjustesVista vista) {
         this.vista = vista;
 
@@ -36,6 +44,11 @@ public class AjustesControlador implements ActionListener {
         this.vista.setVisible(false);
     }
 
+    /**
+     * Detectar y manejar la acción sobre el evento
+     *
+     * @param e Acción en el evento
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
@@ -57,6 +70,9 @@ public class AjustesControlador implements ActionListener {
         }
     }
 
+    /**
+     * Validación para que el llenado de información
+     */
     public void metodoAceptar() {
         if ("".equals(this.vista.nombreCaja.getText()) || this.vista.masculino.isSelected() == false && this.vista.femenino.isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Rellene todos los datos");
@@ -67,6 +83,9 @@ public class AjustesControlador implements ActionListener {
         }
     }
 
+    /**
+     * Selección del género masculino
+     */
     public void metodoMasculino() {
         masculinoImagen = new ImageIcon(getClass().getResource("/assets/masculino-activo.png"));
         this.vista.masculino.setIcon(new ImageIcon(masculinoImagen.getImage().
@@ -77,6 +96,9 @@ public class AjustesControlador implements ActionListener {
                 getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
     }
 
+    /**
+     * Selección del género femenino
+     */
     public void metodoFemenino() {
         femeninoImagen = new ImageIcon(getClass().getResource("/assets/femenino-activo.png"));
         this.vista.femenino.setIcon(new ImageIcon(femeninoImagen.getImage().
@@ -87,6 +109,9 @@ public class AjustesControlador implements ActionListener {
                 getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
     }
 
+    /**
+     * Restablece la vetana de Ajustes
+     */
     public void metodoRestablecer() {
         this.vista.nombreCaja.setText("");
         this.vista.generoGrupo.clearSelection();

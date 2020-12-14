@@ -1,9 +1,3 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui;
 
 import java.awt.Graphics;
@@ -12,19 +6,34 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.JTextField;
 
 /**
+ * Diseño de cajas extendido de JButton
  *
- * @author fernandomonjav
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas.
  */
 public class MiCaja extends JTextField {
 
     private Shape shape;
     private int borderRadius = 16;
 
+    /**
+     * Constructor
+     */
     public MiCaja() {
         super();
         setOpaque(false);
     }
 
+    /**
+     * Pinta componentes
+     *
+     * @param g Gráficos
+     */
     @Override
     protected void paintComponent(Graphics g) {
         g.setColor(getBackground());
@@ -32,12 +41,23 @@ public class MiCaja extends JTextField {
         super.paintComponent(g);
     }
 
+    /**
+     * Pinta los bordes
+     *
+     * @param g Gráficos
+     */
     @Override
     protected void paintBorder(Graphics g) {
         g.setColor(getBackground());
         g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, borderRadius, borderRadius);
     }
 
+    /**
+     * Contenedor
+     *
+     * @param x posicion
+     * @param y posicion
+     */
     @Override
     public boolean contains(int x, int y) {
         if (shape == null || !shape.getBounds().equals(getBounds())) {

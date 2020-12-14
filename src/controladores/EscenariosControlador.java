@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controladores;
 
 import java.awt.Color;
@@ -17,7 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import modelos.EscenarioCreador;
+
 import modelos.Item;
 import modelos.ItemLista;
 import modelos.Iterador;
@@ -27,8 +22,16 @@ import ui.Paleta;
 import vistas.EscenariosVista;
 
 /**
+ * Representa una implementación de ActionListener para el Controlador de la
+ * ventana Escenarios
  *
- * @author fernandomonjav
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas.
  */
 public class EscenariosControlador implements ActionListener {
 
@@ -38,6 +41,11 @@ public class EscenariosControlador implements ActionListener {
     public int opc;
     ItemLista itemLista;
 
+    /**
+     * Controla la vista y acciones en la ventana Escenarios.
+     *
+     * @param vista Diseño
+     */
     public EscenariosControlador(EscenariosVista vista) {
         this.vista = vista;
 
@@ -53,6 +61,11 @@ public class EscenariosControlador implements ActionListener {
 
     }
 
+    /**
+     * Detectar y manejar la acción sobre el evento; selección de escenario
+     *
+     * @param e Acción en el evento
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
@@ -78,6 +91,11 @@ public class EscenariosControlador implements ActionListener {
         }
     }
 
+    /**
+     * Selección del escenario
+     *
+     * @param pos tipo
+     */
     public void seleccionarEscenario(int pos) {
 
         Iterador iterador = itemLista.iterador();
@@ -96,6 +114,14 @@ public class EscenariosControlador implements ActionListener {
         }
     }
 
+    /**
+     * Crea el escenario en el panel
+     *
+     * @param id identificador
+     * @param nombre nombre
+     * @param rutaImagen direccion
+     * @return escenarioPanel Escenario en el panel
+     */
     public JPanel crearEscenario(int id, String nombre, String rutaImagen) {
         JPanel escenarioPanel = new JPanel();
         escenarioPanel.setLayout(new BoxLayout(escenarioPanel, BoxLayout.Y_AXIS));
@@ -122,6 +148,9 @@ public class EscenariosControlador implements ActionListener {
         return escenarioPanel;
     }
 
+    /**
+     * Obtiene y agrega los escenarios de los ItemLista
+     */
     public void obtenerEscenarios() {
         itemLista = new ItemLista("escenarios");
         itemLista.agregar(new Item(1, "Trabajo", "", "/assets/escenarios/trabajo/prevista.png"));
@@ -129,6 +158,9 @@ public class EscenariosControlador implements ActionListener {
         itemLista.agregar(new Item(3, "Comisaria", "", "/assets/escenarios/comisaria/prevista.png"));
     }
 
+    /**
+     * Crea todos los escenarios
+     */
     public void crearEscenarios() {
         Iterador iterador = itemLista.iterador();
 
@@ -141,6 +173,9 @@ public class EscenariosControlador implements ActionListener {
         }
     }
 
+    /**
+     * Carga el escenario
+     */
     public void cargar() {
         Perfil perfil = Perfil.gePerfil();
         int escenarioId = perfil.getEscenarioId();

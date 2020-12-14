@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controladores;
 
 import java.awt.event.ActionEvent;
@@ -19,8 +14,16 @@ import vistas.PrincipalVista;
 import vistas.RankingVista;
 
 /**
+ * Representa una implementación de ActionListener para el Controlador de
+ * Principal
  *
- * @author fernandomonjav
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas.
  */
 public class PrincipalControlador implements ActionListener {
 
@@ -42,6 +45,11 @@ public class PrincipalControlador implements ActionListener {
 
     public PartidaCaretaker partidaCaretaker;
 
+    /**
+     * Constructor
+     *
+     * @param vista Diseño
+     */
     public PrincipalControlador(PrincipalVista vista) {
         this.vista = vista;
 
@@ -83,12 +91,17 @@ public class PrincipalControlador implements ActionListener {
         ranking.setVisible(false);
 
         partidaCaretaker = new PartidaCaretaker();
-        
+
         this.vista.setLocationRelativeTo(null);
         this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     }
 
+    /**
+     * Detectar y manejar la acción sobre el evento (ventana principal)
+     *
+     * @param e Acción en el evento
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {

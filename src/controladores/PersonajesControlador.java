@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controladores;
 
 import java.awt.Color;
@@ -24,8 +19,16 @@ import ui.Paleta;
 import vistas.PersonajesVista;
 
 /**
+ * Representa una implementación de ActionListener para el Controlador de
+ * Personaje
  *
- * @author fernandomonjav
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas.
  */
 public class PersonajesControlador implements ActionListener {
 
@@ -35,6 +38,11 @@ public class PersonajesControlador implements ActionListener {
     public int opc;
     ItemLista itemLista;
 
+    /**
+     * Constructor
+     *
+     * @param vista Diseño
+     */
     public PersonajesControlador(PersonajesVista vista) {
         this.vista = vista;
 
@@ -49,6 +57,11 @@ public class PersonajesControlador implements ActionListener {
         vista.setVisible(false);
     }
 
+    /**
+     * Detectar y manejar la acción sobre el evento; selección de personaje
+     *
+     * @param e Acción en el evento
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
@@ -72,6 +85,11 @@ public class PersonajesControlador implements ActionListener {
         }
     }
 
+    /**
+     * Selecciona personaje
+     *
+     * @param pos tipo
+     */
     public void seleccionarPersonaje(int pos) {
 
         Iterador iterador = itemLista.iterador();
@@ -90,6 +108,14 @@ public class PersonajesControlador implements ActionListener {
         }
     }
 
+    /**
+     * Crea el personaje
+     *
+     * @param id identificador
+     * @param nombre nombre
+     * @param rutaImagen direccion
+     * @return personajePanel Personaje en el panel
+     */
     public JPanel crearPersonaje(int id, String nombre, String rutaImagen) {
         JPanel personajePanel = new JPanel();
         personajePanel.setLayout(new BoxLayout(personajePanel, BoxLayout.Y_AXIS));
@@ -116,6 +142,9 @@ public class PersonajesControlador implements ActionListener {
         return personajePanel;
     }
 
+    /**
+     * Obtener el personaje
+     */
     public void obtenerPersonajes() {
         itemLista = new ItemLista("personajes");
         itemLista.agregar(new Item(1, "David", "", "/assets/personajes/david/prevista.png"));
@@ -123,6 +152,9 @@ public class PersonajesControlador implements ActionListener {
         itemLista.agregar(new Item(3, "Juan", "", "/assets/personajes/juan/prevista.png"));
     }
 
+    /**
+     * Crea los personajes
+     */
     public void crearPersonajes() {
         Iterador iterador = itemLista.iterador();
 
@@ -135,6 +167,9 @@ public class PersonajesControlador implements ActionListener {
         }
     }
 
+    /**
+     * Carga el personaje
+     */
     public void cargar() {
         Perfil perfil = Perfil.gePerfil();
         int personajeId = perfil.getPersonajeId();

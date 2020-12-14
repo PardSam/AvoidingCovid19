@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controladores;
 
 import java.awt.Image;
@@ -15,8 +10,16 @@ import javax.swing.JLabel;
 import vistas.AyudaVista;
 
 /**
+ * Representa una implementación de ActionListener y ComponentListener para el
+ * Controlador de la ventana Ayuda
  *
- * @author aries
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas.
  */
 public class AyudaControlador implements ActionListener, ComponentListener {
 
@@ -25,6 +28,11 @@ public class AyudaControlador implements ActionListener, ComponentListener {
     final String HELP[] = {"/assets/img__ayuda-1.png", "/assets/img__ayuda-2.png", "/assets/img__ayuda-3.png",
         "/assets/img__ayuda-4.png", "/assets/img__ayuda-5.png"};
 
+    /**
+     * Controla la vista de la ventana Ayuda.
+     *
+     * @param vista Diseño
+     */
     public AyudaControlador(AyudaVista vista) {
         this.vista = vista;
         this.vista.principalPanel.addComponentListener(this);
@@ -37,16 +45,21 @@ public class AyudaControlador implements ActionListener, ComponentListener {
         this.vista.setVisible(false);
     }
 
+    /**
+     * Detectar y manejar la acción sobre el evento
+     *
+     * @param e Acción en el evento
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
         switch (e.getActionCommand()) {
             case "atras":
-                opcionAyuda(this.vista.imagenAyudaEtiqueta,1);
+                opcionAyuda(this.vista.imagenAyudaEtiqueta, 1);
                 this.vista.imagenAyudaEtiqueta.updateUI();
                 break;
             case "siguiente":
-                opcionAyuda(this.vista.imagenAyudaEtiqueta,2);
+                opcionAyuda(this.vista.imagenAyudaEtiqueta, 2);
                 break;
             case "cerrar":
                 this.vista.setVisible(false);
@@ -54,6 +67,11 @@ public class AyudaControlador implements ActionListener, ComponentListener {
         }
     }
 
+    /**
+     * Ruta de la imagen
+     *
+     * @param ruta dirección
+     */
     public ImageIcon imagenRuta(String ruta) {
 
         ImageIcon img = new ImageIcon(getClass().getResource(ruta));
@@ -61,11 +79,17 @@ public class AyudaControlador implements ActionListener, ComponentListener {
         return img;
     }
 
+    /**
+     * Muestra las diferentes imágenes de Ayuda
+     *
+     * @param etiqueta clasificar
+     * @param ayuda opcion
+     */
     public void opcionAyuda(JLabel etiqueta, int ayuda) {
         if (ayuda == 1) {
             op--;
             if (op < 0) {
-                op = this.HELP.length-1;
+                op = this.HELP.length - 1;
             }
 
         } else if (ayuda == 2) {
@@ -79,6 +103,11 @@ public class AyudaControlador implements ActionListener, ComponentListener {
                 getScaledInstance(this.vista.width, this.vista.height, Image.SCALE_FAST)));
     }
 
+    /**
+     * Cambiar el tamaño de los componentes
+     *
+     * @param ComponentEvent componente
+     */
     @Override
     public void componentResized(ComponentEvent e) {
 
@@ -90,16 +119,31 @@ public class AyudaControlador implements ActionListener, ComponentListener {
 
     }
 
+    /**
+     * Cambia la posición del componente
+     *
+     * @param ComponentEvent componente
+     */
     @Override
     public void componentMoved(ComponentEvent e) {
 
     }
 
+    /**
+     * Invocado cuando el componente se hace visible
+     *
+     * @param ComponentEvent componente
+     */
     @Override
     public void componentShown(ComponentEvent e) {
 
     }
 
+    /**
+     * Invocado cuando el componente se hizo invisible
+     *
+     * @param ComponentEvent componente
+     */
     @Override
     public void componentHidden(ComponentEvent e) {
     }
