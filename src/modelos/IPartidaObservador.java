@@ -6,8 +6,14 @@
 package modelos;
 
 /**
- *
- * @author aries
+ * Representa la notificacion para el Observador
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author  Monja Vasquez
+ * @author  More Villegas
+ * @author  Diaz Coronado, 
+ * @author  Gonzales Cubas,
+ * @author  Ugaz Arenas.
  */
 public interface  IPartidaObservador {
     public abstract void   notificar();

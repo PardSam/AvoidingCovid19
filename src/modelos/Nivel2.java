@@ -10,7 +10,9 @@ package modelos;
  * @author aries
  */
 public class Nivel2 extends Partida {
-
+    /**
+     * Inicialización del Nivel 2
+     */
     @Override
     public void inicializar() {
         Perfil perfil = Perfil.gePerfil();
@@ -28,11 +30,15 @@ public class Nivel2 extends Partida {
         setPersonaje(new PersonajeCreador().crear(perfil.getPersonajeId()));
         setObstaculo(new EnfermoObstaculo(this));
     }
-
+    /**
+     * Jugar el Nivel 2
+     */
     @Override
     public void jugar() {
     }
-
+    /**
+     * Resultados del Nivel 2
+     */
     @Override
     public void resultado() {
     }

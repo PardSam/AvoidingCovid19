@@ -15,16 +15,26 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Fernando
+ * Representa una implementación concreta de la clase Obstaculo.
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author  Monja Vasquez
+ * @author  More Villegas
+ * @author  Diaz Coronado, 
+ * @author  Gonzales Cubas,
+ * @author  Ugaz Arenas.
  */
+
 public class EnfermoObstaculo extends Obstaculo {
 
     private String rutaImagen;
     private Area cabeza;
     private Area cuerpo;
     private Area enfermo;
-
+    /**
+     * Constructor del Obstáculo enfermo en la Partida 
+     * @param partida Posicion de la imagen para el Enfermo
+     */
     public EnfermoObstaculo(Partida partida) {
         super(partida);
         this.rutaImagen = "/assets/enfermo.png";
@@ -38,7 +48,9 @@ public class EnfermoObstaculo extends Obstaculo {
         setxAuxiliar(-4);
         setyAuxiliar(0);
     }
-
+    /**
+     * Direcciona el movimiento del Obstáculo enfermo 
+     */
     @Override
     public void mover() {
         if (getxInicial() <= -100) {
@@ -80,7 +92,10 @@ public class EnfermoObstaculo extends Obstaculo {
             }
         }
     }
-
+     /**
+     * Dibuja el personaje doctor según los ejes establecidos
+     * @param g Grafica el enfermo
+     */
     @Override
     public void dibujar(Graphics2D g) {
         ImageIcon obstaculo = new ImageIcon(getClass().getResource(rutaImagen));        
@@ -88,7 +103,10 @@ public class EnfermoObstaculo extends Obstaculo {
 
         
     }
-
+    /**
+ * Define el área del personaje doctor 
+ * @return Al enfermo
+ */
     @Override
     public Area getBounds() {
         Ellipse2D forma1 = new Ellipse2D.Double(getxInicial(), getyInicial(), 40, 40);

@@ -9,8 +9,14 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author aries
+ * Representa una implementación concreta de la clase Escenario.
+ * @version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author  Monja Vasquez
+ * @author  More Villegas
+ * @author  Diaz Coronado, 
+ * @author  Gonzales Cubas,
+ * @author  Ugaz Arenas.
  */
 public class HospitalEscenario extends Escenario {
 
@@ -21,21 +27,28 @@ public class HospitalEscenario extends Escenario {
     private int xInicial = 1024, yInicial = 0;
     private int xAuxiliar = 0, yAuxiliar = 0;
     private ImageIcon escenarioImg;
-
+    /**
+     * Constructor del escenario hospital
+     */
     public HospitalEscenario() {
         super();
         this.titulo = "Hospital";
         this.rutaImagen = "/assets/escenarios/hospital/fondo.png";
         this.rutaNocheImagen = "/assets/escenarios/hospital/fondo.png";
     }
-
+    /**
+     * Constructor del escenario hospital en la Partida
+     * @param partida Asigana el escenario en la partida
+     */
     public HospitalEscenario(Partida partida) {
         super(partida);
         this.titulo = "Hospital";
         this.rutaImagen = "/assets/escenarios/hospital/fondo.png";
         this.rutaNocheImagen = "/assets/escenarios/hospital/fondo.png";
     }
-
+    /**
+     * Direcciona el movimiento del escenario hospital
+     */
     @Override
     public void mover() {
         xInicial = xInicial - 2;
@@ -46,37 +59,59 @@ public class HospitalEscenario extends Escenario {
             xAuxiliar = 0;
         }
     }
-
+    /**
+     * Retorna la ruta de la imagen del escenario hospital en la noche
+     * @return Ruta de la imagen
+     */
     @Override
     public String getRutaNocheImagen() {
         return rutaNocheImagen;
     }
-
+    /**
+     * Retorna la ruta de la imagen del escenario hospital
+     * @return Ruta de la imagen
+     */
+      
     @Override
     public String getRutaImagen() {
         return rutaImagen;
     }
-
+    /**
+     * Indica el nivel de la partida
+     * @return El Nivel
+     */
     @Override
     public int getNivel() {
         return nivel;
     }
-
+    /**
+     * Establece el nivel 
+     * @param nivel Numero de nivel
+     */
     public void setNivel(int nivel) {
         this.nivel = nivel;
     }
 
-
+    /**
+     * Obtiene la imagen del escenario
+     * @return Imagen del escenario
+     */
     @Override
     public ImageIcon getEscenarioImg() {
         return escenarioImg;
     }
-
+    /**
+     * Establece la imagen del escenario
+     * @param escenarioImg Imagen para el escenario
+     */
     @Override
     public void setEscenarioImg(ImageIcon escenarioImg) {
         this.escenarioImg = escenarioImg;
     }
-
+    /**
+     * Dibujo el escenario en la partida
+     * @param g Grafica al hospital Escenario
+     */
     @Override
     public void dibujar(Graphics2D g) {
        // ImageIcon escenario = new ImageIcon(getClass().getResource(this.rutaImagen));

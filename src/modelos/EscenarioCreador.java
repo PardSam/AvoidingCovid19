@@ -6,15 +6,28 @@
 package modelos;
 
 /**
- *
- * @author aries
+ * Representa una implementación concreta de la clase Escenario
+ *@version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author  Monja Vasquez
+ * @author  More Villegas
+ * @author  Diaz Coronado, 
+ * @author  Gonzales Cubas,
+ * @author  Ugaz Arenas.
  */
-public class EscenarioCreador extends EscenarioCreadorAbstracto {
 
+public class EscenarioCreador extends EscenarioCreadorAbstracto {
+    /**
+     * Constructor vacío 
+     */
     public EscenarioCreador() {
 
     }
-
+    /**
+     * Crea un escenario según el tipo indicado.
+     * @param tipo Establece el tipo de escenario
+     * @return Objeto escenario
+     */
     @Override
     public Escenario crearTipo(int tipo) {
         Escenario objeto;
