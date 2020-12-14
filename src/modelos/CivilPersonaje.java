@@ -13,8 +13,14 @@ import java.awt.geom.Ellipse2D;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author aries
+ * Representa una implementación concreta de la clase Personaje.
+ *@version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author  Monja Vasquez
+ * @author  More Villegas
+ * @author  Diaz Coronado, 
+ * @author  Gonzales Cubas,
+ * @author  Ugaz Arenas.
  */
 public class CivilPersonaje extends Personaje {
 
@@ -40,36 +46,56 @@ public class CivilPersonaje extends Personaje {
     private Area piernaDerecha;
     private Area cuerpo;
     private Area personajeArea;
-
+    /**
+     * Evalua el movimiento saltar del personaje civil
+     * @return  Verifica si salta o no
+     */
     public boolean isSalta() {
         return salta;
     }
-
+    /**
+     * Establecer el movimiento saltar del personaje civil
+     * @param salta Booleano para determinar salto
+     */
     @Override
     public void setSalta(boolean salta) {
         this.salta = salta;
     }
-
+    /**
+     * Inicializa al personaje civil
+     */
     public CivilPersonaje() {
         this.tipo = 1;
         this.rutaImagen = "/assets/personajes/david/normal.png";
     }
-
+    /**
+     * Agrega el personaje civil  en la partida
+     * @param partida Establece la ruta del personaje
+     */
     public CivilPersonaje(Partida partida) {
         super(partida);
         this.tipo = 1;
         this.rutaImagen = "/assets/personajes/david/normal.png";
     }
-
+    /**
+     * Retorna la ruta de la imagen del personaje civil
+     * @return Obtiene la ruta imagen
+     */
     @Override
     public String getRutaImagen() {
         return rutaImagen;
     }
-
+    /**
+     * Retorna el eje x inicial del objeto 
+     * @return  Obtiene la posicion
+     */
     public int getxInicial() {
         return xInicial;
     }
-
+    /**
+     * Establece el eje x inicial del objeto
+     * @param xInicial Establece la posicion en x
+     */
     public void setxInicial(int xInicial) {
         this.xInicial = xInicial;
     }
