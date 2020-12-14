@@ -60,6 +60,7 @@ public class EscenariosControlador implements ActionListener {
                 Perfil perfil = Perfil.gePerfil();
                 perfil.setEscenarioId(opc);
                 perfil.setNivel(opc);
+                perfil.setContinuarPartida(false);
                 this.vista.setVisible(false);
                 break;
             case "cerrar":

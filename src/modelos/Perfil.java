@@ -17,6 +17,7 @@ public class Perfil {
     private int personajeId = 1;
     private int escenarioId = 1;
     private Jugador jugador;
+    private boolean continuarPartida = false;
 
     public static Perfil gePerfil() {
         if (perfil == null) {
@@ -73,6 +74,14 @@ public class Perfil {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public boolean isContinuarPartida() {
+        return continuarPartida;
+    }
+
+    public void setContinuarPartida(boolean continuarPartida) {
+        this.continuarPartida = continuarPartida;
     }
 
 }
