@@ -7,12 +7,16 @@ package modelos;
 
 import controladores.PartidaControlador;
 import java.awt.event.WindowEvent;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
- *
- * @author aries
+ * descripcion
+ * @version 13/12/2020/A*@version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author  Monja Vasquez
+ * @author  More Villegas
+ * @author  Diaz Coronado, 
+ * @author  Gonzales Cubas,
+ * @author  Ugaz Arenas.
  */
 public class VidaConcretoObservador implements IPartidaObservador {
 
@@ -23,7 +27,9 @@ public class VidaConcretoObservador implements IPartidaObservador {
         this.partida = partida;
         this.controlador = controlador;
     }
-
+/**
+     * Notifica los cambios
+     */
     @Override
     public void notificar() {
         Perfil.gePerfil().getJugador().setScore(partida.getPuntaje());

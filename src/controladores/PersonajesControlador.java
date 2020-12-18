@@ -67,19 +67,18 @@ public class PersonajesControlador implements ActionListener {
         switch (e.getActionCommand()) {
             case "aceptar":
                 Perfil.gePerfil().setPersonajeId(opc);
-                System.out.println(Perfil.gePerfil().getPersonajeId());
                 this.vista.setVisible(false);
                 break;
             case "cerrar":
                 this.vista.setVisible(false);
                 break;
-            case "David":
+            case "Civil":
                 seleccionarPersonaje(1);
                 break;
-            case "Marco":
+            case "Doctor":
                 seleccionarPersonaje(2);
                 break;
-            case "Juan":
+            case "Policia":
                 seleccionarPersonaje(3);
                 break;
         }
@@ -107,7 +106,6 @@ public class PersonajesControlador implements ActionListener {
             }
         }
     }
-
     /**
      * Crea el personaje
      *
@@ -147,9 +145,9 @@ public class PersonajesControlador implements ActionListener {
      */
     public void obtenerPersonajes() {
         itemLista = new ItemLista("personajes");
-        itemLista.agregar(new Item(1, "David", "", "/assets/personajes/david/prevista.png"));
-        itemLista.agregar(new Item(2, "Marco", "", "/assets/personajes/marco/prevista.png"));
-        itemLista.agregar(new Item(3, "Juan", "", "/assets/personajes/juan/prevista.png"));
+        itemLista.agregar(new Item(1, "Civil", "", "/assets/personajes/david/prevista.png"));
+        itemLista.agregar(new Item(2, "Doctor", "", "/assets/personajes/marco/prevista.png"));
+        itemLista.agregar(new Item(3, "Policia", "", "/assets/personajes/juan/prevista.png"));
     }
 
     /**
@@ -166,7 +164,6 @@ public class PersonajesControlador implements ActionListener {
             this.vista.principalPanel.add(personajePanel);
         }
     }
-
     /**
      * Carga el personaje
      */

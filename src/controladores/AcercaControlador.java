@@ -27,7 +27,7 @@ public class AcercaControlador implements ActionListener {
      */
     public AcercaControlador(AcercaVista vista) {
         this.vista = vista;
-
+        this.vista.setResizable(false);
         this.vista.cerrarBoton.addActionListener(this);
 
         this.vista.setLocationRelativeTo(null);

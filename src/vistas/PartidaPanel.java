@@ -98,7 +98,7 @@ public class PartidaPanel extends JPanel {
      */
     public void componentes() {
         player = new JRadioButton();
-        player.setBounds(890, 15, 55, 55);
+        player.setBounds(890, 15, 80, 55);
         player.setActionCommand("Player");
         imagen = new ImageIcon(getClass().getResource("/assets/pause.png"));
         player.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));

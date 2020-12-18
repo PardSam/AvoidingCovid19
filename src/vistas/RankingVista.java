@@ -28,9 +28,9 @@ import ui.Paleta;
  * @author Sanchez Pardo
  * @author Monja Vasquez
  * @author More Villegas
- * @author Diaz Coronado,
- * @author Gonzales Cubas,
- * @author Ugaz Arenas.
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
 public class RankingVista extends JFrame {
 
@@ -65,7 +65,6 @@ public class RankingVista extends JFrame {
         Jugador per1 = new Jugador("Sam", "Masculino", 50);
 
         personas.add(per1);
-        System.out.println("prueba");
         ModeloTabla mtp = new ModeloTabla(personas);
         listaTabla = new JTable();
         listaTabla.setModel(mtp);

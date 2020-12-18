@@ -3,7 +3,9 @@ package controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import modelos.Jugador;
 import modelos.PartidaCaretaker;
+import modelos.Perfil;
 import vistas.AcercaVista;
 import vistas.AjustesVista;
 import vistas.AyudaVista;
@@ -80,7 +82,7 @@ public class PrincipalControlador implements ActionListener {
 
         ajustes = new AjustesVista();
         controladorAjuste = new AjustesControlador(ajustes);
-
+        this.vista.setLocationRelativeTo(null);
         vista.setVisible(true);
 
         escenario.setVisible(false);
@@ -92,7 +94,6 @@ public class PrincipalControlador implements ActionListener {
 
         partidaCaretaker = new PartidaCaretaker();
 
-        this.vista.setLocationRelativeTo(null);
         this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     }
@@ -124,6 +125,8 @@ public class PrincipalControlador implements ActionListener {
                 personaje.setVisible(true);
                 break;
             case "ranking":
+                Jugador j = Perfil.gePerfil().getJugador();
+                ranking.personas.add(j);
                 ranking.setVisible(true);
                 break;
             case "ayuda":

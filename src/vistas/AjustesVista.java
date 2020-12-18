@@ -74,7 +74,6 @@ public class AjustesVista extends JFrame {
         //validar el maximo y minimo de caracteres en la caja
         nombreEtiqueta = new JLabel("Nombre");
         nombreEtiqueta.setForeground(Paleta.getPlano());
-
         nombreCaja = new MiCaja();
         nombreCaja.setForeground(Paleta.getPlanoPrimario());
         nombreCaja.setBackground(Paleta.getFondoSuperficie());

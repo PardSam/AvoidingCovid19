@@ -6,8 +6,14 @@
 package modelos;
 
 /**
- *
- * @author aries
+ * descripcion
+ * @version 13/12/2020/A*@version 09/12/2020/A
+ * @author Sanchez Pardo
+ * @author  Monja Vasquez
+ * @author  More Villegas
+ * @author  Diaz Coronado, 
+ * @author  Gonzales Cubas,
+ * @author  Ugaz Arenas.
  */
 public class PersonajeCreador extends PersonajeCreadorAbstracto {
 
@@ -15,6 +21,11 @@ public class PersonajeCreador extends PersonajeCreadorAbstracto {
        
     }
 
+    /**
+     * Funcion para crear al personaje
+     * @param tipo  parametro que indica que tipo de personaje se crea
+     * @return el personaje creado
+     */
     @Override
     public Personaje crear(int tipo) {
         Personaje objeto;

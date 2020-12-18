@@ -20,12 +20,10 @@ public class HospitalPartida extends Partida {
         Perfil perfil = Perfil.gePerfil();
         setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
         if (isHorario()) {
-            System.out.println("horario dia");
             setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
             setEscenario(new DiaPartida(getEscenario()));
         }
         if (!isHorario()) {
-            System.out.println("horario noche");
             setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
             setEscenario(new NochePartida(getEscenario()));
         }

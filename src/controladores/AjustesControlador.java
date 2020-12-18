@@ -33,7 +33,7 @@ public class AjustesControlador implements ActionListener {
      */
     public AjustesControlador(AjustesVista vista) {
         this.vista = vista;
-
+        this.vista.setResizable(false);
         this.vista.aceptarBoton.addActionListener(this);
         this.vista.restablacerBoton.addActionListener(this);
         this.vista.cerrarBoton.addActionListener(this);

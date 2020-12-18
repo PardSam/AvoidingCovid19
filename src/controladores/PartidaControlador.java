@@ -17,6 +17,7 @@ import modelos.ContinuarComando;
 import modelos.ContinuarPausarComando;
 import modelos.Partida;
 import modelos.PartidaCaretaker;
+import modelos.PartidaMemento;
 import modelos.PausarComando;
 import modelos.Perfil;
 import modelos.SaltarComando;
@@ -59,25 +60,25 @@ public class PartidaControlador implements ActionListener, KeyListener, WindowLi
 
         Perfil perfil = Perfil.getPerfil();
 
-        if (perfil.isContinuarPartida() && partidaCaretaker.getEstados().size() > 0) {
-            partida = partidaCaretaker.getMemento(partidaCaretaker.getEstados().size() - 1).getEstadoGuardado();
-        } else {
-
-            switch (Perfil.gePerfil().getNivel()) {
-                case 1:
-                    partida = new TrabajoPartida();
-                    break;
-                case 2:
-                    partida = new HospitalPartida();
-                    break;
-                case 3:
-                    partida = new ComisariaPartida();
-                    break;
-                default:
-                    partida = new TrabajoPartida();
-            }
-
+        switch (Perfil.gePerfil().getNivel()) {
+            case 1:
+                partida = new TrabajoPartida();
+                break;
+            case 2:
+                partida = new HospitalPartida();
+                break;
+            case 3:
+                partida = new ComisariaPartida();
+                break;
+            default:
+                partida = new TrabajoPartida();
         }
+
+        if (perfil.isContinuarPartida() && partidaCaretaker.getEstados().size() > 0) {
+            PartidaMemento memento = partidaCaretaker.getMemento(partidaCaretaker.getEstados().size() - 1);
+            partida.recuperarEstado(memento);
+        }
+
         partida.agregar(new VidaConcretoObservador(partida, this));
 
         partidaPanel = new PartidaPanel(partida);
@@ -93,7 +94,7 @@ public class PartidaControlador implements ActionListener, KeyListener, WindowLi
         this.vista.partidaPanel.addKeyListener(this);
 
         ejecutarComando(new ContinuarComando(this));
-
+        this.vista.setResizable(false);
         this.vista.setLocationRelativeTo(null);
 
         vista.setVisible(false);
@@ -186,7 +187,7 @@ public class PartidaControlador implements ActionListener, KeyListener, WindowLi
         } else {
 
             int confirmar = JOptionPane.showConfirmDialog(this.vista,
-                    "Are you sure you want to close this window?", "Close Window?",
+                    "Estas seguro de cerrar la ventana?", "cerrar ventana?",
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE);
 

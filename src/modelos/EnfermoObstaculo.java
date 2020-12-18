@@ -50,16 +50,15 @@ public class EnfermoObstaculo extends Obstaculo {
                 //JOptionPane.showMessageDialog(null, "Pasaste el nivel");
                 getPartida().setGanarPartida(true);
                 Perfil.gePerfil().setEscenarioId(Perfil.gePerfil().getEscenarioId() + 1);
+                Perfil.gePerfil().setPersonajeId(Perfil.gePerfil().getPersonajeId()+1);
                 Perfil.gePerfil().setNivel(Perfil.gePerfil().getNivel() + 1);
                 getPartida().setHorario(!getPartida().isHorario());
-                System.out.println(getPartida().isHorario());
 
                 getPartida().generar();
                 getPartida().reiniciar();
             }
             if (getPartida().getPuntajePartida() / 2 == getPartida().getPuntaje() || getPartida().getPuntajePartida() / 2 == getPartida().getPuntaje() || getPartida().getPuntajePartida() / 2 == getPartida().getPuntaje()) {
                 getPartida().setHorario(!getPartida().isHorario());
-                System.out.println(getPartida().isHorario());
                 getPartida().generar();
             }
             if (getPartida().getPuntaje() == 30) {

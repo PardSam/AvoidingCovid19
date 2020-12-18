@@ -42,7 +42,7 @@ public class AcercaVista extends JFrame {
      * Constructor
      */
     public AcercaVista() {
-        this.setSize(540, 320);
+        this.setSize(540, 514);
         iniciarComponentes();
     }
 
@@ -51,20 +51,26 @@ public class AcercaVista extends JFrame {
      */
     private void iniciarComponentes() {
         tituloEtiqueta = new JLabel("ACERCA");
-        Font font = new Font("Roboto", Font.BOLD, 24);
+        Font font = new Font("Roboto", Font.BOLD, 32);
         tituloEtiqueta.setFont(font);
         tituloEtiqueta.setForeground(Paleta.getPlano());
 
         informacionArea = new JTextArea();
         informacionArea.setText(
-                "\n     Avoiding COVID-19. Version 1.0\n\n"
+                "\n\t\t\tUNIVERSIDAD SEÑOR DE SIPÁN\n"
+                + "     ESCUELA DE INGENIERIA DE SISTEMAS\n\n"
                 + "     Colaboradores:\n\n"
-                + "     - Monja Vásquez Fernando\n"
-                + "     - Sánchez Pardo Samuel\n"
-                + "     - More Villegas Fiorella\n"
-                + "     - Diaz Coronado Jenniffer\n"
-                + "     - Ugaz Arenas Carlos\n"
-                + "     - Gonzales Cubas Jeins  "
+                + "     - Fernando Monja Vásquez\n"
+                + "     - Samuel Sánchez Pardo\n"
+                + "     - Fiorella More Villegas\n"
+                + "     - Jenniffer Diaz Coronado\n"
+                + "     - Carlos Ugaz Arenas\n"
+                + "     - Jeins Gonzales Cubas\n\n"
+                + "     Docente:\n\n"
+                + "     - Heber Ivan Mejia Cabrera\n\n"
+                + "     Curso:\n\n"
+                + "     - Patrones de Diseño de Software y Arquitectura\n\n"
+                + "\t                 Avoiding COVID-19. Version 1.0\n\n"
         );
         informacionArea.setEditable(false);
         informacionArea.setForeground(Paleta.getPlanoPrimario());
@@ -100,7 +106,7 @@ public class AcercaVista extends JFrame {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridy = 1;
         gbc.weightx = 1;
-        gbc.weighty = 1;
+        gbc.weighty = 2;
         generalPanel.add(principalPanel, gbc);
 
         gbc.fill = GridBagConstraints.BOTH;
@@ -117,7 +123,7 @@ public class AcercaVista extends JFrame {
      */
     private void crearEncabezadoPanel() {
         encabezadoPanel = new JPanel();
-        encabezadoPanel.setBorder(new EmptyBorder(10, 0, 0, 0));
+        encabezadoPanel.setBorder(new EmptyBorder(16, 0, 16, 0));
         encabezadoPanel.setOpaque(false);
 
         encabezadoPanel.add(tituloEtiqueta);
@@ -142,7 +148,7 @@ public class AcercaVista extends JFrame {
     private void crearBarraAccionesPanel() {
         barraAccionesPanel = new JPanel();
         barraAccionesPanel.setLayout(new BoxLayout(barraAccionesPanel, BoxLayout.X_AXIS));
-        barraAccionesPanel.setBorder(new EmptyBorder(15, 8, 8, 8));
+        barraAccionesPanel.setBorder(new EmptyBorder(16, 8, 8, 8));
         barraAccionesPanel.setOpaque(false);
 
         barraAccionesPanel.add(Box.createHorizontalGlue());
