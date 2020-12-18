@@ -1,6 +1,7 @@
 package vistas;
 
 import java.awt.Dimension;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -15,7 +16,7 @@ import javax.swing.JLabel;
  * @author Gonzales Cubas,
  * @author Ugaz Arenas.
  */
-public class PartidaVista extends JFrame {
+public class PartidaVista extends JDialog {
 
     public JLabel escenarioLabel;
     public PartidaPanel partidaPanel;
@@ -26,6 +27,7 @@ public class PartidaVista extends JFrame {
     public PartidaVista() {
         setMinimumSize(new Dimension(1024, 576));
         setLocationRelativeTo(null);
+        setModal(true);
         // inicializarComponentes();
     }
 

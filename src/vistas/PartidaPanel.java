@@ -77,12 +77,9 @@ public class PartidaPanel extends JPanel {
 
         this.partida.dibujar(g2);
         this.partida.dibujarPuntaje(g2);
-        if (this.partida.isFinPartida()) {            
-            if (this.partida.getActualizarPartida()<5) {
-                System.out.println(this.partida.getActualizarPartida());
-                  this.updateUI();
-            }          
-           this.partida.setActualizarPartida(this.partida.getActualizarPartida()+1);
+        if (this.partida.isFinPartida() && !this.partida.isActualizarPartida()) {
+            this.updateUI();
+            this.partida.setActualizarPartida(true);
         }
         if (!this.partida.isPausaPartida() && this.partida.isFinPartida() == false) {
             this.partida.mover();

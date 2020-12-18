@@ -54,7 +54,6 @@ public class PrincipalVista extends JFrame {
      */
     public PrincipalVista() {
         setMinimumSize(new Dimension(1024, 576));
-
         inicializarComponentes();
     }
 

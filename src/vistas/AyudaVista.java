@@ -11,6 +11,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,7 +30,7 @@ import ui.Paleta;
  * @author Gonzales Cubas,
  * @author Ugaz Arenas.
  */
-public class AyudaVista extends JFrame {
+public class AyudaVista extends JDialog {
 
     public JLabel tituloEtiqueta;
     public ImageIcon imgAyuda;
@@ -51,6 +52,7 @@ public class AyudaVista extends JFrame {
     public AyudaVista() {
         this.setSize(500, 400);
         iniciarComponentes();
+        setModal(true);
     }
 
     /**

@@ -12,6 +12,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -33,7 +34,7 @@ import ui.Paleta;
  * @author Gonzales Cubas,
  * @author Ugaz Arenas.
  */
-public class AjustesVista extends JFrame {
+public class AjustesVista extends JDialog{
 
     public JLabel tituloEtiqueta;
     public JLabel nombreEtiqueta;
@@ -60,6 +61,7 @@ public class AjustesVista extends JFrame {
         this.setSize(400, 320);
         iniciarComponentes();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
+        this.setModal(true);
     }
 
     /**

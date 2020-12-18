@@ -32,7 +32,7 @@ public abstract class Partida extends PartidaSujeto {
     private boolean finPartida = false;
     private boolean ganarPartida = false;
     private boolean horario = true;
-    private int actualizarPartida = 0;
+    private boolean  actualizarPartida = false;
     
     private Escenario escenario;
     private Personaje personaje;
@@ -48,11 +48,11 @@ public abstract class Partida extends PartidaSujeto {
         this.finPartida = false;
     }
 
-    public int getActualizarPartida() {
+    public boolean  isActualizarPartida() {
         return actualizarPartida;
     }
 
-    public void setActualizarPartida(int actualizarPartida) {
+    public void setActualizarPartida(boolean  actualizarPartida) {
         this.actualizarPartida = actualizarPartida;
     }
 

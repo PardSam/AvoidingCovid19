@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,7 +33,7 @@ import ui.Paleta;
  * @author Gonzales Cubas
  * @author Ugaz Arenas
  */
-public class RankingVista extends JFrame {
+public class RankingVista extends JDialog {
 
     private JPanel generalPanel;
     public JPanel encabezadoPanel;
@@ -48,9 +49,10 @@ public class RankingVista extends JFrame {
      * Constructor
      */
     public RankingVista() {
-        this.setSize(540, 320);
+        setSize(540, 320);
         personas = new ArrayList<>();
         iniciarComponentes();
+        setModal(true);
     }
 
     /**

@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,7 +28,7 @@ import ui.Paleta;
  * @author Gonzales Cubas,
  * @author Ugaz Arenas.
  */
-public class AcercaVista extends JFrame {
+public class AcercaVista extends JDialog {
 
     public JLabel tituloEtiqueta;
     public JTextArea informacionArea;
@@ -44,6 +45,7 @@ public class AcercaVista extends JFrame {
     public AcercaVista() {
         this.setSize(540, 528);
         iniciarComponentes();
+        setModal(true);
     }
 
     /**
