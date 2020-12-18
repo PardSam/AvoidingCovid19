@@ -32,7 +32,8 @@ public abstract class Partida extends PartidaSujeto {
     private boolean finPartida = false;
     private boolean ganarPartida = false;
     private boolean horario = true;
-
+    private int actualizarPartida = 0;
+    
     private Escenario escenario;
     private Personaje personaje;
     private Obstaculo obstaculo;
@@ -46,6 +47,15 @@ public abstract class Partida extends PartidaSujeto {
         this.pausaPartida = false;
         this.finPartida = false;
     }
+
+    public int getActualizarPartida() {
+        return actualizarPartida;
+    }
+
+    public void setActualizarPartida(int actualizarPartida) {
+        this.actualizarPartida = actualizarPartida;
+    }
+
 
     /**
      * Evalua el horario dentro de la partida

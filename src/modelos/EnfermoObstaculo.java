@@ -67,16 +67,16 @@ public class EnfermoObstaculo extends Obstaculo {
             setxInicial(1024);
 
         } else {
-            if (colision()) {
-                if (getPartida().getProteccion() == 1) {
-                    getPartida().finalizarPartida();
-                }
+            if (colision()) {                
                 this.colisionar();
                 getPartida().reiniciar();
             } else {
                 setxInicial(getxInicial() + getxAuxiliar());
             }
         }
+        if (getPartida().getProteccion() == 0) {
+                    getPartida().finalizarPartida();
+                }
     }
 
     /**

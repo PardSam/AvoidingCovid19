@@ -85,15 +85,9 @@ public class PrincipalControlador implements ActionListener {
         this.vista.setLocationRelativeTo(null);
         vista.setVisible(true);
 
-        escenario.setVisible(false);
-        personaje.setVisible(false);
-        ayuda.setVisible(false);
-        acerca.setVisible(false);
-        ajustes.setVisible(true);
-        ranking.setVisible(false);
-
         partidaCaretaker = new PartidaCaretaker();
-
+        ocultarVentanas();
+        ajustes.setVisible(true);
         this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     }
@@ -105,6 +99,7 @@ public class PrincipalControlador implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+        ocultarVentanas();
         switch (e.getActionCommand()) {
             case "play":
                 partida = new PartidaVista();
@@ -142,6 +137,15 @@ public class PrincipalControlador implements ActionListener {
                 System.exit(0);
                 break;
         }
+        
     }
 
+    public void ocultarVentanas() {
+        escenario.setVisible(false);
+        personaje.setVisible(false);
+        ayuda.setVisible(false);
+        acerca.setVisible(false);
+        ajustes.setVisible(false);
+        ranking.setVisible(false);
+    }
 }

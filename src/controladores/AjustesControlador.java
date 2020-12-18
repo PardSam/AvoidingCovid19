@@ -39,7 +39,7 @@ public class AjustesControlador implements ActionListener {
         this.vista.cerrarBoton.addActionListener(this);
         this.vista.masculino.addActionListener(this);
         this.vista.femenino.addActionListener(this);
-
+        
         this.vista.setLocationRelativeTo(null);
         this.vista.setVisible(false);
     }
