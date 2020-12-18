@@ -70,17 +70,17 @@ public class AyudaVista extends JFrame {
                 getWidth(), imagenAyudaEtiqueta.getHeight(), Image.SCALE_SMOOTH)));
 
         atrasBoton = new MiBoton();
-        atrasBoton.setText("Atras");
+        atrasBoton.setText("ATRAS");
         atrasBoton.setForeground(Paleta.getPlanoPrimario());
         atrasBoton.setBackground(Paleta.getFondoSuperficie());
 
         siguienteBoton = new MiBoton();
-        siguienteBoton.setText("Siguiente");
+        siguienteBoton.setText("SIGUIENTE");
         siguienteBoton.setForeground(Paleta.getPlanoPrimario());
         siguienteBoton.setBackground(Paleta.getFondoSuperficie());
 
         cerrarBoton = new MiBoton();
-        cerrarBoton.setText("Cerrar");
+        cerrarBoton.setText("CERRAR");
         cerrarBoton.setForeground(Paleta.getPlanoPrimario());
         cerrarBoton.setBackground(Paleta.getFondoSuperficie());
 

@@ -42,7 +42,7 @@ public class AcercaVista extends JFrame {
      * Constructor
      */
     public AcercaVista() {
-        this.setSize(540, 514);
+        this.setSize(540, 528);
         iniciarComponentes();
     }
 
@@ -57,8 +57,8 @@ public class AcercaVista extends JFrame {
 
         informacionArea = new JTextArea();
         informacionArea.setText(
-                "\n\t\t\tUNIVERSIDAD SEÑOR DE SIPÁN\n"
-                + "     ESCUELA DE INGENIERIA DE SISTEMAS\n\n"
+                "\n\t\t\tUniversidad Señor de Sipán\n"
+                + "     Escuela Académico Profesional de Ingeniería de Sistemas\n\n"
                 + "     Colaboradores:\n\n"
                 + "     - Fernando Monja Vásquez\n"
                 + "     - Samuel Sánchez Pardo\n"

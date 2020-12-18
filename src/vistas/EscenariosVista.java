@@ -67,7 +67,7 @@ public class EscenariosVista extends JFrame {
         aceptarBoton.setBackground(Paleta.getFondoPrimario());
 
         cerrarBoton = new MiBoton();
-        cerrarBoton.setText("Cerrar");
+        cerrarBoton.setText("CERRAR");
         cerrarBoton.setForeground(Paleta.getPlanoSuperficie());
         cerrarBoton.setBackground(Paleta.getFondoSuperficie());
 
