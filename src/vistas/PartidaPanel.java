@@ -87,10 +87,6 @@ public class PartidaPanel extends JPanel {
 
             }
         }
-        /*if (this.partida.isFinPartida()) {
-            g2.setColor(Color.yellow);
-            g2.drawString("Fin del juego", ((float) getBounds().getCenterX() / 2) + 200, 300);      
-        }*/
     }
 
     /**

@@ -20,9 +20,7 @@ import javax.swing.ImageIcon;
 public class EnfermoObstaculo extends Obstaculo {
 
     private String rutaImagen;
-    private Area cabeza;
-    private Area cuerpo;
-    private Area enfermo;
+    private Area cuerpo, enfermo;
 
     /**
      * Constructor del Obstáculo enfermo en la Partida
@@ -39,18 +37,20 @@ public class EnfermoObstaculo extends Obstaculo {
         setxAuxiliar(-4);
         setyAuxiliar(0);
     }
+
     /**
-     * Direcciona el movimiento del Obstáculo enfermo 
+     * Direcciona el movimiento del Obstáculo enfermo
      */
     @Override
     public void mover() {
+
         if (getxInicial() <= -100) {
             getPartida().setPuntaje(getPartida().getPuntaje() + 1);
             if (getPartida().getPuntaje() == 11 || getPartida().getPuntaje() == 21) {
                 //JOptionPane.showMessageDialog(null, "Pasaste el nivel");
                 getPartida().setGanarPartida(true);
                 Perfil.gePerfil().setEscenarioId(Perfil.gePerfil().getEscenarioId() + 1);
-                Perfil.gePerfil().setPersonajeId(Perfil.gePerfil().getPersonajeId()+1);
+                Perfil.gePerfil().setPersonajeId(Perfil.gePerfil().getPersonajeId() + 1);
                 Perfil.gePerfil().setNivel(Perfil.gePerfil().getNivel() + 1);
                 getPartida().setHorario(!getPartida().isHorario());
 
@@ -75,12 +75,13 @@ public class EnfermoObstaculo extends Obstaculo {
                 getPartida().reiniciar();
             } else {
                 setxInicial(getxInicial() + getxAuxiliar());
-
             }
         }
     }
-     /**
+
+    /**
      * Dibuja el personaje doctor según los ejes establecidos
+     *
      * @param g Grafica el enfermo
      */
     @Override
@@ -89,20 +90,18 @@ public class EnfermoObstaculo extends Obstaculo {
         g.drawImage(obstaculo.getImage(), getxInicial(), getyInicial(), getAncho(), getAlto(), null);
 
     }
+
     /**
- * Define el área del personaje doctor 
- * @return el area para la colisión del EnfermoObstaculo
- */
+     * Define el área del personaje doctor
+     *
+     * @return el area para la colisión del EnfermoObstaculo
+     */
     @Override
     public Area getBounds() {
-        Ellipse2D forma1 = new Ellipse2D.Double(getxInicial(), getyInicial(), 40, 40);
-        cabeza = new Area(forma1);
+        Rectangle forma1 = new Rectangle(getxInicial(), getyInicial(), 70, 145);
+        cuerpo = new Area(forma1);
 
-        Rectangle forma2 = new Rectangle(getxInicial() + 12, getyInicial() + 16, 50, 53);
-        cuerpo = new Area(forma2);
-
-        enfermo = cabeza;
-        enfermo.add(cabeza);
+        enfermo = cuerpo;
         enfermo.add(cuerpo);
 
         return enfermo;

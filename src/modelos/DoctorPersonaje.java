@@ -30,7 +30,7 @@ public class DoctorPersonaje extends Personaje {
     private int xAuxiliar = 0;
     private int yAuxiliar = 0;
 
-    private Area piernaIzquierda, piernaDerecha, cuerpo, personajeArea;
+    private Area cuerpo, personajeArea;
     /**
      * Establece la posición inicial en el eje y
      * @param yInicial Posicion en y
@@ -121,19 +121,11 @@ public class DoctorPersonaje extends Personaje {
  */
     @Override
     public Area getBounds() {
-        Rectangle forma1 = new Rectangle(xInicial, yInicial, 95, 62);
+        Rectangle forma1 = new Rectangle(xInicial, yInicial, 70, 145);
         cuerpo = new Area(forma1);
-
-        Ellipse2D forma2 = new Ellipse2D.Double(xInicial, yInicial + 28, 48, 48);
-        piernaDerecha = new Area(forma2);
-
-        Ellipse2D forma3 = new Ellipse2D.Double(xInicial + 73, yInicial + 39, 38, 38);
-        piernaIzquierda = new Area(forma3);
 
         personajeArea = cuerpo;
         personajeArea.add(cuerpo);
-        personajeArea.add(personajeArea);
-        personajeArea.add(piernaIzquierda);
 
         return personajeArea;
     }

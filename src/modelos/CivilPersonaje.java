@@ -36,8 +36,6 @@ public class CivilPersonaje extends Personaje {
     private boolean baja = false;
     private boolean salta = false;
 
-    private Area piernaIzquierda;
-    private Area piernaDerecha;
     private Area cuerpo;
     private Area personajeArea;
     /**
@@ -193,19 +191,11 @@ public class CivilPersonaje extends Personaje {
      */
     @Override
     public Area getBounds() {
-        Rectangle forma1 = new Rectangle(xInicial, yInicial, 95, 62);
+        Rectangle forma1 = new Rectangle(xInicial, yInicial, 70, 145);
         cuerpo = new Area(forma1);
-
-        Ellipse2D forma2 = new Ellipse2D.Double(xInicial, yInicial + 28, 48, 48);
-        piernaDerecha = new Area(forma2);
-
-        Ellipse2D forma3 = new Ellipse2D.Double(xInicial + 73, yInicial + 39, 38, 38);
-        piernaIzquierda = new Area(forma3);
 
         personajeArea = cuerpo;
         personajeArea.add(cuerpo);
-        personajeArea.add(personajeArea);
-        personajeArea.add(piernaIzquierda);
 
         return personajeArea;
     }

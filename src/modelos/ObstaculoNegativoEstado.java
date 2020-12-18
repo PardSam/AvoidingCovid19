@@ -19,7 +19,7 @@ public class ObstaculoNegativoEstado implements IObstaculoEstado {
     public void colisionar(Partida partida) {
         if (partida.getDefensa() > 0) {
             partida.setDefensa(partida.getDefensa() - 1);        
-        }else if(partida.getDefensa() == 0 && partida.getProteccion()>0){
+        }else if(partida.getDefensa() == 0 && partida.getProteccion()>=0){
             partida.setProteccion(partida.getProteccion() - 1);
         }
     }
