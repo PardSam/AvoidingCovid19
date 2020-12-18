@@ -8,13 +8,14 @@ import javax.swing.ImageIcon;
 
 /**
  * Representa una implementación concreta de la clase Personaje.
- * @version 09/12/2020/A
+ *
+ * @version 09/12/2020
  * @author Sanchez Pardo
- * @author  Monja Vasquez
- * @author  More Villegas
- * @author  Diaz Coronado, 
- * @author  Gonzales Cubas,
- * @author  Ugaz Arenas.
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
 public class DoctorPersonaje extends Personaje {
 
@@ -31,29 +32,36 @@ public class DoctorPersonaje extends Personaje {
     private int yAuxiliar = 0;
 
     private Area cuerpo, personajeArea;
+
     /**
      * Establece la posición inicial en el eje y
+     *
      * @param yInicial Posicion en y
      */
     @Override
     public void setyInicial(int yInicial) {
         this.yInicial = yInicial;
     }
+
     /**
      * Evalua el movimiento saltar del personaje doctor
+     *
      * @return Boleeano para verificar el salto
      */
     public boolean isSalta() {
         return salta;
     }
+
     /**
      * Establece el movimiento saltar del persona doctor
+     *
      * @param salta Determinar si salta o no
      */
     @Override
     public void setSalta(boolean salta) {
         this.salta = salta;
     }
+
     /**
      * Inicializa los valores del personaje doctor
      */
@@ -64,8 +72,10 @@ public class DoctorPersonaje extends Personaje {
         this.tipo = 1;
         this.rutaImagen = "/assets/personajes/marco/normal.png";
     }
+
     /**
      * Dibuja el personaje doctor según los ejes establecidos
+     *
      * @param g Grafica el Personaje
      */
     @Override
@@ -73,8 +83,9 @@ public class DoctorPersonaje extends Personaje {
         ImageIcon personaje = new ImageIcon(getClass().getResource(this.rutaImagen));
         g.drawImage(personaje.getImage(), xInicial, yInicial, ancho, alto, null);
     }
+
     /**
-     * Direcciona el movimiento del personaje doctor 
+     * Direcciona el movimiento del personaje doctor
      */
     @Override
     public void mover() {
@@ -108,6 +119,7 @@ public class DoctorPersonaje extends Personaje {
             }
         }
     }
+
     /**
      * Retrona un boleeano para el movimiento de saltar
      */
@@ -115,10 +127,12 @@ public class DoctorPersonaje extends Personaje {
     public void saltar() {
         salta = true;
     }
-/**
- * Define el área del personaje doctor 
- * @return  Area del personaje
- */
+
+    /**
+     * Define el área del personaje doctor
+     *
+     * @return Area del personaje
+     */
     @Override
     public Area getBounds() {
         Rectangle forma1 = new Rectangle(xInicial, yInicial, 70, 145);
@@ -129,10 +143,12 @@ public class DoctorPersonaje extends Personaje {
 
         return personajeArea;
     }
-/**
- * Retorna la ruta de la imagen del personaje doctor
- * @return Ruta de la imagen
- */
+
+    /**
+     * Retorna la ruta de la imagen del personaje doctor
+     *
+     * @return Ruta de la imagen
+     */
     @Override
     public String getRutaImagen() {
         return rutaImagen;

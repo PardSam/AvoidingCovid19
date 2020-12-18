@@ -13,7 +13,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -26,15 +25,15 @@ import ui.Paleta;
 /**
  * Representa la vista del menú Ajustes.
  *
- * @version 09/12/2020/A
+ * @version 09/12/2020
  * @author Sanchez Pardo
  * @author Monja Vasquez
  * @author More Villegas
- * @author Diaz Coronado,
- * @author Gonzales Cubas,
- * @author Ugaz Arenas.
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
-public class AjustesVista extends JDialog{
+public class AjustesVista extends JDialog {
 
     public JLabel tituloEtiqueta;
     public JLabel nombreEtiqueta;
@@ -60,7 +59,6 @@ public class AjustesVista extends JDialog{
     public AjustesVista() {
         this.setSize(400, 320);
         iniciarComponentes();
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
         this.setModal(true);
     }
 

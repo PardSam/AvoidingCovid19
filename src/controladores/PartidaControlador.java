@@ -29,13 +29,13 @@ import vistas.PartidaVista;
  * Representa una implementación de ActionListener, KeyListener y WindowListener
  * para el Controlador de Partida
  *
- * @version 09/12/2020/A
+ * @version 09/12/2020
  * @author Sanchez Pardo
  * @author Monja Vasquez
  * @author More Villegas
  * @author Diaz Coronado
  * @author Gonzales Cubas
- * @author Ugaz Arenas.
+ * @author Ugaz Arenas
  */
 public class PartidaControlador implements ActionListener, KeyListener, WindowListener {
 

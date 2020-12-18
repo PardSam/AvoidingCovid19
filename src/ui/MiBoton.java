@@ -9,13 +9,13 @@ import javax.swing.JButton;
 /**
  * Diseño de botones extendido de JButton
  *
- * @version 09/12/2020/A
+ * @version 09/12/2020
  * @author Sanchez Pardo
  * @author Monja Vasquez
  * @author More Villegas
  * @author Diaz Coronado
  * @author Gonzales Cubas
- * @author Ugaz Arenas.
+ * @author Ugaz Arenas
  */
 public class MiBoton extends JButton {
 

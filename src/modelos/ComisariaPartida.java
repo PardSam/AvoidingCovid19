@@ -1,17 +1,18 @@
 package modelos;
 
 /**
- *Es una clase abstracta que define la estructura mínima de
- *un Decorador.
- *@version 09/12/2020/A
+ * Es una clase abstracta que define la estructura mínima de un Decorador.
+ *
+ * @version 09/12/2020
  * @author Sanchez Pardo
- * @author  Monja Vasquez
- * @author  More Villegas
- * @author  Diaz Coronado, 
- * @author  Gonzales Cubas,
- * @author  Ugaz Arenas.
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
 public class ComisariaPartida extends Partida {
+
     /**
      * Inicialización del Nivel 3
      */
@@ -31,12 +32,14 @@ public class ComisariaPartida extends Partida {
         setPersonaje(new PersonajeCreador().crear(perfil.getPersonajeId()));
         setObstaculo(new EnfermoObstaculo(this));
     }
+
     /**
      * Jugar el Nivel 3
      */
     @Override
     public void jugar() {
     }
+
     /**
      * Resultados del Nivel 3
      */

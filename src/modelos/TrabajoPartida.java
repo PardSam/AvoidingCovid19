@@ -7,18 +7,20 @@ package modelos;
 
 /**
  * descripcion
- * @version 13/12/2020/A*@version 09/12/2020/A
+ *
+ * @version 09/12/2020
  * @author Sanchez Pardo
- * @author  Monja Vasquez
- * @author  More Villegas
- * @author  Diaz Coronado, 
- * @author  Gonzales Cubas,
- * @author  Ugaz Arenas.
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
 public class TrabajoPartida extends Partida {
-/**
- * inicializar el trabajoPartida
- */
+
+    /**
+     * inicializar el trabajoPartida
+     */
     @Override
     public void inicializar() {
         setPuntajePartida(10);
@@ -35,15 +37,17 @@ public class TrabajoPartida extends Partida {
         setPersonaje(new PersonajeCreador().crear(perfil.getPersonajeId()));
         setObstaculo(new EnfermoObstaculo(this));
     }
-/**
- * methodo jugar
- */
+
+    /**
+     * methodo jugar
+     */
     @Override
     public void jugar() {
     }
-/**
- * resultado
- */
+
+    /**
+     * resultado
+     */
     @Override
     public void resultado() {
     }

@@ -3,17 +3,18 @@ package modelos;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
 import javax.swing.ImageIcon;
+
 /**
  * descripcion
- * @version 13/12/2020/A*@version 09/12/2020/A
+ *
+ * @version 09/12/2020
  * @author Sanchez Pardo
- * @author  Monja Vasquez
- * @author  More Villegas
- * @author  Diaz Coronado, 
- * @author  Gonzales Cubas,
- * @author  Ugaz Arenas.
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
 public class PoliciaPersonaje extends Personaje {
 
@@ -25,35 +26,40 @@ public class PoliciaPersonaje extends Personaje {
     private int ancho = 70;
     private int alto = 145;
 
- 
     private int xInicial = 50;
     private int yInicial = 370;
     private int xAuxiliar = 0;
     private int yAuxiliar = 0;
 
     private Area cuerpo, personajeArea;
+
     /**
-     *Establece el punto inicial en la coordenada Y 
+     * Establece el punto inicial en la coordenada Y
      */
     @Override
     public void setyInicial(int yInicial) {
         this.yInicial = yInicial;
     }
+
     /**
-     *evalua si sucede un salto 
-     * @return salta 
+     * evalua si sucede un salto
+     *
+     * @return salta
      */
     public boolean isSalta() {
         return salta;
     }
+
     /**
      * Establece el salto
+     *
      * @param salta parametro que indica si se esta efectuano o no, un salto
      */
     @Override
     public void setSalta(boolean salta) {
         this.salta = salta;
     }
+
     /**
      * construnctor de la clase PoliciaPersonaje
      */
@@ -64,8 +70,10 @@ public class PoliciaPersonaje extends Personaje {
         this.tipo = 1;
         this.rutaImagen = "/assets/personajes/juan/normal.png";
     }
-        /**
-     * Agrega el personaje civil  en la partida
+
+    /**
+     * Agrega el personaje civil en la partida
+     *
      * @param partida Establece la ruta del personaje
      */
     public PoliciaPersonaje(Partida partida) {
@@ -73,15 +81,18 @@ public class PoliciaPersonaje extends Personaje {
         this.tipo = 1;
         this.rutaImagen = "/assets/personajes/david/normal.png";
     }
+
     /**
      * dibuja un personaje atravez el parametro establecido
-     * @param g 
+     *
+     * @param g
      */
     @Override
     public void dibujar(Graphics2D g) {
         ImageIcon personaje = new ImageIcon(getClass().getResource(this.rutaImagen));
         g.drawImage(personaje.getImage(), xInicial, yInicial, ancho, alto, null);
     }
+
     /**
      * Funcion para mover al personaje
      */
@@ -117,6 +128,7 @@ public class PoliciaPersonaje extends Personaje {
             }
         }
     }
+
     /**
      * Funcion para determinar el salto
      */
@@ -124,8 +136,10 @@ public class PoliciaPersonaje extends Personaje {
     public void saltar() {
         salta = true;
     }
+
     /**
      * obtiene las coordenadas que ocupa el personaje
+     *
      * @return el aria del personaje
      */
     @Override
@@ -138,8 +152,10 @@ public class PoliciaPersonaje extends Personaje {
 
         return personajeArea;
     }
+
     /**
      * obtiene la ruta de la imagen
+     *
      * @return la ruta de la imagen del personaje
      */
     @Override

@@ -5,25 +5,27 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 /**
- *Es una clase abstracta que define la estructura mínima de
- *un Decorador.
- *@version 09/12/2020/A
+ * Es una clase abstracta que define la estructura mínima de un Decorador.
+ *
+ * @version 09/12/2020
  * @author Sanchez Pardo
- * @author  Monja Vasquez
- * @author  More Villegas
- * @author  Diaz Coronado, 
- * @author  Gonzales Cubas,
- * @author  Ugaz Arenas.
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
 public class ContinuarComando implements IComando {
 
     private PartidaControlador controlador;
-   /**
+
+    /**
      * Constructo de ContinuarComando
      */
     public ContinuarComando(PartidaControlador controlador) {
         this.controlador = controlador;
     }
+
     /**
      * El metodo ejecutar de ContinuarComando reanuda el Juego
      */

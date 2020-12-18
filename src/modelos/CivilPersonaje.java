@@ -3,28 +3,25 @@ package modelos;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
 import javax.swing.ImageIcon;
 
 /**
  * Representa una implementación concreta de la clase Personaje.
- *@version 09/12/2020/A
+ *
+ * @version 09/12/2020
  * @author Sanchez Pardo
- * @author  Monja Vasquez
- * @author  More Villegas
- * @author  Diaz Coronado, 
- * @author  Gonzales Cubas,
- * @author  Ugaz Arenas.
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
 public class CivilPersonaje extends Personaje {
 
-    private int tipo;
     private String rutaImagen;
 
     private int ancho = 70;
-    // private int ancho = 112;
     private int alto = 145;
-    // private int alto = 110;
 
     private int xInicial = 50;
 
@@ -38,111 +35,137 @@ public class CivilPersonaje extends Personaje {
 
     private Area cuerpo;
     private Area personajeArea;
+
     /**
      * Evalua el movimiento saltar del personaje civil
-     * @return  Verifica si salta o no
+     *
+     * @return Verifica si salta o no
      */
     public boolean isSalta() {
         return salta;
     }
+
     /**
      * Establecer el movimiento saltar del personaje civil
+     *
      * @param salta Booleano para determinar salto
      */
     @Override
     public void setSalta(boolean salta) {
         this.salta = salta;
     }
+
     /**
      * Inicializa al personaje civil
      */
     public CivilPersonaje() {
-        this.tipo = 1;
         this.rutaImagen = "/assets/personajes/david/normal.png";
     }
+
     /**
-     * Agrega el personaje civil  en la partida
+     * Agrega el personaje civil en la partida
+     *
      * @param partida Establece la ruta del personaje
      */
     public CivilPersonaje(Partida partida) {
         super(partida);
-        this.tipo = 1;
         this.rutaImagen = "/assets/personajes/david/normal.png";
     }
+
     /**
      * Retorna la ruta de la imagen del personaje civil
+     *
      * @return Obtiene la ruta imagen
      */
     @Override
     public String getRutaImagen() {
         return rutaImagen;
     }
+
     /**
-     * Retorna el eje x inicial del objeto 
-     * @return  Obtiene la posicion
+     * Retorna el eje x inicial del objeto
+     *
+     * @return Obtiene la posicion
      */
     public int getxInicial() {
         return xInicial;
     }
+
     /**
      * Establece el eje x inicial del objeto
+     *
      * @param xInicial Establece la posicion en x
      */
     public void setxInicial(int xInicial) {
         this.xInicial = xInicial;
     }
+
     /**
      * Retorna el eje y inicial del objeto
+     *
      * @return posicion en y
      */
     public int getyInicial() {
         return yInicial;
     }
+
     /**
      * Establece el eje y inicial del objeto
+     *
      * @param yInicial Coloca la posicion en y
      */
     @Override
     public void setyInicial(int yInicial) {
         this.yInicial = yInicial;
     }
-  /**
-     * Retorna el eje x auxiliar del objeto 
+
+    /**
+     * Retorna el eje x auxiliar del objeto
+     *
      * @return Obtiene la posicion auxiliar
      */
     public int getxAuxiliar() {
         return xAuxiliar;
     }
+
     /**
      * Establece el eje y auxiliar del objeto
+     *
      * @param xAuxiliar Coloca la posicion auxiliar en x
      */
     public void setxAuxiliar(int xAuxiliar) {
         this.xAuxiliar = xAuxiliar;
     }
+
     /**
      * Retorna el eje y auxiliar del objeto
+     *
      * @return Retorna la posicion auxiliar en y
      */
     public int getyAuxiliar() {
         return yAuxiliar;
     }
+
     /**
      * Obtiene el eje y auxiliar del objeto
+     *
      * @param yAuxiliar = int
      */
     public void setyAuxiliar(int yAuxiliar) {
         this.yAuxiliar = yAuxiliar;
     }
+
     /**
-     * Dibuja el personaje civil  según los ejes establecidos
-     * @param g Grafica al personaje  civil
+     * Dibuja el personaje civil según los ejes establecidos
+     *
+     * @param g Grafica al personaje civil
      */
     @Override
     public void dibujar(Graphics2D g) {
         ImageIcon personaje = new ImageIcon(getClass().getResource(this.rutaImagen));
         g.drawImage(personaje.getImage(), xInicial, yInicial, ancho, alto, null);
     }
+
     /**
      * Direcciona el movimiento del personaje civil
      */
@@ -178,6 +201,7 @@ public class CivilPersonaje extends Personaje {
             }
         }
     }
+
     /**
      * Devuelve un boleeano para la variable salta
      */
@@ -185,8 +209,10 @@ public class CivilPersonaje extends Personaje {
     public void saltar() {
         salta = true;
     }
- /**
+
+    /**
      * Define el área del personaje civil
+     *
      * @return Retorna el area del personaje
      */
     @Override

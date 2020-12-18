@@ -9,13 +9,13 @@ import javax.swing.ImageIcon;
 /**
  * Representa una implementación concreta de la clase Obstaculo.
  *
- * @version 09/12/2020/A
+ * @version 09/12/2020
  * @author Sanchez Pardo
  * @author Monja Vasquez
  * @author More Villegas
- * @author Diaz Coronado,
- * @author Gonzales Cubas,
- * @author Ugaz Arenas.
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
 public class EnfermoObstaculo extends Obstaculo {
 
@@ -47,7 +47,6 @@ public class EnfermoObstaculo extends Obstaculo {
         if (getxInicial() <= -100) {
             getPartida().setPuntaje(getPartida().getPuntaje() + 1);
             if (getPartida().getPuntaje() == 11 || getPartida().getPuntaje() == 21) {
-                //JOptionPane.showMessageDialog(null, "Pasaste el nivel");
                 getPartida().setGanarPartida(true);
                 Perfil.gePerfil().setEscenarioId(Perfil.gePerfil().getEscenarioId() + 1);
                 Perfil.gePerfil().setPersonajeId(Perfil.gePerfil().getPersonajeId() + 1);
@@ -67,7 +66,7 @@ public class EnfermoObstaculo extends Obstaculo {
             setxInicial(1024);
 
         } else {
-            if (colision()) {                
+            if (colision()) {
                 this.colisionar();
                 getPartida().reiniciar();
             } else {
@@ -75,8 +74,8 @@ public class EnfermoObstaculo extends Obstaculo {
             }
         }
         if (getPartida().getProteccion() == 0) {
-                    getPartida().finalizarPartida();
-                }
+            getPartida().finalizarPartida();
+        }
     }
 
     /**

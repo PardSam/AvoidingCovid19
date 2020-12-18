@@ -3,18 +3,17 @@ package modelos;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
-import javax.swing.JOptionPane;
 
 /**
  * descripcion
  *
- * @version 13/12/2020/A*@version 09/12/2020/A
+ * @version 09/12/2020
  * @author Sanchez Pardo
  * @author Monja Vasquez
  * @author More Villegas
- * @author Diaz Coronado,
- * @author Gonzales Cubas,
- * @author Ugaz Arenas.
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
 public abstract class Partida extends PartidaSujeto {
 
@@ -32,8 +31,8 @@ public abstract class Partida extends PartidaSujeto {
     private boolean finPartida = false;
     private boolean ganarPartida = false;
     private boolean horario = true;
-    private boolean  actualizarPartida = false;
-    
+    private boolean actualizarPartida = false;
+
     private Escenario escenario;
     private Personaje personaje;
     private Obstaculo obstaculo;
@@ -48,14 +47,13 @@ public abstract class Partida extends PartidaSujeto {
         this.finPartida = false;
     }
 
-    public boolean  isActualizarPartida() {
+    public boolean isActualizarPartida() {
         return actualizarPartida;
     }
 
-    public void setActualizarPartida(boolean  actualizarPartida) {
+    public void setActualizarPartida(boolean actualizarPartida) {
         this.actualizarPartida = actualizarPartida;
     }
-
 
     /**
      * Evalua el horario dentro de la partida

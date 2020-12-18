@@ -13,13 +13,13 @@ import vistas.AyudaVista;
  * Representa una implementación de ActionListener y ComponentListener para el
  * Controlador de la ventana Ayuda
  *
- * @version 09/12/2020/A
+ * @version 09/12/2020
  * @author Sanchez Pardo
  * @author Monja Vasquez
  * @author More Villegas
  * @author Diaz Coronado
  * @author Gonzales Cubas
- * @author Ugaz Arenas.
+ * @author Ugaz Arenas
  */
 public class AyudaControlador implements ActionListener, ComponentListener {
 

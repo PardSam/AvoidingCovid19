@@ -25,13 +25,13 @@ import vistas.EscenariosVista;
  * Representa una implementación de ActionListener para el Controlador de la
  * ventana Escenarios
  *
- * @version 09/12/2020/A
+ * @version 09/12/2020
  * @author Sanchez Pardo
  * @author Monja Vasquez
  * @author More Villegas
  * @author Diaz Coronado
  * @author Gonzales Cubas
- * @author Ugaz Arenas.
+ * @author Ugaz Arenas
  */
 public class EscenariosControlador implements ActionListener {
 

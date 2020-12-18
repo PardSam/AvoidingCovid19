@@ -10,13 +10,14 @@ import java.awt.event.WindowEvent;
 
 /**
  * descripcion
- * @version 13/12/2020/A*@version 09/12/2020/A
+ *
+ * @version 09/12/2020
  * @author Sanchez Pardo
- * @author  Monja Vasquez
- * @author  More Villegas
- * @author  Diaz Coronado, 
- * @author  Gonzales Cubas,
- * @author  Ugaz Arenas.
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
 public class VidaConcretoObservador implements IPartidaObservador {
 
@@ -27,7 +28,8 @@ public class VidaConcretoObservador implements IPartidaObservador {
         this.partida = partida;
         this.controlador = controlador;
     }
-/**
+
+    /**
      * Notifica los cambios
      */
     @Override

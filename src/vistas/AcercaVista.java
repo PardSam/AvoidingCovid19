@@ -9,7 +9,6 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -20,13 +19,13 @@ import ui.Paleta;
 /**
  * Representa la vista del menú Acerca.
  *
- * @version 09/12/2020/A
+ * @version 09/12/2020
  * @author Sanchez Pardo
  * @author Monja Vasquez
  * @author More Villegas
- * @author Diaz Coronado,
- * @author Gonzales Cubas,
- * @author Ugaz Arenas.
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
 public class AcercaVista extends JDialog {
 

@@ -6,13 +6,13 @@ import javax.swing.ImageIcon;
 /**
  * Representa una implementación concreta de la clase Escenario.
  *
- * @version 09/12/2020/A
+ * @version 09/12/2020
  * @author Sanchez Pardo
  * @author Monja Vasquez
  * @author More Villegas
- * @author Diaz Coronado,
- * @author Gonzales Cubas,
- * @author Ugaz Arenas.
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
 public class HospitalEscenario extends Escenario {
 
@@ -101,7 +101,6 @@ public class HospitalEscenario extends Escenario {
      *
      * @return Imagen del escenario
      */
-
     @Override
     public ImageIcon getEscenarioImg() {
         return escenarioImg;

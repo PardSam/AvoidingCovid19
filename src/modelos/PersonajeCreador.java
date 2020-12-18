@@ -7,23 +7,25 @@ package modelos;
 
 /**
  * descripcion
- * @version 13/12/2020/A*@version 09/12/2020/A
+ *
+ * @version 09/12/2020
  * @author Sanchez Pardo
- * @author  Monja Vasquez
- * @author  More Villegas
- * @author  Diaz Coronado, 
- * @author  Gonzales Cubas,
- * @author  Ugaz Arenas.
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
 public class PersonajeCreador extends PersonajeCreadorAbstracto {
 
     public PersonajeCreador() {
-       
+
     }
 
     /**
      * Funcion para crear al personaje
-     * @param tipo  parametro que indica que tipo de personaje se crea
+     *
+     * @param tipo parametro que indica que tipo de personaje se crea
      * @return el personaje creado
      */
     @Override
@@ -40,7 +42,7 @@ public class PersonajeCreador extends PersonajeCreadorAbstracto {
                 objeto = new PoliciaPersonaje();
                 break;
             default:
-                objeto = null;
+                objeto = new CivilPersonaje();
         }
         return objeto;
     }

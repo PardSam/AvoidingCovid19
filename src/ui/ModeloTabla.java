@@ -7,13 +7,13 @@ import modelos.Jugador;
 /**
  * Modelo de la tabla extendido de AbstractTableModel
  *
- * @version 09/12/2020/A
+ * @version 09/12/2020
  * @author Sanchez Pardo
  * @author Monja Vasquez
  * @author More Villegas
  * @author Diaz Coronado
  * @author Gonzales Cubas
- * @author Ugaz Arenas.
+ * @author Ugaz Arenas
  */
 public class ModeloTabla extends AbstractTableModel {
 

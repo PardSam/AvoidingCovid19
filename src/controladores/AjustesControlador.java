@@ -12,13 +12,13 @@ import vistas.AjustesVista;
  * Representa una implementación de ActionListener para el Controlador de la
  * ventana Ajustes
  *
- * @version 09/12/2020/A
+ * @version 09/12/2020
  * @author Sanchez Pardo
  * @author Monja Vasquez
  * @author More Villegas
  * @author Diaz Coronado
  * @author Gonzales Cubas
- * @author Ugaz Arenas.
+ * @author Ugaz Arenas
  */
 public class AjustesControlador implements ActionListener {
 
@@ -39,7 +39,7 @@ public class AjustesControlador implements ActionListener {
         this.vista.cerrarBoton.addActionListener(this);
         this.vista.masculino.addActionListener(this);
         this.vista.femenino.addActionListener(this);
-        
+
         this.vista.setLocationRelativeTo(null);
         this.vista.setVisible(false);
     }

@@ -2,26 +2,32 @@ package modelos;
 
 import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
+
 /**
  * Representa la acción que dispara un comando.
-  *@version 09/12/2020/A
+ *
+ * @version 09/12/2020
  * @author Sanchez Pardo
- * @author  Monja Vasquez
- * @author  More Villegas
- * @author  Diaz Coronado, 
- * @author  Gonzales Cubas,
- * @author  Ugaz Arenas.
+ * @author Monja Vasquez
+ * @author More Villegas
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
 public class DiaPartida extends AmbientePartidaDecorador {
+
     /**
-     * Obtiene un ambiente de la clase Escenario 
-     * @param decorado  Escenario Decorado
+     * Obtiene un ambiente de la clase Escenario
+     *
+     * @param decorado Escenario Decorado
      */
     public DiaPartida(Escenario decorado) {
         super(decorado);
     }
+
     /**
      * Dibuja el escenario de dia según los ejes establecidos
+     *
      * @param g Grafica el escenario dentro de la partida
      */
     @Override
@@ -29,14 +35,17 @@ public class DiaPartida extends AmbientePartidaDecorador {
         getDecorado().setEscenarioImg(new ImageIcon(getClass().getResource(getDecorado().getRutaImagen())));
         getDecorado().dibujar(g);
     }
+
     /**
      * Retorna la ruta de la imagen del personaje civil
+     *
      * @return Ruta de la imagen
      */
     @Override
     public String getRutaImagen() {
         return getDecorado().getRutaImagen();
     }
+
     /**
      * Direcciona el movimiento del escenario
      */
@@ -44,32 +53,40 @@ public class DiaPartida extends AmbientePartidaDecorador {
     public void mover() {
         getDecorado().mover();
     }
+
     /**
      * Retorna el nivel de la Partida
-     * @return  Nivel
+     *
+     * @return Nivel
      */
     @Override
     public int getNivel() {
         return getDecorado().getNivel();
     }
+
     /**
      * Establece la imagen del escenario
+     *
      * @param escenarioImg Coloca la imagen
      */
     @Override
     public void setEscenarioImg(ImageIcon escenarioImg) {
         getDecorado().getEscenarioImg();
     }
+
     /**
      * Retorna la imagen el escenario
+     *
      * @return La imagen del escenario
      */
     @Override
     public ImageIcon getEscenarioImg() {
         return getDecorado().getEscenarioImg();
     }
+
     /**
      * Retorma imagen de noche del Escenario
+     *
      * @return La imagen de noche
      */
     @Override

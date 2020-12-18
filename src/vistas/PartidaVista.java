@@ -2,19 +2,18 @@ package vistas;
 
 import java.awt.Dimension;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
  * Representa la vista del menú Partida.
  *
- * @version 09/12/2020/A
+ * @version 09/12/2020
  * @author Sanchez Pardo
  * @author Monja Vasquez
  * @author More Villegas
- * @author Diaz Coronado,
- * @author Gonzales Cubas,
- * @author Ugaz Arenas.
+ * @author Diaz Coronado
+ * @author Gonzales Cubas
+ * @author Ugaz Arenas
  */
 public class PartidaVista extends JDialog {
 
@@ -34,7 +33,7 @@ public class PartidaVista extends JDialog {
     /**
      * nicializarComponentes
      *
-     * @param: panel
+     * @param panel
      */
     public void inicializarComponentes(PartidaPanel panel) {
 

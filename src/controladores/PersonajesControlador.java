@@ -22,13 +22,13 @@ import vistas.PersonajesVista;
  * Representa una implementación de ActionListener para el Controlador de
  * Personaje
  *
- * @version 09/12/2020/A
+ * @version 09/12/2020
  * @author Sanchez Pardo
  * @author Monja Vasquez
  * @author More Villegas
  * @author Diaz Coronado
  * @author Gonzales Cubas
- * @author Ugaz Arenas.
+ * @author Ugaz Arenas
  */
 public class PersonajesControlador implements ActionListener {
 
