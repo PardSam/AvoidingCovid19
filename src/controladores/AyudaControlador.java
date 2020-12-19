@@ -24,7 +24,7 @@ import vistas.AyudaVista;
 public class AyudaControlador implements ActionListener, ComponentListener {
 
     private AyudaVista vista;
-    public int op = 0;
+    private int op = 0;
     final String HELP[] = {"/assets/img__ayuda-1.png", "/assets/img__ayuda-2.png", "/assets/img__ayuda-3.png",
         "/assets/img__ayuda-4.png", "/assets/img__ayuda-5.png"};
 
@@ -45,6 +45,13 @@ public class AyudaControlador implements ActionListener, ComponentListener {
         this.vista.setVisible(false);
     }
 
+    public void restablecer() {
+        op = 0;
+        this.vista.imgAyuda = imagenRuta(this.HELP[op]);
+        this.vista.imagenAyudaEtiqueta.setIcon(new ImageIcon(this.vista.imgAyuda.getImage().
+                getScaledInstance(this.vista.width, this.vista.height, Image.SCALE_SMOOTH)));
+    }
+
     /**
      * Detectar y manejar la acción sobre el evento
      *
@@ -56,7 +63,6 @@ public class AyudaControlador implements ActionListener, ComponentListener {
         switch (e.getActionCommand()) {
             case "atras":
                 opcionAyuda(this.vista.imagenAyudaEtiqueta, 1);
-                this.vista.imagenAyudaEtiqueta.updateUI();
                 break;
             case "siguiente":
                 opcionAyuda(this.vista.imagenAyudaEtiqueta, 2);
@@ -101,7 +107,7 @@ public class AyudaControlador implements ActionListener, ComponentListener {
         }
         this.vista.imgAyuda = imagenRuta(this.HELP[op]);
         this.vista.imagenAyudaEtiqueta.setIcon(new ImageIcon(this.vista.imgAyuda.getImage().
-                getScaledInstance(this.vista.width, this.vista.height, Image.SCALE_FAST)));
+                getScaledInstance(this.vista.width, this.vista.height, Image.SCALE_SMOOTH)));
     }
 
     /**
@@ -116,7 +122,7 @@ public class AyudaControlador implements ActionListener, ComponentListener {
         this.vista.height = e.getComponent().getHeight();
 
         this.vista.imagenAyudaEtiqueta.setIcon(new ImageIcon(this.vista.imgAyuda.getImage().
-                getScaledInstance(this.vista.width, this.vista.height, Image.SCALE_FAST)));
+                getScaledInstance(this.vista.width, this.vista.height, Image.SCALE_SMOOTH)));
 
     }
 

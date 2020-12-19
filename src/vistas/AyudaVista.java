@@ -50,10 +50,13 @@ public class AyudaVista extends JDialog {
      * Constructor
      */
     public AyudaVista() {
-        this.setSize(1000, 655);
+        this.setSize(720, 480);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setModal(true);
+        
+        this.width = 320;
+        this.height = 160;
         iniciarComponentes();
     }
 

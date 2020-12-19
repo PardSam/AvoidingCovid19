@@ -34,7 +34,7 @@ public class PrincipalControlador implements ActionListener {
     public AjustesVista ajustes;
     public AjustesControlador controladorAjuste;
     public AyudaVista ayuda;
-    public AyudaControlador controladorayuda;
+    public AyudaControlador controladorAyuda;
     public EscenariosVista escenario;
     public EscenariosControlador controladorEscenario;
     public PersonajesVista personaje;
@@ -70,7 +70,7 @@ public class PrincipalControlador implements ActionListener {
         controladorPersonaje = new PersonajesControlador(personaje);
 
         ayuda = new AyudaVista();
-        controladorayuda = new AyudaControlador(ayuda);
+        controladorAyuda = new AyudaControlador(ayuda);
 
         acerca = new AcercaVista();
         controladorAcerca = new AcercaControlador(acerca);
@@ -120,6 +120,7 @@ public class PrincipalControlador implements ActionListener {
                 personaje.setVisible(true);
                 break;
             case "ayuda":
+                controladorAyuda.restablecer();
                 ayuda.setVisible(true);
                 break;
             case "info":
