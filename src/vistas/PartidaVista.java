@@ -36,6 +36,7 @@ public class PartidaVista extends JDialog {
      * @param panel
      */
     public void inicializarComponentes(PartidaPanel panel) {
+        this.setTitle("Partida");
 
         partidaPanel = panel;
 

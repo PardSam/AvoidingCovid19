@@ -145,9 +145,9 @@ public class PersonajesControlador implements ActionListener {
      */
     public void obtenerPersonajes() {
         itemLista = new ItemLista("personajes");
-        itemLista.agregar(new Item(1, "Civil", "", "/assets/personajes/david/prevista.png"));
-        itemLista.agregar(new Item(2, "Doctor", "", "/assets/personajes/marco/prevista.png"));
-        itemLista.agregar(new Item(3, "Policia", "", "/assets/personajes/juan/prevista.png"));
+        itemLista.agregar(new Item(1, "Civil", "", "/assets/personajes/civil/prevista.png"));
+        itemLista.agregar(new Item(2, "Doctor", "", "/assets/personajes/doctor/prevista.png"));
+        itemLista.agregar(new Item(3, "Policia", "", "/assets/personajes/policia/prevista.png"));
     }
 
     /**

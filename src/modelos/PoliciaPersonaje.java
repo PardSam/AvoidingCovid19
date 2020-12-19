@@ -1,9 +1,11 @@
 package modelos;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.geom.Area;
-import javax.swing.ImageIcon;
 
 /**
  * descripcion
@@ -18,11 +20,8 @@ import javax.swing.ImageIcon;
  */
 public class PoliciaPersonaje extends Personaje {
 
-    private boolean sube = false;
-    private boolean baja = false;
-    private boolean salta = false;
-    private int tipo;
     private String rutaImagen;
+
     private int ancho = 70;
     private int alto = 145;
 
@@ -31,7 +30,49 @@ public class PoliciaPersonaje extends Personaje {
     private int xAuxiliar = 0;
     private int yAuxiliar = 0;
 
+    private boolean sube = false;
+    private boolean baja = false;
+    private boolean salta = false;
+
+    private SpriteSheet spriteSheet;
+
     private Area cuerpo, personajeArea;
+
+    private AudioClip sonidoSaltar;
+
+    /**
+     * construnctor de la clase PoliciaPersonaje
+     */
+    public PoliciaPersonaje() {
+        this.baja = false;
+        this.sube = false;
+        this.salta = false;
+        this.rutaImagen = "/assets/personajes/policia/sprite.png";
+        this.spriteSheet = new SpriteSheet(this.rutaImagen);
+        this.sonidoSaltar = Applet.newAudioClip(getClass().getResource("/assets/saltar.wav"));
+    }
+
+    /**
+     * Agrega el personaje civil en la partida
+     *
+     * @param partida Establece la ruta del personaje
+     */
+    public PoliciaPersonaje(Partida partida) {
+        super(partida);
+        this.rutaImagen = "/assets/personajes/policia/sprite.png";
+        spriteSheet = new SpriteSheet(this.rutaImagen);
+        this.sonidoSaltar = Applet.newAudioClip(getClass().getResource("/assets/saltar.wav"));
+    }
+
+    /**
+     * obtiene la ruta de la imagen
+     *
+     * @return la ruta de la imagen del personaje
+     */
+    @Override
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
 
     /**
      * Establece el punto inicial en la coordenada Y
@@ -61,36 +102,25 @@ public class PoliciaPersonaje extends Personaje {
     }
 
     /**
-     * construnctor de la clase PoliciaPersonaje
-     */
-    public PoliciaPersonaje() {
-        this.baja = false;
-        this.sube = false;
-        this.salta = false;
-        this.tipo = 1;
-        this.rutaImagen = "/assets/personajes/juan/normal.png";
-    }
-
-    /**
-     * Agrega el personaje civil en la partida
-     *
-     * @param partida Establece la ruta del personaje
-     */
-    public PoliciaPersonaje(Partida partida) {
-        super(partida);
-        this.tipo = 1;
-        this.rutaImagen = "/assets/personajes/david/normal.png";
-    }
-
-    /**
      * dibuja un personaje atravez el parametro establecido
      *
      * @param g
      */
     @Override
     public void dibujar(Graphics2D g) {
-        ImageIcon personaje = new ImageIcon(getClass().getResource(this.rutaImagen));
-        g.drawImage(personaje.getImage(), xInicial, yInicial, ancho, alto, null);
+        Image personaje;
+
+         if (salta) {
+            personaje = spriteSheet.getSprite(2, 1, 78, 144);
+
+        } else if (getPartida().isFinPartida()) {
+            personaje = spriteSheet.getSprite(3, 1, 78, 144);
+
+        } else {
+            personaje = spriteSheet.getSprite(1, 1, 78, 144);
+        }
+
+        g.drawImage(personaje, xInicial, yInicial, ancho, alto, null);
     }
 
     /**
@@ -135,6 +165,7 @@ public class PoliciaPersonaje extends Personaje {
     @Override
     public void saltar() {
         salta = true;
+        this.sonidoSaltar.play();
     }
 
     /**
@@ -151,16 +182,6 @@ public class PoliciaPersonaje extends Personaje {
         personajeArea.add(cuerpo);
 
         return personajeArea;
-    }
-
-    /**
-     * obtiene la ruta de la imagen
-     *
-     * @return la ruta de la imagen del personaje
-     */
-    @Override
-    public String getRutaImagen() {
-        return rutaImagen;
     }
 
 }

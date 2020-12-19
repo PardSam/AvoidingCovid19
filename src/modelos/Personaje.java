@@ -30,6 +30,14 @@ public abstract class Personaje {
         this.partida = partida;
     }
 
+    public Partida getPartida() {
+        return partida;
+    }
+
+    public void setPartida(Partida partida) {
+        this.partida = partida;
+    }
+
     /**
      * dibuja el personaje
      *

@@ -1,7 +1,7 @@
 package modelos;
 
 /**
- * Se encarga de crear un escenario.
+ * Se encarga de crear la partida hospital
  *
  * @version 09/12/2020
  * @author Sanchez Pardo
@@ -20,16 +20,18 @@ public class HospitalPartida extends Partida {
     public void inicializar() {
         setPuntajePartida(20);
         Perfil perfil = Perfil.gePerfil();
+
         setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
+
         if (isHorario()) {
-            setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
             setEscenario(new DiaPartida(getEscenario()));
-        }
-        if (!isHorario()) {
-            setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
+        } else {
             setEscenario(new NochePartida(getEscenario()));
         }
+
         setPersonaje(new PersonajeCreador().crear(perfil.getPersonajeId()));
+        getPersonaje().setPartida(this);
+
         setObstaculo(new EnfermoObstaculo(this));
     }
 

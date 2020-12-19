@@ -1,5 +1,7 @@
 package modelos;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -45,6 +47,7 @@ public abstract class Partida extends PartidaSujeto {
         this.pierdeProteccion = false;
         this.pausaPartida = false;
         this.finPartida = false;
+
     }
 
     public boolean isActualizarPartida() {
@@ -446,4 +449,5 @@ public abstract class Partida extends PartidaSujeto {
         this.personaje.setSalta(false);
         this.obstaculo.setxInicial(1400);
     }
+
 }

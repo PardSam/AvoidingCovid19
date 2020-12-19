@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelos;
 
 /**
- * descripcion
+ * Se encarga de crear la partida trabajo
  *
  * @version 09/12/2020
  * @author Sanchez Pardo
@@ -26,15 +21,17 @@ public class TrabajoPartida extends Partida {
         setPuntajePartida(10);
         Perfil perfil = Perfil.gePerfil();
 
+        setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
+
         if (isHorario()) {
-            setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
             setEscenario(new DiaPartida(getEscenario()));
-        }
-        if (!isHorario()) {
-            setEscenario(new EscenarioCreador().crearTipo(perfil.getEscenarioId()));
+        } else {
             setEscenario(new NochePartida(getEscenario()));
         }
+
         setPersonaje(new PersonajeCreador().crear(perfil.getPersonajeId()));
+        getPersonaje().setPartida(this);
+
         setObstaculo(new EnfermoObstaculo(this));
     }
 

@@ -1,11 +1,11 @@
 package controladores;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import modelos.Jugador;
 import modelos.PartidaCaretaker;
-import modelos.Perfil;
 import vistas.AcercaVista;
 import vistas.AjustesVista;
 import vistas.AyudaVista;
@@ -13,7 +13,6 @@ import vistas.EscenariosVista;
 import vistas.PartidaVista;
 import vistas.PersonajesVista;
 import vistas.PrincipalVista;
-import vistas.RankingVista;
 
 /**
  * Representa una implementación de ActionListener para el Controlador de
@@ -42,10 +41,10 @@ public class PrincipalControlador implements ActionListener {
     public PersonajesControlador controladorPersonaje;
     public PartidaVista partida;
     public PartidaControlador controladorPartida;
-    public RankingVista ranking;
-    public RankingControlador controladorRanking;
 
     public PartidaCaretaker partidaCaretaker;
+
+    private AudioClip sonidoFondo;
 
     /**
      * Constructor
@@ -63,16 +62,12 @@ public class PrincipalControlador implements ActionListener {
         vista.infoBoton.addActionListener(this);
         vista.ajustesBoton.addActionListener(this);
         vista.salirBoton.addActionListener(this);
-        vista.rankingBoton.addActionListener(this);
 
         escenario = new EscenariosVista();
         controladorEscenario = new EscenariosControlador(escenario);
 
         personaje = new PersonajesVista();
         controladorPersonaje = new PersonajesControlador(personaje);
-
-        ranking = new RankingVista();
-        controladorRanking = new RankingControlador(ranking);
 
         ayuda = new AyudaVista();
         controladorayuda = new AyudaControlador(ayuda);
@@ -90,11 +85,12 @@ public class PrincipalControlador implements ActionListener {
         personaje.setVisible(false);
         ayuda.setVisible(false);
         acerca.setVisible(false);
-        ranking.setVisible(false);
         ajustes.setVisible(true);
-        
+
         this.vista.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+        sonidoFondo = Applet.newAudioClip(getClass().getResource("/assets/sb_discovery.wav"));
+        sonidoFondo.loop();
     }
 
     /**
@@ -123,11 +119,6 @@ public class PrincipalControlador implements ActionListener {
                 controladorPersonaje.cargar();
                 personaje.setVisible(true);
                 break;
-            case "ranking":
-                Jugador j = Perfil.gePerfil().getJugador();
-                ranking.personas.add(j);
-                ranking.setVisible(true);
-                break;
             case "ayuda":
                 ayuda.setVisible(true);
                 break;
@@ -140,6 +131,6 @@ public class PrincipalControlador implements ActionListener {
             case "salir":
                 System.exit(0);
                 break;
-        }        
+        }
     }
 }

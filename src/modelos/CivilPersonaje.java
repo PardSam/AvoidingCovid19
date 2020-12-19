@@ -1,9 +1,11 @@
 package modelos;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.geom.Area;
-import javax.swing.ImageIcon;
 
 /**
  * Representa una implementación concreta de la clase Personaje.
@@ -24,8 +26,7 @@ public class CivilPersonaje extends Personaje {
     private int alto = 145;
 
     private int xInicial = 50;
-
-    public int yInicial = 370;
+    private int yInicial = 370;
     private int xAuxiliar = 0;
     private int yAuxiliar = 0;
 
@@ -33,33 +34,20 @@ public class CivilPersonaje extends Personaje {
     private boolean baja = false;
     private boolean salta = false;
 
+    private SpriteSheet spriteSheet;
+
     private Area cuerpo;
     private Area personajeArea;
 
-    /**
-     * Evalua el movimiento saltar del personaje civil
-     *
-     * @return Verifica si salta o no
-     */
-    public boolean isSalta() {
-        return salta;
-    }
-
-    /**
-     * Establecer el movimiento saltar del personaje civil
-     *
-     * @param salta Booleano para determinar salto
-     */
-    @Override
-    public void setSalta(boolean salta) {
-        this.salta = salta;
-    }
+    private AudioClip sonidoSaltar;
 
     /**
      * Inicializa al personaje civil
      */
     public CivilPersonaje() {
-        this.rutaImagen = "/assets/personajes/david/normal.png";
+        this.rutaImagen = "/assets/personajes/civil/sprite.png";
+        this.spriteSheet = new SpriteSheet(this.rutaImagen);
+        this.sonidoSaltar = Applet.newAudioClip(getClass().getResource("/assets/saltar.wav"));
     }
 
     /**
@@ -69,7 +57,9 @@ public class CivilPersonaje extends Personaje {
      */
     public CivilPersonaje(Partida partida) {
         super(partida);
-        this.rutaImagen = "/assets/personajes/david/normal.png";
+        this.rutaImagen = "/assets/personajes/civil/sprite.png";
+        this.spriteSheet = new SpriteSheet(this.rutaImagen);
+        this.sonidoSaltar = Applet.newAudioClip(getClass().getResource("/assets/saltar.wav"));
     }
 
     /**
@@ -156,14 +146,44 @@ public class CivilPersonaje extends Personaje {
     }
 
     /**
+     * Evalua el movimiento saltar del personaje civil
+     *
+     * @return Verifica si salta o no
+     */
+    public boolean isSalta() {
+        return salta;
+    }
+
+    /**
+     * Establecer el movimiento saltar del personaje civil
+     *
+     * @param salta Booleano para determinar salto
+     */
+    @Override
+    public void setSalta(boolean salta) {
+        this.salta = salta;
+    }
+
+    /**
      * Dibuja el personaje civil según los ejes establecidos
      *
      * @param g Grafica al personaje civil
      */
     @Override
     public void dibujar(Graphics2D g) {
-        ImageIcon personaje = new ImageIcon(getClass().getResource(this.rutaImagen));
-        g.drawImage(personaje.getImage(), xInicial, yInicial, ancho, alto, null);
+        Image personaje;
+
+        if (salta) {
+            personaje = spriteSheet.getSprite(2, 1, 78, 144);
+
+        } else if (getPartida().isFinPartida()) {
+            personaje = spriteSheet.getSprite(3, 1, 78, 144);
+
+        } else {
+            personaje = spriteSheet.getSprite(1, 1, 78, 144);
+        }
+
+        g.drawImage(personaje, xInicial, yInicial, ancho, alto, null);
     }
 
     /**
@@ -208,6 +228,7 @@ public class CivilPersonaje extends Personaje {
     @Override
     public void saltar() {
         salta = true;
+        this.sonidoSaltar.play();
     }
 
     /**

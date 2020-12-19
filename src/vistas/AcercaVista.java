@@ -42,9 +42,11 @@ public class AcercaVista extends JDialog {
      * Constructor
      */
     public AcercaVista() {
-        this.setSize(540, 528);
+        this.setSize(540, 542);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setModal(true);
         iniciarComponentes();
-        setModal(true);
     }
 
     /**
@@ -58,19 +60,19 @@ public class AcercaVista extends JDialog {
 
         informacionArea = new JTextArea();
         informacionArea.setText(
-                "\n\t\t\tUniversidad Señor de Sipán\n"
+                "\n\t\t\tUniversidad Señor de Sipán\n\n"
                 + "     Escuela Académico Profesional de Ingeniería de Sistemas\n\n"
-                + "     Colaboradores:\n\n"
-                + "     - Fernando Monja Vásquez\n"
-                + "     - Samuel Sánchez Pardo\n"
-                + "     - Fiorella More Villegas\n"
-                + "     - Jenniffer Diaz Coronado\n"
-                + "     - Carlos Ugaz Arenas\n"
-                + "     - Jeins Gonzales Cubas\n\n"
+                + "     Estudiantes:\n\n"
+                + "     - Fernando Monja Vasquez.\n"
+                + "     - Samuel Sánchez Pardo.\n"
+                + "     - Fiorella More Villegas.\n"
+                + "     - Jenniffer Diaz Coronado.\n"
+                + "     - Carlos Ugaz Arenas.\n"
+                + "     - Jeins Gonzales Cubas.\n\n"
                 + "     Docente:\n\n"
-                + "     - Heber Ivan Mejia Cabrera\n\n"
+                + "     - Heber Ivan Mejia Cabrera.\n\n"
                 + "     Curso:\n\n"
-                + "     - Patrones de Diseño de Software y Arquitectura\n\n"
+                + "     - Patrones de Diseño de Software y Arquitectura.\n\n"
                 + "\t                 Avoiding COVID-19. Version 1.0\n\n"
         );
         informacionArea.setEditable(false);
@@ -154,5 +156,6 @@ public class AcercaVista extends JDialog {
 
         barraAccionesPanel.add(Box.createHorizontalGlue());
         barraAccionesPanel.add(cerrarBoton);
+        barraAccionesPanel.add(Box.createHorizontalGlue());
     }
 }

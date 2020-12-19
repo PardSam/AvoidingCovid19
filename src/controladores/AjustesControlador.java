@@ -75,7 +75,7 @@ public class AjustesControlador implements ActionListener {
      */
     public void metodoAceptar() {
         if ("".equals(this.vista.nombreCaja.getText()) || this.vista.masculino.isSelected() == false && this.vista.femenino.isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Rellene todos los datos");
+            JOptionPane.showMessageDialog(null, "Antes de jugar, completa tus datos");
         } else {
             this.vista.setVisible(false);
             Perfil.gePerfil().getJugador().setNombres(this.vista.nombreCaja.getText());

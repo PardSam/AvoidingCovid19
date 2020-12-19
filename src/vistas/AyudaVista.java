@@ -12,6 +12,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -49,15 +50,18 @@ public class AyudaVista extends JDialog {
      * Constructor
      */
     public AyudaVista() {
-        this.setSize(500, 400);
+        this.setSize(1000, 655);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setModal(true);
         iniciarComponentes();
-        setModal(true);
     }
 
     /**
      * Inicia todos los componentes
      */
     public void iniciarComponentes() {
+        this.setTitle("Ayuda");
 
         tituloEtiqueta = new JLabel("AYUDA");
         Font font = new Font("Roboto", Font.BOLD, 32);
@@ -144,9 +148,7 @@ public class AyudaVista extends JDialog {
         principalPanel.setBorder(new EmptyBorder(0, 32, 0, 32));
         principalPanel.setOpaque(false);
 
-        //principalPanel.add(Box.createHorizontalStrut(90));
         principalPanel.add(imagenAyudaEtiqueta);
-        //principalPanel.add(Box.createHorizontalStrut(30));
     }
 
     /**
@@ -164,6 +166,6 @@ public class AyudaVista extends JDialog {
         barraAccionesPanel.add(siguienteBoton);
         barraAccionesPanel.add(Box.createRigidArea(new Dimension(8, 0)));
         barraAccionesPanel.add(cerrarBoton);
-        barraAccionesPanel.add(Box.createVerticalStrut(50));
+        barraAccionesPanel.add(Box.createHorizontalGlue());
     }
 }

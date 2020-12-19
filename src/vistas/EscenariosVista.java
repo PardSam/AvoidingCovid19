@@ -43,10 +43,10 @@ public class EscenariosVista extends JDialog {
      */
     public EscenariosVista() {
 
-        setSize(new Dimension(680, 380));
-        setLocationRelativeTo(null);
-        setResizable(false);
-        setModal(true);
+        this.setSize(new Dimension(680, 380));
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setModal(true);
         inicializarComponentes();
     }
 
@@ -54,6 +54,8 @@ public class EscenariosVista extends JDialog {
      * Inicializa todos los componentes
      */
     public void inicializarComponentes() {
+        this.setTitle("Escenarios");
+
         // Crear las etiquetas
         tituloEtiqueta = new JLabel("ESCENARIOS");
         Font font = new Font("Arial", Font.BOLD, 24);

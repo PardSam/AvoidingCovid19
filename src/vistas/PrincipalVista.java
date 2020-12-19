@@ -36,7 +36,6 @@ public class PrincipalVista extends JFrame {
     public JButton comenzarBoton;
     public JButton escenariosBoton;
     public JButton personajesBoton;
-    public JButton rankingBoton;
     public JButton ayudaBoton;
     public JButton infoBoton;
     public JButton ajustesBoton;
@@ -61,8 +60,13 @@ public class PrincipalVista extends JFrame {
      * Inicializa todos los componentes
      */
     public void inicializarComponentes() {
+        this.setTitle("Avoiding COVID-19");
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/assets/logo.png"));
+        this.setIconImage(icon.getImage());
+
         // Crear los botones
-        nombreEtiqueta = new JLabel("Avoiding COVID 19");
+        nombreEtiqueta = new JLabel("Avoiding COVID-19");
         Font font = new Font("Arial", Font.BOLD, 72);
         nombreEtiqueta.setFont(font);
         nombreEtiqueta.setForeground(Paleta.getPlano());
@@ -90,11 +94,6 @@ public class PrincipalVista extends JFrame {
         personajesBoton.setForeground(Paleta.getPlanoSecundario());
         personajesBoton.setBackground(Paleta.getFondoSecundario());
 
-        rankingBoton = new MiBotonIcono();
-        rankingBoton.setIcon(new ImageIcon(getClass().getResource("/assets/ranking.png")));
-        rankingBoton.setForeground(Paleta.getPlanoSecundario());
-        rankingBoton.setBackground(Paleta.getFondoSecundario());
-
         ayudaBoton = new MiBotonIcono();
         ayudaBoton.setIcon(new ImageIcon(getClass().getResource("/assets/ayuda.png")));
         ayudaBoton.setForeground(Paleta.getPlanoSecundario());
@@ -120,7 +119,6 @@ public class PrincipalVista extends JFrame {
         comenzarBoton.setActionCommand("comenzar");
         escenariosBoton.setActionCommand("escenarios");
         personajesBoton.setActionCommand("personajes");
-        rankingBoton.setActionCommand("ranking");
         ayudaBoton.setActionCommand("ayuda");
         infoBoton.setActionCommand("info");
         ajustesBoton.setActionCommand("ajustes");
@@ -209,8 +207,6 @@ public class PrincipalVista extends JFrame {
         opcionesPanel.setLayout(new BoxLayout(opcionesPanel, BoxLayout.X_AXIS));
         opcionesPanel.setOpaque(false);
 
-        opcionesPanel.add(rankingBoton);
-        opcionesPanel.add(Box.createRigidArea(new Dimension(8, 0)));
         opcionesPanel.add(ayudaBoton);
         opcionesPanel.add(Box.createRigidArea(new Dimension(8, 0)));
         opcionesPanel.add(infoBoton);

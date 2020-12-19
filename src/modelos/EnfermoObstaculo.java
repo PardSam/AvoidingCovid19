@@ -1,9 +1,10 @@
 package modelos;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
 import javax.swing.ImageIcon;
 
 /**
@@ -20,7 +21,11 @@ import javax.swing.ImageIcon;
 public class EnfermoObstaculo extends Obstaculo {
 
     private String rutaImagen;
-    private Area cuerpo, enfermo;
+    private Area cuerpo;
+    private Area enfermo;
+
+    private AudioClip sonidoColision;
+    private AudioClip sonidoColisionFinal;
 
     /**
      * Constructor del Obstáculo enfermo en la Partida
@@ -36,6 +41,10 @@ public class EnfermoObstaculo extends Obstaculo {
         setyInicial(370);
         setxAuxiliar(-4);
         setyAuxiliar(0);
+
+        this.sonidoColision = Applet.newAudioClip(getClass().getResource("/assets/tos.wav"));
+        this.sonidoColisionFinal = Applet.newAudioClip(getClass().getResource("/assets/tos-final.wav"));
+
     }
 
     /**
@@ -46,33 +55,59 @@ public class EnfermoObstaculo extends Obstaculo {
 
         if (getxInicial() <= -100) {
             getPartida().setPuntaje(getPartida().getPuntaje() + 1);
-            if (getPartida().getPuntaje() == 11 || getPartida().getPuntaje() == 21) {
+
+            if (getPartida().getPuntaje() == 10 || getPartida().getPuntaje() == 20) {
                 getPartida().setGanarPartida(true);
-                Perfil.gePerfil().setEscenarioId(Perfil.gePerfil().getEscenarioId() + 1);
-                Perfil.gePerfil().setPersonajeId(Perfil.gePerfil().getPersonajeId() + 1);
-                Perfil.gePerfil().setNivel(Perfil.gePerfil().getNivel() + 1);
-                getPartida().setHorario(!getPartida().isHorario());
+
+                Perfil perfil = Perfil.gePerfil();
+
+                if (perfil.getEscenarioId() < 3) {
+                    perfil.setEscenarioId(perfil.getEscenarioId() + 1);
+                } else {
+                    perfil.setEscenarioId(1);
+                }
+
+                if (perfil.getPersonajeId() < 3) {
+                    perfil.setPersonajeId(perfil.getPersonajeId() + 1);
+                } else {
+                    perfil.setPersonajeId(1);
+                }
+
+                perfil.setNivel(perfil.getNivel() + 1);
 
                 getPartida().generar();
                 getPartida().reiniciar();
             }
-            if (getPartida().getPuntajePartida() / 2 == getPartida().getPuntaje() || getPartida().getPuntajePartida() / 2 == getPartida().getPuntaje() || getPartida().getPuntajePartida() / 2 == getPartida().getPuntaje()) {
+
+            if (getPartida().getPuntaje() == 5 || getPartida().getPuntaje() == 10 || getPartida().getPuntaje() == 15 || getPartida().getPuntaje() == 20 || getPartida().getPuntaje() == 25) {
                 getPartida().setHorario(!getPartida().isHorario());
                 getPartida().generar();
-            }
-            if (getPartida().getPuntaje() == 30) {
+            } else if (getPartida().getPuntaje() == 30) {
                 getPartida().finalizarPartida();
+
             }
+
             setxInicial(1024);
 
         } else {
             if (colision()) {
+
                 this.colisionar();
+
+                if (getPartida().getProteccion() == 0) {
+                    this.sonidoColisionFinal.play();
+
+                } else {
+                    this.sonidoColision.play();
+                }
+
                 getPartida().reiniciar();
+
             } else {
                 setxInicial(getxInicial() + getxAuxiliar());
             }
         }
+
         if (getPartida().getProteccion() == 0) {
             getPartida().finalizarPartida();
         }

@@ -8,6 +8,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 import modelos.ControlInvocador;
 import modelos.IComando;
 import modelos.TrabajoPartida;
@@ -17,6 +18,7 @@ import modelos.ContinuarComando;
 import modelos.ContinuarPausarComando;
 import modelos.Partida;
 import modelos.PartidaCaretaker;
+import modelos.PartidaCreador;
 import modelos.PartidaMemento;
 import modelos.PausarComando;
 import modelos.Perfil;
@@ -54,25 +56,14 @@ public class PartidaControlador implements ActionListener, KeyListener, WindowLi
      * @param vista Diseño
      */
     public PartidaControlador(PartidaVista vista, PartidaCaretaker partidaCaretaker) {
+
         this.vista = vista;
 
         this.partidaCaretaker = partidaCaretaker;
 
         Perfil perfil = Perfil.getPerfil();
 
-        switch (Perfil.gePerfil().getNivel()) {
-            case 1:
-                partida = new TrabajoPartida();
-                break;
-            case 2:
-                partida = new HospitalPartida();
-                break;
-            case 3:
-                partida = new ComisariaPartida();
-                break;
-            default:
-                partida = new TrabajoPartida();
-        }
+        partida = new PartidaCreador().crear(perfil.getNivel());
 
         if (perfil.isContinuarPartida() && partidaCaretaker.getEstados().size() > 0) {
             PartidaMemento memento = partidaCaretaker.getMemento(partidaCaretaker.getEstados().size() - 1);
@@ -181,13 +172,18 @@ public class PartidaControlador implements ActionListener, KeyListener, WindowLi
     public void windowClosing(WindowEvent e) {
         ejecutarComando(new PausarComando(this));
         Perfil perfil = Perfil.getPerfil();
+
         if (partida.isFinPartida()) {
-            JOptionPane.showMessageDialog(null, "Fin de partida");
+            if (partida.getDefensa() == 0) {
+                JOptionPane.showMessageDialog(null, "Ha sido infectado");
+            } else {
+                JOptionPane.showMessageDialog(null, "Llegaste a salvo");
+            }
             perfil.setContinuarPartida(false);
         } else {
 
             int confirmar = JOptionPane.showConfirmDialog(this.vista,
-                    "Estas seguro de cerrar la ventana?", "cerrar ventana?",
+                    "¿Quieres salir de la partida?", "¿Salir de la partida?",
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE);
 
@@ -195,6 +191,12 @@ public class PartidaControlador implements ActionListener, KeyListener, WindowLi
 
                 perfil.setContinuarPartida(true);
                 partidaCaretaker.agregarMemento(partida.guardarEstado());
+
+                vista.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
+            } else {
+                vista.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+                ejecutarComando(new ContinuarComando(this));
             }
         }
 

@@ -1,10 +1,11 @@
 package modelos;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
-import javax.swing.ImageIcon;
 
 /**
  * Representa una implementación concreta de la clase Personaje.
@@ -19,19 +20,60 @@ import javax.swing.ImageIcon;
  */
 public class DoctorPersonaje extends Personaje {
 
-    private boolean sube = false;
-    private boolean baja = false;
-    private boolean salta = false;
-    private int tipo;
     private String rutaImagen;
+
     private int ancho = 70;
     private int alto = 145;
+
     private int xInicial = 50;
     private int yInicial = 370;
     private int xAuxiliar = 0;
     private int yAuxiliar = 0;
 
-    private Area cuerpo, personajeArea;
+    private boolean sube = false;
+    private boolean baja = false;
+    private boolean salta = false;
+
+    private SpriteSheet spriteSheet;
+
+    private Area cuerpo;
+    private Area personajeArea;
+
+    private AudioClip sonidoSaltar;
+
+    /**
+     * Inicializa los valores del personaje doctor
+     */
+    public DoctorPersonaje() {
+        this.baja = false;
+        this.sube = false;
+        this.salta = false;
+        this.rutaImagen = "/assets/personajes/doctor/sprite.png";
+        this.spriteSheet = new SpriteSheet(this.rutaImagen);
+        this.sonidoSaltar = Applet.newAudioClip(getClass().getResource("/assets/saltar.wav"));
+    }
+
+    /**
+     * Agrega el personaje doctor en la partida
+     *
+     * @param partida Establece la ruta del personaje
+     */
+    public DoctorPersonaje(Partida partida) {
+        super(partida);
+        this.rutaImagen = "/assets/personajes/doctor/sprite.png";
+        this.spriteSheet = new SpriteSheet(this.rutaImagen);
+        this.sonidoSaltar = Applet.newAudioClip(getClass().getResource("/assets/saltar.wav"));
+    }
+
+    /**
+     * Retorna la ruta de la imagen del personaje doctor
+     *
+     * @return Ruta de la imagen
+     */
+    @Override
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
 
     /**
      * Establece la posición inicial en el eje y
@@ -63,25 +105,25 @@ public class DoctorPersonaje extends Personaje {
     }
 
     /**
-     * Inicializa los valores del personaje doctor
-     */
-    public DoctorPersonaje() {
-        this.baja = false;
-        this.sube = false;
-        this.salta = false;
-        this.tipo = 1;
-        this.rutaImagen = "/assets/personajes/marco/normal.png";
-    }
-
-    /**
      * Dibuja el personaje doctor según los ejes establecidos
      *
      * @param g Grafica el Personaje
      */
     @Override
     public void dibujar(Graphics2D g) {
-        ImageIcon personaje = new ImageIcon(getClass().getResource(this.rutaImagen));
-        g.drawImage(personaje.getImage(), xInicial, yInicial, ancho, alto, null);
+        Image personaje;
+
+        if (salta) {
+            personaje = spriteSheet.getSprite(2, 1, 78, 144);
+
+        } else if (getPartida().isFinPartida()) {
+            personaje = spriteSheet.getSprite(3, 1, 78, 144);
+
+        } else {
+            personaje = spriteSheet.getSprite(1, 1, 78, 144);
+        }
+
+        g.drawImage(personaje, xInicial, yInicial, ancho, alto, null);
     }
 
     /**
@@ -126,6 +168,7 @@ public class DoctorPersonaje extends Personaje {
     @Override
     public void saltar() {
         salta = true;
+        this.sonidoSaltar.play();
     }
 
     /**
@@ -142,16 +185,6 @@ public class DoctorPersonaje extends Personaje {
         personajeArea.add(cuerpo);
 
         return personajeArea;
-    }
-
-    /**
-     * Retorna la ruta de la imagen del personaje doctor
-     *
-     * @return Ruta de la imagen
-     */
-    @Override
-    public String getRutaImagen() {
-        return rutaImagen;
     }
 
 }

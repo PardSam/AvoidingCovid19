@@ -21,8 +21,6 @@ public class AvoidCovid19 {
      * @param args los argumentos de la línea de comando
      */
     public static void main(String[] args) {
-        //PrincipalVista vista = new PrincipalVista();
-        //PrincipalControlador controlador = new PrincipalControlador(vista);    
         Juego juego = new Juego();
         juego.ejecutarJuego();
     }

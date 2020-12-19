@@ -13,6 +13,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -58,20 +59,24 @@ public class AjustesVista extends JDialog {
      */
     public AjustesVista() {
         this.setSize(400, 320);
-        iniciarComponentes();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.setModal(true);
+        iniciarComponentes();
     }
 
     /**
      * Inicia todos los componentes
      */
     public void iniciarComponentes() {
+        this.setTitle("Ajustes");
+
         tituloEtiqueta = new JLabel("Ajustes");
         Font font = new Font("Roboto", Font.BOLD, 24);
         tituloEtiqueta.setFont(font);
         tituloEtiqueta.setForeground(Paleta.getPlano());
 
-        //validar el maximo y minimo de caracteres en la caja
         nombreEtiqueta = new JLabel("Nombre");
         nombreEtiqueta.setForeground(Paleta.getPlano());
         nombreCaja = new MiCaja();
@@ -194,7 +199,6 @@ public class AjustesVista extends JDialog {
         nombrePanel.add(Box.createHorizontalStrut(10));
         nombrePanel.add(nombreEtiqueta);
         nombrePanel.add(Box.createVerticalStrut(10));
-        //nombrePanel.setAlignmentX(JPanel.BOTTOM_ALIGNMENT);
 
         cajaPanel.add(Box.createHorizontalStrut(45));
         cajaPanel.add(nombreCaja);
@@ -204,7 +208,7 @@ public class AjustesVista extends JDialog {
         etiquetaGeneroPanel.add(Box.createVerticalStrut(10));
         etiquetaGeneroPanel.add(Box.createHorizontalStrut(10));
         etiquetaGeneroPanel.add(generoEtiqueta);
-        //etiquetaGeneroPanel.add(Box.createVerticalStrut(-5));
+
         generoPanel.add(Box.createHorizontalStrut(40));
         generoPanel.add(masculino);
         generoPanel.add(femenino);
@@ -214,7 +218,6 @@ public class AjustesVista extends JDialog {
         gbc.gridy = 0;
         gbc.weightx = 50;
         gbc.weighty = 1;
-        //principalPanel.add(Box.createRigidArea(new Dimension(1, 0)));
         principalPanel.add(nombrePanel, gbc);
 
         gbc.fill = GridBagConstraints.BOTH;
@@ -246,11 +249,12 @@ public class AjustesVista extends JDialog {
         barraAccionesPanel.setBorder(new EmptyBorder(15, 8, 8, 8));
         barraAccionesPanel.setOpaque(false);
 
-        barraAccionesPanel.add(Box.createRigidArea(new Dimension(40, 0)));
+        barraAccionesPanel.add(Box.createHorizontalGlue());
         barraAccionesPanel.add(aceptarBoton);
         barraAccionesPanel.add(Box.createRigidArea(new Dimension(8, 0)));
         barraAccionesPanel.add(restablacerBoton);
         barraAccionesPanel.add(Box.createRigidArea(new Dimension(8, 0)));
         barraAccionesPanel.add(cerrarBoton);
+        barraAccionesPanel.add(Box.createHorizontalGlue());
     }
 }

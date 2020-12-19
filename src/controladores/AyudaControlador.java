@@ -24,7 +24,7 @@ import vistas.AyudaVista;
 public class AyudaControlador implements ActionListener, ComponentListener {
 
     private AyudaVista vista;
-    public int op = 4;
+    public int op = 0;
     final String HELP[] = {"/assets/img__ayuda-1.png", "/assets/img__ayuda-2.png", "/assets/img__ayuda-3.png",
         "/assets/img__ayuda-4.png", "/assets/img__ayuda-5.png"};
 
@@ -86,16 +86,17 @@ public class AyudaControlador implements ActionListener, ComponentListener {
      * @param ayuda opcion
      */
     public void opcionAyuda(JLabel etiqueta, int ayuda) {
-        if (ayuda == 1) {
-            op--;
-            if (op < 0) {
+        if (ayuda == 1) { // Atras
+            if (op <= 0) {
                 op = this.HELP.length - 1;
+            } else {
+                op--;
             }
-
-        } else if (ayuda == 2) {
-            op++;
-            if (op >= this.HELP.length) {
+        } else if (ayuda == 2) { // Siguiente
+            if (op >= this.HELP.length - 1) {
                 op = 0;
+            } else {
+                op++;
             }
         }
         this.vista.imgAyuda = imagenRuta(this.HELP[op]);

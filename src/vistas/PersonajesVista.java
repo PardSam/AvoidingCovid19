@@ -42,10 +42,10 @@ public class PersonajesVista extends JDialog {
      * Constructor
      */
     public PersonajesVista() {
-        setSize(new Dimension(680, 380));
-        setLocationRelativeTo(null);
-        setResizable(false);
-        setModal(true);
+        this.setSize(new Dimension(680, 380));
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setModal(true);
         inicializarComponentes();
     }
 
@@ -53,6 +53,8 @@ public class PersonajesVista extends JDialog {
      * Inicializa todos los componentes
      */
     public void inicializarComponentes() {
+        this.setTitle("Personajes");
+
         // Crear las etiquetas
         tituloEtiqueta = new JLabel("PERSONAJES");
         Font font = new Font("Arial", Font.BOLD, 24);
